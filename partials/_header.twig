@@ -1,0 +1,20 @@
+{% if record.contenttype.slug|default() not in ['showcases', 'entries'] %}
+{% setcontent homepage = "homepage" limit 1 returnsingle %}
+<section class="hero hero-image is-dark is-bold is-medium {% if app.request.get('_route') == "homepage" %}is-fullheight-with-navbar is-large {% endif %}"
+    {%- if homepage.image|default %}
+        {% set filename = homepage.image.file|default(homepage.image) %}
+        data-background-image="{{ asset(filename, 'files') }}" style="background-image: url({{ asset(filename, 'files') }})"
+    {% endif -%}
+    >
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <small class="title is-size-4">the</small>
+            {# <h1 class="title">{{ config.get('general/sitename') }}</h1> #}
+            <h1 class="title">Cantilevers <small>at</small> CTC</h1>
+            {% if config.get('general/payoff') %}
+            <h2 class="subtitle  is-size-4">{{ config.get('general/payoff') }}</h2>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endif %}

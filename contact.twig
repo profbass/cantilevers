@@ -1,0 +1,121 @@
+{% extends 'partials/_content.twig' %}
+
+{% block main %}
+
+{% for contact in contact %}
+<section class="hero hero-image is-dark is-bold is-medium" {%- if contact.image|default %} {% set filename = contact.image.file|default(contact.image) %} data-background-image="{{ asset(filename, 'files') }}" style="background-image: url({{ asset(filename, 'files') }})" {% endif -%}>
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <h1 class="title">{{ contact.title }}</h1>
+
+            {# {% if config.get('general/payoff') %}
+                <h2 class="subtitle">{{ config.get('general/payoff') }}</h2>
+            {% endif %} #}
+        </div>
+    </div>
+</section>
+
+
+<section class="section section-page contact-page">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-two-thirds">
+                <article class="content" role="article">
+
+                    <h2 class="has-text-centered">{{ contact.address1 }}<br>{{ contact.address2 }}</h2>
+                    <h4 class="has-text-centered">{{ contact.contact_name }}<br><a class="is-italic" href="tel:{{ contact.phone }}">{{ contact.phone }}</a></h4>
+
+                    <div class="has-text-justified">{{ contact.content }}</div>
+
+                    {# If there are repeaters, we should output them. #}
+                    {% with { 'record': record, 'common': false, 'repeaters': true, 'blocks': true, 'exclude': ['teaser', 'body', 'image'] } %}
+                    {{ block('sub_fields', 'partials/_sub_fields.twig') }}
+                    {% endwith %}
+
+                    {# {{ include('partials/_recordfooter.twig', { 'record': record, 'extended': true }) }} #}
+                </article>
+                <hr>
+                {# Form #}
+                <div class="columns is-centered slide-in">
+                    <div class="column">
+                    <h2 class="is-size-5">Send Us a Message</h2>
+                    <div class="form-message"></div>
+                    <form id="contact-form" method="post" accept-charset="UTF-8" action="{{ asset('contact.php', 'theme') }}">
+                        {# {{ csrfInput() }} #}
+                        {# <input type="hidden" name="action" value="contact.php"> #}
+                        {# {{ redirectInput("") }} #}
+
+                        <section class="">
+                            <div class="field">
+                                {# <label class="label">Name</label> #}
+                                <div class="control has-icons-left has-icons-right">
+                                    <input class="input" id="nameInput" placeholder="First &amp; Last Name" type="text">
+                                    <span class="icon is-small is-left">
+                                        <i class="fas fa-user"></i>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                {# <label class="label">Email</label> #}
+                                <div class="control has-icons-left has-icons-right">
+                                    <input class="input" id="emailInput" placeholder="myself@me.com" type="email" value="">
+
+                                    <span class="icon is-small is-left">
+                                        <i class="fas fa-envelope"></i>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                {# <label class="label">Message</label> #}
+                                <div class="control">
+                                    <textarea class="textarea" id="messageField" placeholder="Your message here!"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="field is-grouped">
+                                <div class="control">
+                                    <button class="button is-link">Submit</button>
+                                </div>
+                            </div>
+                        </section>
+                        </form>
+                    </div>
+                </div>
+                {# End Form #}
+            </div>
+        </div>
+    </div>
+</section>
+{% endfor %}
+
+{% include "partials/_sub_recent_records.twig" %}
+
+{% endblock main %}
+
+{% block footer %}
+
+<script>
+    jQuery(document).ready(function($) {
+        $('#contact-form').on('submit', function(e) {
+            e.preventDefault();
+            var $form = $(this);
+            var $body = $('body');
+            $.ajax({
+                url: $form.attr('action'),
+                type: "POST",
+                data: $form.serialize()
+            }).done(function() {
+                $form.find('input,select,textarea').val('');
+                $body.prepend('<div class="notification"><button class="delete"></button>Thanks for reaching out! We will return your message shortly.</div>');
+                
+            }).fail(function() {
+                $body.prepend('<div class="notification"><button class="delete"></button>Oops! It broke!</div>');
+            });
+        });
+    });
+</script>
+
+{% endblock footer %}
+

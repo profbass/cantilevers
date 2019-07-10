@@ -1,0 +1,111 @@
+{% extends 'partials/_master.twig' %}
+
+{% block main %}
+
+<section class="section slide-in">
+
+    <div class="container">
+       {# {{ homepage.content }} #}
+       <div class="corner-number">{# <i class="fas fa-adjust"> #} 0.1</i></div>
+        <div class="columns background-light">
+            <div class="column">
+                {# {{ include('partials/_aside.twig') }} #}
+                {%- if homepage.callout_photo|default %}
+                    {% set calloutphoto = homepage.callout_photo.file|default(homepage.callout_photo) %}
+                    <figure class="image">
+                        <img src="{{ asset(calloutphoto, 'files') }}" />
+                    </figure>
+                {% endif %}
+            </div>
+            <div class="column is-vertical-center">
+
+                {% setcontent homepage = "homepage" limit 1 returnsingle %}
+                {% if homepage %}
+                    <div class="content">
+                        <h2 class="is-size-4 is-size-3-mobile">{{ homepage.title }}</h2>
+                        <div>
+                            {{ homepage.teaser }}
+                            <p><a class="button">Explore The Vision</a></p>
+                        </div>
+                    </div>
+                {% else %}
+                    {# Remove this include if you don't need it anymore. #}
+                    {{ include('partials/_no_content.twig') }}
+                {% endif %}
+            </div>
+            {# <pre>
+                {{ dump(homepage) }}
+            </pre> #}
+        </div>
+    </div>
+</section>
+
+{# Pages section #}
+
+<section class="section section-units hero is-success is-bold">
+
+    <div class="container slide-in">
+        <h2 class="title">Cantilevers Units</h2>
+        <div class="columns slide-in">
+            {% setcontent units = 'units/latest/3' %}
+            {% for unit in units %}
+                <div class="column">
+                    <div class="card">
+                        <div class="card-image">
+                            <figure class="image is-3by2">
+                                {{ popup(unit.values.image, 480, 320) }}
+                            </figure>
+                        </div>
+                        <div class="card-content content">
+                            <h3><a href="{{ unit.link() }}">{{ unit.title }}</a></h3>
+                            <p>{{ unit.excerpt }}</p>
+                            <a class="button" href="{{ unit.link() }}">
+                                {{ __('general.phrase.read-more') }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="column">
+                    <p>{{ __("general.phrase.no-content-found") }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{# Latest entries #}
+
+<section class="section section-latest-entries">
+
+    <div class="container ">
+        {# <h2 class="title">Latest News</h2> #}
+        {% setcontent entries = 'entries/latest/3' %}
+        {% for entry in entries %}
+            <article role="article" class="media columns slide-in">
+                <div class="media-content column is-7">
+                    <div class="content">
+                        <h3><a href="{{ entry.link }}">{{ entry.title }}</a></h3>
+                        {{ entry.teaser }}
+
+                        {% include 'partials/_record_meta.twig' with {'extended': true, 'record': entry} %}
+                    </div>
+                </div>
+                <div class="media-right column">
+                    <figure class="image">
+                        {{ popup(entry.values.image, 480, 320) }}
+                    </figure>
+                </div>
+            </article>
+        {% else %}
+            <p>{{ __("general.phrase.no-content-found") }}</p>
+        {% endfor %}
+        <div class="buttons">
+            <a class="button" href="{{ path('contentlisting', {'contenttypeslug': 'entries'}) }}">Read more <span class="is-hidden"> Entries</span></a>
+        </div>
+    </div>
+</section>
+
+{% include "partials/_sub_recent_records.twig" %}
+
+{% endblock main %}

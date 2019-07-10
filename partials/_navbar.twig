@@ -1,0 +1,45 @@
+{# Navbar #}
+<nav class="navbar is-fixed-top is-white" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <span class="navbar-item">
+                {# {{ config.get('general/sitename') }} #}
+                <a href="/" title="Cantilevers at CTC"><img id="nav-logo" src="{{ asset('img/logo.svg', 'theme') }}"  /></a>
+            </span>
+            <span class="navbar-burger" data-target="navbar-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
+        </div>
+        <div class="navbar-menu" id="navbar-toggle">
+            <div class="navbar-start">
+                {# {{ menu(template = 'partials/_sub_menu.twig') }} #}
+            </div>
+            <div class="navbar-end">
+                {# <form class="field has-addons" method="get" action="{{ path('search') }}" enctype="text/plain">
+                    <label class="label is-hidden" for="search">Search</label>
+                    <div class="control">
+                        <input class="input" type="search" value="{% if search is defined %}{{ search|escape }}{% endif %}" placeholder="{{ __('general.phrase.search-ellipsis') }}" name="search" id="search">
+                    </div>
+                    <div class="control">
+                        <button class="button is-black" type="submit">{{ __('general.phrase.search') }}</button>
+                    </div>
+                </form> #}
+            <ul class="menu-social is-pulled-right is-mobile level level-right">
+                <li>
+                    <a target="_blank" href="https://www.facebook.com/neonsinesband/">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://www.instagram.com/neon__sines/">
+                        <i class="fab fa-twitter" aria-hidden="true"></i>
+                    </a>
+                </li>
+            </ul>
+        
+            </div>
+        </div>
+    </div>
+</nav>

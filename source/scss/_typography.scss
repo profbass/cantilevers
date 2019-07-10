@@ -1,0 +1,67 @@
+h1,
+.content h1 {
+    font-family: $font-sans-serif;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: .2em;
+    small {
+        font-family: $font-serif;
+        font-style: italic;
+        text-transform: lowercase;
+        letter-spacing: 0;
+    }
+}
+
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6,
+.content p,
+.content li {
+    color: $primary !important; // !important is hacky way to overide 
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 .content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+    font-family: $font-serif;
+    letter-spacing: 0.5px;
+    font-style: italic;
+    font-weight: 300 !important; // !important is hacky way to overide 
+}
+
+small.title {
+    font-family: $font-serif;
+    display: inline-block;
+    text-transform: lowercase;
+    font-style: italic;
+}
+
+p a,
+li a {
+    //text-decoration: underline;
+}
+
+.navbar-brand {
+    .navbar-item {
+        font-family: $font-sans-serif;
+        font-size: $size-medium;
+        font-weight: 200;
+    }
+}
+
+.navbar-start {
+    .navbar-item {
+        font-family: $font-sans-serif;
+        font-size: 13px;
+        text-transform: uppercase;
+        font-weight: 200;
+    }
+}

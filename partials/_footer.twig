@@ -1,0 +1,58 @@
+{# Footer #}
+<footer role="contentinfo" class="footer background-light">
+    <div class="container">
+    <div class="corner-number">00.</div>
+        <div class="columns">
+            <div class="column is-one-fifth">
+
+                {{ menu(
+                    identifier = 'main',
+                    template = 'partials/_sub_menu_footer.twig',
+                    params = {'withsubmenus': false}
+                ) }} 
+            </div>
+            <div class="column is-half has-text-centered"">
+                <span class="quote">"Always be satified,<br>never be setteled."</span>
+                <span class="author">Oliver Wolcot</span>
+            </div>
+            <div class="column">
+                <p>
+                    &copy; {{ "now"|date("Y") }} Cantilevers<br>
+                    <a href="">Privacy</a><br>
+                    <a href="">Legal</a><br>
+                    Design: <a href="">HDSF</a>
+                </p>   
+            </div>
+        </div>
+        {{ widgets('footer') }}
+    </div>
+</footer>
+
+<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+<script src="{{ asset('js/normalizeBrightness.js', 'theme') }}"></script>
+<script src="{{ asset('js/app.js', 'theme') }}"></script>
+
+
+<script>
+jQuery(document).ready(function($) {
+
+    // Parallax effect
+    // https://www.taniarascia.com/parallax-scroll-effect/
+    var 
+        parallaxElements = $('.parallax-layer'),
+        parallaxQuantity = parallaxElements.length
+
+    $(window).on('scroll', function() {
+        window.requestAnimationFrame(function() {
+            for (var i = 0; i < parallaxQuantity; i++) {
+            var currentElement = parallaxElements.eq(i)
+            var scrolled = $(window).scrollTop()
+
+            currentElement.css({
+                transform: 'translate3d(0,' + scrolled * -0.3 + 'px, 0)',
+            })
+            }
+        })
+    })
+})
+</script>

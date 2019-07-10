@@ -1,0 +1,51 @@
+{% extends 'partials/_content.twig' %}
+
+{% block main %}
+
+{% for neighborhood in neighborhood %}
+
+<section class="hero hero-image is-black is-bold is-large" {%- if neighborhood.image|default %} {% set filename = neighborhood.image.file|default(neighborhood.image) %} data-background-image="{{ asset(filename, 'files') }}" style="background-image: url({{ asset(filename, 'files') }})" {% endif -%}>
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <h1 class="title">{{ neighborhood.title }}</h1>
+            {% if neighborhood.tagline  %}
+                <h2 class="subtitle">{{ neighborhood.tagline }}</h2>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<section class="section section-neighborhood">
+    <div class="container">s
+        <div class="columns is-centered">
+            <div class="column is-two-thirds">
+                <article class="content" role="article">
+                    {{ neighborhood.content }}
+
+                    {# If there are repeaters, we should output them. #}
+                    {% with { 'record': record, 'common': false, 'repeaters': true, 'blocks': true, 'exclude': ['title'] } %}
+                    {{ block('sub_fields', 'partials/_sub_fields.twig') }}
+                    {% endwith %}
+
+                    {# Map JS Example @ https://leafletjs.com/index.html #}
+            
+                    {{ include('partials/_recordfooter.twig', { 'neighborhood': neighborhood, 'extended': true }) }}
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+{# Image Gallery #}
+<div class="container is-fluid">
+    {% with { 'record': record, 'extended': true, 'repeaters': true, 'blocks': true, 'exclude': ['html','title','image','video','filelist'] } %}
+    {{ block('sub_fields', 'partials/_sub_fields.twig') }}
+    {% endwith %}
+</div>
+
+{% endfor %}
+
+
+
+{% include "partials/_sub_recent_records.twig" %}{% endblock main %}
+
+
