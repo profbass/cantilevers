@@ -31,28 +31,3 @@
 <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 <script src="{{ asset('js/normalizeBrightness.js', 'theme') }}"></script>
 <script src="{{ asset('js/app.js', 'theme') }}"></script>
-
-
-<script>
-jQuery(document).ready(function($) {
-
-    // Parallax effect
-    // https://www.taniarascia.com/parallax-scroll-effect/
-    var 
-        parallaxElements = $('.parallax-layer'),
-        parallaxQuantity = parallaxElements.length
-
-    $(window).on('scroll', function() {
-        window.requestAnimationFrame(function() {
-            for (var i = 0; i < parallaxQuantity; i++) {
-            var currentElement = parallaxElements.eq(i)
-            var scrolled = $(window).scrollTop()
-
-            currentElement.css({
-                transform: 'translate3d(0,' + scrolled * -0.3 + 'px, 0)',
-            })
-            }
-        })
-    })
-})
-</script>
