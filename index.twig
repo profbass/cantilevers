@@ -38,10 +38,10 @@
                         <h2 class="is-size-4 is-size-3-mobile">{{ callout.repeattitle }}</h2>
                     {% endif %}
                     {%- if callout.repeatcontent %}
-                        {{ callout.repeatcontent }}
+                        <p>{{ callout.repeatcontent|striptags }}</p>
                     {% endif %}
                     {%- if callout.repeatlinks %}
-                        <p><a href="{{callout.repeatlinks}}" class="button">Explore The Vision</a></p>
+                        <p><a href="{{callout.repeatlinks}}" class="button margin-top-10">Explore The Vision</a></p>
                     {% endif %}
                 </div>
             </div>
@@ -61,7 +61,7 @@
                             {{ callout.repeatcontent }}
                         {% endif %}
                         {%- if callout.repeatlinks %}
-                            <p><a href="{{callout.repeatlinks}}" class="button">Explore The Vision</a></p>
+                            <p><a href="{{callout.repeatlinks}}" class="button margin-top-10">Explore The Vision</a></p>
                         {% endif %}
                     </div>
                 </div>
