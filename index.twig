@@ -1,9 +1,22 @@
 {% extends 'partials/_master.twig' %}
 
 {% block main %}
+<section class="section">
+    <div class="container">
+<div class="columns has-text-centered">
+
+            {% set teaserphoto = homepage.image.file|default(homepage.image) %}
+            <div class="column has-text-centered" style="background-image:url({{ asset(teaserphoto, 'files') }})">
+                <h2 class="title">{{homepage.title}}</h2>
+                <p>{{homepage.teaser}}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
 
 <section class="section slide-in">
-{# {{ dump(unit) }} #}
+{# {{ dump(homepage) }} #}
 
 
 {# Callout Repeating fields #}
