@@ -1,0 +1,17 @@
+{% extends 'partials/_content.twig' %}
+
+{% block main %}
+
+    <section class="hero hero-image is-black is-bold is-large" {%- if record.image|default %} {% set filename = record.image.file|default(record.image) %} data-background-image="{{ asset(filename, 'files') }}" style="background-image: url({{ asset(filename, 'files') }})" {% endif -%}>
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title">{{ record.title }} About Us</h1>
+                {% if record.tagline  %}
+                    <h2 class="subtitle">{{ record.tagline }}</h2>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+{% endblock main %}
+

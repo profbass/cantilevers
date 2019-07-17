@@ -37,15 +37,15 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // deleteButton = $('button.delete');
-    // $.each(deleteButton, function(e) {
-    //     $notification = $(e).parentNode;
-    //     $(e).preventDefault();
-    //     $(e).on('click', function() {
-    //         $notification.parentNode.removeChild($notification);
-    //         console.log("Closey");
-    //     });
-    // });
+    deleteButton = $('button.delete');
+    $.each(deleteButton, function(e) {
+        $notification = $(e).parentNode;
+        $(e).preventDefault();
+        $(e).on('click', function() {
+            $notification.parentNode.removeChild($notification);
+            console.log("Closey");
+        });
+    });
 
     // toggle class for nav based on scroll position
     $(window).scroll(function() {
