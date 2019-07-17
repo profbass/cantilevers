@@ -1,28 +1,27 @@
 {% extends 'partials/_master.twig' %}
 
 {% block main %}
+{# {{ dump(homepage) }} #}
+
+{# Teaser #}
+{% set teaserphoto = homepage.teaser_photo.file|default(homepage.teaser_photo) %}
 <section class="section">
     <div class="container">
-<div class="columns has-text-centered">
-
-            {% set teaserphoto = homepage.image.file|default(homepage.image) %}
-            <div class="column has-text-centered" style="background-image:url({{ asset(teaserphoto, 'files') }})">
-                <h2 class="title">{{homepage.title}}</h2>
-                <p>{{homepage.teaser}}</p>
-            </div>
+        <div class="teaser"  style="background-image:url({{ asset(teaserphoto, 'files') }})">&nbsp;</div>
+        <div class="teaser-body background-light has-text-centered">
+            <h2 class="title">{{homepage.title}}</h2>
+            <h4 class="margin-bottom-20">{{homepage.subtitle}}</h4>
+            <p>{{homepage.teaser}}</p>
         </div>
     </div>
 </section>
 
 
 <section class="section slide-in">
-{# {{ dump(homepage) }} #}
-
-
 {# Callout Repeating fields #}
 {% for key,callout in homepage.callouts %}
-    {%- if loop.index is odd %}
-    <div class="container">
+    {%- if loop.index is even %}
+    <div class="container margin-bottom-30">
        <div class="corner-number">{# <i class="fas fa-adjust"> #} 0.{{ key }}</i></div>
         <div class="columns background-light">
             <div class="column">
@@ -50,9 +49,9 @@
     </div>
     <p>&nbsp;</p>
     {% else %}
-        <div class="container">
+        <div class="container margin-bottom-30">
         <div class="corner-number">{# <i class="fas fa-adjust"> #} 0.{{ key }}</i></div>
-            <div class="columns background-light">
+            <div class="columns">
                 <div class="column is-vertical-center">
                     <div class="content">
                         {%- if callout.repeattitle %}
@@ -77,7 +76,7 @@
             </div>
         </div>
     {% endif %}
-    <div class="container"><p><hr/></p></div>
+    <div class="container"><p>&nbsp;<p/><p>&nbsp;<p/></div>
 {% endfor %}
 </section>
 
