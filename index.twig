@@ -116,6 +116,15 @@
         </div>
     </div>
 </section>
+
+<section class="section">
+    <div class="container is-fluid">
+        {% with { 'record': record, 'extended': true, 'repeaters': false, 'blocks': true, 'exclude': ['title','video','title','subtitle','teaser','image','teaser_photo'] } %}
+        {{ block('sub_fields', 'partials/_sub_fields.twig') }}
+        {% endwith %}
+    </div>
+</section>
+
 {% endif %}
 
 {# Latest entries #}
@@ -152,6 +161,6 @@
 {% endif %}
 
 
-{% include "partials/_sub_recent_records.twig" %}
+{# {% include "partials/_sub_recent_records.twig" %} #}
 
 {% endblock main %}
