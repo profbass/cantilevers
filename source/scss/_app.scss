@@ -22,9 +22,13 @@
         input[type="password"],
         input.input,
         textarea {
-            border-bottom: 1px solid $light !important;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #b3bcbe !important;
+            color: #b3bcbe;
+            font-size: 1em;
             &:placeholder {
-                text-transform: uppercase;
+                text-transform: uppercase !important;
+                color: #b3bcbe !important;
             }
         }
         /* Remove the stupid outer glow in Webkit */
@@ -133,16 +137,6 @@
         
         // Nav bar overrides
         .navbar {
-            .menu-social {
-                li {
-                    margin-left: 30px;
-                    a {
-                        text-transform: uppercase;
-                        color: $medium;
-                        font-size: 1.5rem;
-                    }
-                }
-            }
             .navbar-item {
                 img {
                     max-height: 100%;
@@ -155,6 +149,17 @@
                     &.logo-small {
                         width: 100px !important;
                     }
+                }
+            }
+        }
+        
+        .menu-social {
+            li.sn-icons {
+                margin-bottom: 10px;
+                a {
+                    text-transform: uppercase;
+                    color: $medium;
+                    font-size: .7srem;
                 }
             }
         }

@@ -99,4 +99,25 @@ document.addEventListener('DOMContentLoaded', function() {
         return ((elemTop <= (docViewBottom + 20)));
     }
 
+    $('.contact-btn').on('click', function() {
+        launchContactModal();
+    })
+    $('.modal-close').on('click', function() {
+        closeContactModal();
+    })
+
+    function launchContactModal() {
+        var modalForm = $('#contact-modal');
+        var html = $('html');
+        modalForm.addClass('is-active');
+        html.addClass('is-clipped');
+    }
+
+    function closeContactModal() {
+        var modalForm = $('#contact-modal');
+        var html = $('html');
+        modalForm.removeClass('is-active');
+        html.removeClass('is-clipped');
+    }
+
 });

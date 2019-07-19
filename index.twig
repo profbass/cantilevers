@@ -21,7 +21,7 @@
 {# Callout Repeating fields #}
 {% for key,callout in homepage.callouts %}
     {%- if loop.index is even %}
-    <div class="container margin-bottom-30">
+    <div class="container margin-bottom-15">
        <div class="corner-number">{# <i class="fas fa-adjust"> #} 0.{{ key }}</i></div>
         <div class="columns background-light">
             <div class="column">
@@ -41,7 +41,7 @@
                         <p>{{ callout.repeatcontent|striptags }}</p>
                     {% endif %}
                     {%- if callout.repeatlinks %}
-                        <p><a href="{{callout.repeatlinks}}" class="button margin-top-10">Explore The Vision</a></p>
+                        <p><a href="{{callout.repeatlinks}}" class="button margin-top-10">Learn More</a></p>
                     {% endif %}
                 </div>
             </div>
@@ -49,7 +49,7 @@
     </div>
     <p>&nbsp;</p>
     {% else %}
-        <div class="container margin-bottom-30">
+        <div class="container margin-bottom-15">
         <div class="corner-number">{# <i class="fas fa-adjust"> #} 0.{{ key }}</i></div>
             <div class="columns">
                 <div class="column is-vertical-center">
@@ -61,7 +61,7 @@
                             {{ callout.repeatcontent }}
                         {% endif %}
                         {%- if callout.repeatlinks %}
-                            <p><a href="{{callout.repeatlinks}}" class="button margin-top-10">Explore The Vision</a></p>
+                            <p><a href="{{callout.repeatlinks}}" class="button margin-top-10">Learn More</a></p>
                         {% endif %}
                     </div>
                 </div>
@@ -76,22 +76,27 @@
             </div>
         </div>
     {% endif %}
-    <div class="container"><p>&nbsp;<p/><p>&nbsp;<p/></div>
 {% endfor %}
-</section>
+    <div class="container is-fluid has-text-centered">
+        <hr>
+        {%- if homepage.gallerytitle %}
+            <h2 class="title margin-bottom-20 margin-top-50">{{homepage.gallerytitle}}</h2>
+        {% endif %}
+        {%- if homepage.gallerysubtitle %}
+            <h4 class="margin-bottom-50">{{homepage.gallerysubtitle}}</h4>
+        {% endif %}
+        {% with { 'record': record, 'extended': true, 'repeaters': false, 'blocks': true, 'exclude': ['title','video','title','subtitle','teaser','image','teaser_photo','gallerytitle','gallerysubtitle'] } %}
 
 
-<section class="section">
-    <div class="container is-fluid">
-        {% with { 'record': record, 'extended': true, 'repeaters': false, 'blocks': true, 'exclude': ['title','video','title','subtitle','teaser','image','teaser_photo'] } %}
         {{ block('sub_fields', 'partials/_sub_fields.twig') }}
         {% endwith %}
     </div>
 </section>
 
 
+
 {# Units section #}
-{% setcontent units = 'units/latest/3' %}
+{# {% setcontent units = 'units/latest/3' %}
 {%- if units %}
 
 <section class="section section-units hero is-success is-bold">
@@ -126,15 +131,14 @@
     </div>
 </section>
 
-{% endif %}
+{% endif %} #}
 
 {# Latest entries #}
-{% setcontent entries = 'entries/latest/3' %}
+{# {% setcontent entries = 'entries/latest/3' %}
 {%- if entries %}
 <section class="section section-latest-entries">
 
     <div class="container ">
-        {# <h2 class="title">Latest News</h2> #}
         {% for entry in entries %}
             <article role="article" class="media columns slide-in">
                 <div class="media-content column is-7">
@@ -159,7 +163,7 @@
         </div>
     </div>
 </section>
-{% endif %}
+{% endif %} #}
 
 
 {# {% include "partials/_sub_recent_records.twig" %} #}

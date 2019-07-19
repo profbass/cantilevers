@@ -4,24 +4,43 @@
     <div class="corner-number">00.</div>
         <div class="columns">
             <div class="column is-one-fifth">
-
-                {{ menu(
+                <ul class="menu-social">
+                    <li class="sn-icons">
+                        <a target="_blank" href="#">
+                            <i class="fab fa-facebook-f"></i> FACEBOOK
+                        </a>
+                    </li>
+                    <li class="sn-icons">
+                        <a target="_blank" href="#">
+                            <i class="fab fa-twitter" aria-hidden="true"></i> TWITTER
+                        </a>
+                    </li>
+                    <li class="sn-icons">
+                        <a target="_blank" href="#">
+                            <i class="fab fa-instagram" aria-hidden="true"></i> INSTGRAM
+                        </a>
+                    </li>
+                    <li class="sn-icons">
+                        <a target="_blank" href="#">
+                            <i class="fab fa-pinterest" aria-hidden="true"></i> PINEREST
+                        </a>
+                    </li>
+                    {# <a href="">Privacy</a><br>
+                    <a href="">Legal</a><br>
+                    Design: <a href="">HDSF</a> #}
+                </ul>  
+                {# {{ menu(
                     identifier = 'main',
                     template = 'partials/_sub_menu_footer.twig',
                     params = {'withsubmenus': false}
-                ) }} 
+                ) }}  #}
             </div>
-            <div class="column is-half has-text-centered"">
-                <span class="quote">"Always be satified,<br>never be setteled."</span>
-                <span class="author">Oliver Wolcot</span>
+            <div class="column is-half has-text-centered">
+                <span class="quote">"Make it simple,<br>but make it significant."</span>
+                <span class="author">Don Draper</span>
             </div>
-            <div class="column">
-                <p>
-                    &copy; {{ "now"|date("Y") }} Cantilevers<br>
-                    <a href="">Privacy</a><br>
-                    <a href="">Legal</a><br>
-                    Design: <a href="">HDSF</a>
-                </p>   
+            <div class="column is-vertical-center"> 
+                <p class="is-vertical-bottom">&copy; {{ "now"|date("Y") }} Cantilevers,<br> All rights reserved</p>
             </div>
         </div>
         {{ widgets('footer') }}
