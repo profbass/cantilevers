@@ -50,3 +50,28 @@
 <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 <script src="{{ asset('js/normalizeBrightness.js', 'theme') }}"></script>
 <script src="{{ asset('js/app.js', 'theme') }}"></script>
+{# Doc ready for single page scrolling #}
+<script>
+    $(document).ready(function () {
+        var navLinks = $('.navbar-item');
+        $.each(navLinks, function(e) {
+            var pageLink = $(this).attr('href');
+            $(this).on('click', function(e) {
+                e.preventDefault();
+                //removeActiveClass();
+                //$(this).addClass('is-active');
+                $('html, body').animate({
+                    scrollTop: $(pageLink).offset().top - 64
+                }, 200);
+            });
+        });
+
+        /*
+        function removeActiveClass(e){
+            $.each(navLinks, function(e) {
+                $(this).removeClass('is-active');
+            });
+        }
+        */
+    });
+</script>
