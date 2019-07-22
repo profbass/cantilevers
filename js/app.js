@@ -29,7 +29,11 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         var $form = $(this);
         var $body = $('.form-message');
-        $.ajax({ url: $form.attr('action'), type: "POST", data: $form.serialize() }).done(function() {
+        $.ajax({
+            url: $form.attr('action'),
+            type: "POST",
+            data: $form.serialize()
+        }).done(function() {
             $form.find('input,textarea').val('');
             $body.append('<div class="notification is-primary"><button class="delete"></button>Thanks for reaching out! We will return your message shortly.</div>');
         }).fail(function() {

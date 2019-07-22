@@ -25,27 +25,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     normalizeBrightness();
 
-    // Single page scroll to
-    var navLinks = $('.navbar-item');
-    $.each(navLinks, function(e) {
-        console.log('sdfsdfsd');
-        var pageLink = $(this).attr('href');
-        $(this).on('click', function(e) {
-            e.preventDefault();
-            $('html, body').animate({
-                scrollTop: $(pageLink).offset().top - 70
-            }, 2000);
-        });
-    });
-
-
-
-
     $('#contact-form').on('submit', function(e) {
         e.preventDefault();
         var $form = $(this);
         var $body = $('.form-message');
-        $.ajax({ url: $form.attr('action'), type: "POST", data: $form.serialize() }).done(function() {
+        $.ajax({
+            url: $form.attr('action'),
+            type: "POST",
+            data: $form.serialize()
+        }).done(function() {
             $form.find('input,textarea').val('');
             $body.append('<div class="notification is-primary"><button class="delete"></button>Thanks for reaching out! We will return your message shortly.</div>');
         }).fail(function() {
