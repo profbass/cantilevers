@@ -101,10 +101,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        if ($(this).offset().top <= 0) {
-            removeNavClass();
-        }
-
     });
 
     function isScrolledIntoView(elem) {
