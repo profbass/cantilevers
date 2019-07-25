@@ -20,12 +20,9 @@
 <section class="section slide-in">
 <div id="our-team">
 {# Callout Repeating fields #}
-{%- if homepage.gallerytitle %}
-    <h2 class="title margin-bottom-20 margin-top-50 has-text-centered">Our Team</h2>
-{% endif %}
-{%- if homepage.gallerysubtitle %}
-    <h4 class="margin-bottom-50 has-text-centered">Working Together for Somrthing Great</h4>
-{% endif %}
+
+<h2 class="title has-text-centered margin-top-50">{{homepage.callout_title}}</h2>
+<h4 class="has-text-centered margin-bottom-50">{{homepage.callout_subtitle}}</h4>
 
 {% for key,callout in homepage.callouts %}
     {%- if loop.index is even %}
@@ -94,8 +91,7 @@
         {%- if homepage.gallerysubtitle %}
             <h4 class="margin-bottom-50">{{homepage.gallerysubtitle}}</h4>
         {% endif %}
-        {% with { 'record': record, 'extended': true, 'repeaters': false, 'blocks': true, 'exclude': ['title','video','title','subtitle','teaser','image','teaser_photo','gallerytitle','gallerysubtitle'] } %}
-
+        {% with { 'record': record, 'extended': true, 'repeaters': false, 'blocks': true, 'exclude': ['title','video','title','subtitle','teaser','image','teaser_photo','gallerytitle','gallerysubtitle','callout_title','callout_subtitle'] } %}
 
         {{ block('sub_fields', 'partials/_sub_fields.twig') }}
         {% endwith %}

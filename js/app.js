@@ -60,6 +60,10 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (scroll <= 50) {
             navLogo.removeClass('logo-small');
         }
+        
+        
+        
+    
     });
 
     $(window).load(function() {
