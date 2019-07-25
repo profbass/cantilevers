@@ -60,10 +60,6 @@ document.addEventListener('DOMContentLoaded', function() {
         } else if (scroll <= 50) {
             navLogo.removeClass('logo-small');
         }
-        
-        
-        
-    
     });
 
     $(window).load(function() {
@@ -95,6 +91,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 $(this).addClass('slide-up-fade-in');
             }
         });
+
+        $(".scroll-spy").each(function() {
+            var sectionId = $(this).attr("href");
+            var section = $(sectionId);
+            if (isScrolledToTop(section)) {
+                removeNavClass();
+                $(this).addClass('nav-active');
+            }
+        });
+
+        if ($(this).offset().top <= 0) {
+            removeNavClass();
+        }
+
     });
 
     function isScrolledIntoView(elem) {
@@ -104,7 +114,25 @@ document.addEventListener('DOMContentLoaded', function() {
         var elemTop = $(elem).offset().top;
         var elemBottom = elemTop + $(elem).height();
 
-        return ((elemTop <= (docViewBottom + 20)));
+        return ((elemTop <= (docViewBottom - 20)));
+    }
+
+    function removeNavClass(elem) {
+        $(".scroll-spy").each(function() {
+            $(this).removeClass('nav-active');
+        });
+    }
+
+    function isScrolledToTop(elem) {
+        var docViewTop = $(window).scrollTop();
+        var docViewBottom = docViewTop + $(window).height();
+
+        var elemTop = $(elem).offset().top;
+        var elemBottom = elemTop + $(elem).height();
+
+        //console.log(elemTop + docViewBottom);
+
+        return ((elemTop <= (docViewBottom - ($(window).height() / 3))));
     }
 
     $('.contact-btn').on('click', function() {
@@ -127,6 +155,9 @@ document.addEventListener('DOMContentLoaded', function() {
         modalForm.removeClass('is-active');
         html.removeClass('is-clipped');
     }
+
+
+
 
 });
 var Parallaxy = function () {
