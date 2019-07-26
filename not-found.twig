@@ -27,7 +27,7 @@
                     {% endif %}
                 </div>
                 <hr>
-                <form class="field has-addons" method="get" action="{{ path('search') }}" enctype="text/plain">
+                {# <form class="field has-addons" method="get" action="{{ path('search') }}" enctype="text/plain">
                     <label class="label is-hidden" for="search-box">Search</label>
                     <div class="control">
                         <input class="input" type="search" value="{% if search is defined %}{{ search|escape }}{% endif %}" placeholder="{{ __('general.phrase.search-ellipsis') }}" name="search" id="search-box">
@@ -35,7 +35,7 @@
                     <div class="control">
                         <button class="button is-primary" type="submit">{{ __('general.phrase.search') }}</button>
                     </div>
-                </form>
+                </form> #}
             </div>
         </div>
     </div>

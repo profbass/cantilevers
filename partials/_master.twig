@@ -64,37 +64,38 @@
                 <div class="background-light padding-30">
                     <h2 class="is-size-4 margin-bottom-5">Send Us a Message</h2>
                     <h4 class="is-size-7 margin-bottom-15">We would love to hear from you</h4>
-                    <form id="contact-form" method="post" accept-charset="UTF-8" action="{{ asset('contact.php', 'theme') }}">
-                        {# {{ csrfInput() }} #}
+                    {{ boltforms('contact') }}
+                    {# <form id="contact-form" method="post" accept-charset="UTF-8" action="{{ asset('contact.php', 'theme') }}">
+                        {{ csrfInput() }} #}
                         {# <input type="hidden" name="action" value="contact.php"> #}
-                        {# {{ redirectInput("") }} #}
+                        {# {{ redirectInput("") }}
 
                             <section class=""> <div
                                 class="field">
-                                {# <label class="label">Name</label> #}
+                                <label class="label">Name</label>
                                 <div class="control has-icons-right">
                                     <input class="input" id="nameInput" placeholder="First &amp; Last Name" type="text">
-                                    {# <span class="icon is-small is-left">
+                                    <span class="icon is-small is-left">
                                         <i class="fas fa-user"></i>
-                                    </span> #}
+                                    </span>
                                 </div>
                             </div>
 
                             <div
                                 class="field">
-                                {# <label class="label">Email</label> #}
+                                <label class="label">Email</label>
                                 <div class="control has-icons-right">
                                     <input class="input" id="emailInput" placeholder="myself@me.com" type="email" value="">
 
-                                    {# <span class="icon is-small is-left">
+                                    <span class="icon is-small is-left">
                                         <i class="fas fa-envelope"></i>
-                                    </span> #}
+                                    </span>
                                 </div>
                             </div>
 
                             <div
                                 class="field">
-                                {# <label class="label">Message</label> #}
+                                <label class="label">Message</label>
                                 <div class="control">
                                     <textarea class="textarea" id="messageField" placeholder="Your message here!"></textarea>
                                 </div>
@@ -106,7 +107,7 @@
                                 </div>
                             </div>
                         </section>
-                    </form>
+                    </form> #}
                     <div class="form-message margin-top-20"></div>
                 </div>
             </div>

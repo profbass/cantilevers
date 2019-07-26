@@ -37,6 +37,16 @@
             outline: 0;
         }
         
+        .label,
+        .boltform label {
+            color: $medium !important;
+            font-size: 0.8em !important;
+            text-transform: uppercase;
+            &::after {
+                color: $medium !important;
+            }
+        }
+        
         // Loading Animation
         #loading {
             width: 100vw;
@@ -205,6 +215,22 @@
                     font-size: .7srem;
                 }
             }
+        }
+        
+        //
+        .bg-pattern {
+            background: url('../img/bg-pattern.png') repeat;
+            background-blend-mode: color-dodge;
+        }
+        
+        .bg-asfalt {
+            background: url('../img/bg-asfalt.png') repeat;
+            background-blend-mode: difference;
+        }
+        
+        .bg-billie {
+            background: url('../img/bg-billie.png') repeat;
+            background-blend-mode: difference;
         }
         
         // Homepage shit

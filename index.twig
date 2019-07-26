@@ -17,6 +17,9 @@
 </section>
 
 
+
+
+
 <section class="section slide-in">
 <div id="our-team">
 {# Callout Repeating fields #}
@@ -28,7 +31,7 @@
     {%- if loop.index is even %}
     <div class="container margin-bottom-15">
        <div class="corner-number">{# <i class="fas fa-adjust"> #} 0.{{ key }}</i></div>
-        <div class="columns background-light">
+        <div class="columns bg-pattern">
             <div class="column">
                 {%- if callout.repeatimage|default %}
                     {% set calloutphoto = callout.repeatimage.file|default(callout.repeatimage) %}
