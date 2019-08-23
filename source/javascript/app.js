@@ -120,15 +120,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function isScrolledToTop(elem) {
-        var docViewTop = $(window).scrollTop();
-        var docViewBottom = docViewTop + $(window).height();
+        // var docViewTop = $(window).scrollTop();
+        // var docViewBottom = docViewTop + $(window).height();
 
-        var elemTop = $(elem).offset().top;
-        var elemBottom = elemTop + $(elem).height();
+        // var elemTop = $(this).offset().top;
+        // var elemBottom = elemTop + $(elem).height();
 
-        //console.log(elemTop + docViewBottom);
+        // //console.log(elemTop + docViewBottom);
 
-        return ((elemTop <= (docViewBottom - ($(window).height() / 3))));
+        // return ((elemTop <= (docViewBottom - ($(window).height() / 3))));
     }
 
     $('.contact-btn').on('click', function() {

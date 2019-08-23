@@ -1,14 +1,14 @@
-Bolt Base-2018 Theme
+Bolt Cantilevers Theme
 ====================
 
-Base-2018 is a clean theme for Bolt, built on top of [Bulma][bulma].
+Cantilevers is a clean theme for Bolt, built on top of [Bulma][bulma].
 To learn more about specific Bulma components, check out the
 [Bulma Documentation][bulma-docs].
 
-Features included with Base-2018
+Features included with Cantilevers
 --------------------------------
 
-Base-2018 comes with all of the great features that are found in Bolt, the
+Cantilevers comes with all of the great features that are found in Bolt, the
 Bulma framework, and a few things more. Simply put, if it works in Bulma,
 it will work in Bulma for Bolt. The theme also includes:
 
@@ -16,7 +16,7 @@ it will work in Bulma for Bolt. The theme also includes:
  - Optional Yarn and Gulp Support
  - And much, much more!
 
-Requirements for Base-2018
+Requirements for Cantilevers
 --------------------------
 
 You can use whatever you want – seriously. You can use Gulp, Yarn, Codekit or
@@ -85,7 +85,7 @@ Installation
 ------------
 
 No need to install anything. This theme comes with Bolt. Don't forget to set
-`theme: base-2018` in your `config.yml` file, if it doesn't show up already.
+`theme: Cantilevers` in your `config.yml` file, if it doesn't show up already.
 
 Getting Started
 ---------------

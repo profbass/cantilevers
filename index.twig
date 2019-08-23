@@ -1,11 +1,10 @@
 {% extends 'partials/_master.twig' %}
 
 {% block main %}
-{# {{ dump(homepage) }} #}
 
 {# Teaser #}
 {% set teaserphoto = homepage.teaser_photo.file|default(homepage.teaser_photo) %}
-<section id="our-mission" class="section">
+<section class="section margin-top-70" id="our-mission">
     <div class="container">
         <div class="teaser"  style="background-image:url({{ asset(teaserphoto, 'files') }})">&nbsp;</div>
         <div class="teaser-body background-light has-text-centered">
@@ -17,160 +16,160 @@
 </section>
 
 
+{# Callout #}
+{% if homepage.callouts %}
+    <section class="section slide-in" id="our-team">
+        <div>
+            {# Callout Repeating fields #}
+            <h2 class="title has-text-centered margin-top-50">{{homepage.callout_title}}</h2>
+            <h4 class="has-text-centered margin-bottom-50">{{homepage.callout_subtitle}}</h4>
 
-
-
-<section class="section slide-in">
-<div id="our-team">
-{# Callout Repeating fields #}
-
-<h2 class="title has-text-centered margin-top-50">{{homepage.callout_title}}</h2>
-<h4 class="has-text-centered margin-bottom-50">{{homepage.callout_subtitle}}</h4>
-
-{% for key,callout in homepage.callouts %}
-    {%- if loop.index is even %}
-    <div class="container margin-bottom-15">
-       <div class="corner-number">{# <i class="fas fa-adjust"> #} 0.{{ key }}</i></div>
-        <div class="columns bg-pattern">
-            <div class="column">
-                {%- if callout.repeatimage|default %}
-                    {% set calloutphoto = callout.repeatimage.file|default(callout.repeatimage) %}
-                    <figure class="image">
-                        <img src="{{ asset(calloutphoto, 'files') }}" />
-                    </figure>
-                {% endif %}
-            </div>
-            <div class="column is-vertical-center">
-                <div class="content">
-                    {%- if callout.repeattitle %}
-                        <h2 class="is-size-4 is-size-3-mobile">{{ callout.repeattitle }}</h2>
-                    {% endif %}
-                    {%- if callout.repeatcontent %}
-                        <p>{{ callout.repeatcontent|raw }}</p>
-                    {% endif %}
-                    {%- if callout.repeatlinks %}
-                        <p><a href="{{callout.repeatlinks}}" class="button margin-top-10">Learn More</a></p>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-    </div>
-    <p>&nbsp;</p>
-    {% else %}
-        <div class="container margin-bottom-15">
-        <div class="corner-number">{# <i class="fas fa-adjust"> #} 0.{{ key }}</i></div>
-            <div class="columns">
-                <div class="column is-vertical-center">
-                    <div class="content">
-                        {%- if callout.repeattitle %}
-                            <h2 class="is-size-4 is-size-3-mobile">{{ callout.repeattitle }}</h2>
-                        {% endif %}
-                        {%- if callout.repeatcontent %}
-                            {{ callout.repeatcontent|raw }}
-                        {% endif %}
-                        {%- if callout.repeatlinks %}
-                            <p><a href="{{callout.repeatlinks}}" class="button margin-top-10">Learn More</a></p>
-                        {% endif %}
+            {% for key,callout in homepage.callouts %}
+                {%- if loop.index is even %}
+                <div class="container margin-bottom-15">
+                <div class="corner-number">{# <i class="fas fa-adjust"> #} 0.{{ key }}</i></div>
+                    <div class="columns bg-pattern">
+                        <div class="column">
+                            {%- if callout.repeatimage|default %}
+                                {% set calloutphoto = callout.repeatimage.file|default(callout.repeatimage) %}
+                                <figure class="image">
+                                    <img src="{{ asset(calloutphoto, 'files') }}" />
+                                </figure>
+                            {% endif %}
+                        </div>
+                        <div class="column is-vertical-center">
+                            <div class="content">
+                                {%- if callout.repeattitle %}
+                                    <h2 class="is-size-4 is-size-3-mobile">{{ callout.repeattitle }}</h2>
+                                {% endif %}
+                                {%- if callout.repeatcontent %}
+                                    <p>{{ callout.repeatcontent|raw }}</p>
+                                {% endif %}
+                                {%- if callout.repeatlinks %}
+                                    <p><a href="{{callout.repeatlinks}}" class="button margin-top-10">Learn More</a></p>
+                                {% endif %}
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="column">
-                    {%- if callout.repeatimage|default %}
-                        {% set calloutphoto = callout.repeatimage.file|default(callout.repeatimage) %}
-                        <figure class="image">
-                            <img src="{{ asset(calloutphoto, 'files') }}" />
-                        </figure>
-                    {% endif %}
-                </div>
+                <p>&nbsp;</p>
+                {% else %}
+                    <div class="container margin-bottom-15">
+                    <div class="corner-number">{# <i class="fas fa-adjust"> #} 0.{{ key }}</i></div>
+                        <div class="columns">
+                            <div class="column is-vertical-center">
+                                <div class="content">
+                                    {%- if callout.repeattitle %}
+                                        <h2 class="is-size-4 is-size-3-mobile">{{ callout.repeattitle }}</h2>
+                                    {% endif %}
+                                    {%- if callout.repeatcontent %}
+                                        {{ callout.repeatcontent|raw }}
+                                    {% endif %}
+                                    {%- if callout.repeatlinks %}
+                                        <p><a href="{{callout.repeatlinks}}" class="button margin-top-10">Learn More</a></p>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="column">
+                                {%- if callout.repeatimage|default %}
+                                    {% set calloutphoto = callout.repeatimage.file|default(callout.repeatimage) %}
+                                    <figure class="image">
+                                        <img src="{{ asset(calloutphoto, 'files') }}" />
+                                    </figure>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+{% endif %}
+
+
+{# Image Gallery #}
+{% if homepage.imagelist %}
+    <section class="section section-record" id="gallery">
+        <div
+            class="container is-fluid">
+            <div class="grid imagelist">
+                {% for image in homepage.imagelist %}
+                    <div class="photo-cell imageholder slide-in slide-up-fade-in">
+                        <a class="magnific" href="/thumbs/1000x750r/{{ image.filename }}" title="Image: {{ image.filename }}"><img alt="Image: {{ image.filename }}" height="500" src="/thumbs/500x500c/{{ image.filename }}" width="500"></a>
+                    </div>
+                {% endfor %}
             </div>
         </div>
-    {% endif %}
-{% endfor %}
-</div>
-    <div id="gallery" class="container is-fluid has-text-centered">
-        <hr>
-        {%- if homepage.gallerytitle %}
-            <h2 class="title margin-bottom-20 margin-top-50">{{homepage.gallerytitle}}</h2>
-        {% endif %}
-        {%- if homepage.gallerysubtitle %}
-            <h4 class="margin-bottom-50">{{homepage.gallerysubtitle}}</h4>
-        {% endif %}
-        {% with { 'record': record, 'extended': true, 'repeaters': false, 'blocks': true, 'exclude': ['title','video','title','subtitle','teaser','image','teaser_photo','gallerytitle','gallerysubtitle','callout_title','callout_subtitle'] } %}
-
-        {{ block('sub_fields', 'partials/_sub_fields.twig') }}
-        {% endwith %}
-    </div>
-</section>
-
+    </section>
+{% endif %}
 
 
 {# Units section #}
 {# {% setcontent units = 'units/latest/3' %}
 {%- if units %}
+    <section class="section section-units hero is-success is-bold">
 
-<section class="section section-units hero is-success is-bold">
-
-    <div class="container slide-in">
-        <h2 class="title">Cantilevers Units</h2>
-        <div class="columns slide-in">
-            
-            {% for unit in units %}
-                <div class="column">
-                    <div class="card">
-                        <div class="card-image">
-                            <figure class="image is-3by2">
-                                {{ popup(unit.values.image, 480, 320) }}
-                            </figure>
-                        </div>
-                        <div class="card-content content">
-                            <h3><a href="{{ unit.link() }}">{{ unit.title }}</a></h3>
-                            <p>{{ unit.excerpt }}</p>
-                            <a class="button" href="{{ unit.link() }}">
-                                {{ __('general.phrase.read-more') }}
-                            </a>
+        <div class="container slide-in">
+            <h2 class="title">Cantilevers Units</h2>
+            <div class="columns slide-in">
+                
+                {% for unit in units %}
+                    <div class="column">
+                        <div class="card">
+                            <div class="card-image">
+                                <figure class="image is-3by2">
+                                    {{ popup(unit.values.image, 480, 320) }}
+                                </figure>
+                            </div>
+                            <div class="card-content content">
+                                <h3><a href="{{ unit.link() }}">{{ unit.title }}</a></h3>
+                                <p>{{ unit.excerpt }}</p>
+                                <a class="button" href="{{ unit.link() }}">
+                                    {{ __('general.phrase.read-more') }}
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
-            {% else %}
-                <div class="column">
-                    <p>{{ __("general.phrase.no-content-found") }}</p>
-                </div>
-            {% endfor %}
+                {% else %}
+                    <div class="column">
+                        <p>{{ __("general.phrase.no-content-found") }}</p>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
-    </div>
-</section>
-
+    </section>
 {% endif %} #}
 
 {# Latest entries #}
 {# {% setcontent entries = 'entries/latest/3' %}
 {%- if entries %}
-<section class="section section-latest-entries">
+    <section class="section section-latest-entries">
 
-    <div class="container ">
-        {% for entry in entries %}
-            <article role="article" class="media columns slide-in">
-                <div class="media-content column is-7">
-                    <div class="content">
-                        <h3><a href="{{ entry.link }}">{{ entry.title }}</a></h3>
-                        {{ entry.teaser }}
+        <div class="container ">
+            {% for entry in entries %}
+                <article role="article" class="media columns slide-in">
+                    <div class="media-content column is-7">
+                        <div class="content">
+                            <h3><a href="{{ entry.link }}">{{ entry.title }}</a></h3>
+                            {{ entry.teaser }}
 
-                        {% include 'partials/_record_meta.twig' with {'extended': true, 'record': entry} %}
+                            {% include 'partials/_record_meta.twig' with {'extended': true, 'record': entry} %}
+                        </div>
                     </div>
-                </div>
-                <div class="media-right column">
-                    <figure class="image">
-                        {{ popup(entry.values.image, 480, 320) }}
-                    </figure>
-                </div>
-            </article>
-        {% else %}
-            <p>{{ __("general.phrase.no-content-found") }}</p>
-        {% endfor %}
-        <div class="buttons">
-            <a class="button" href="{{ path('contentlisting', {'contenttypeslug': 'entries'}) }}">Read more <span class="is-hidden"> Entries</span></a>
+                    <div class="media-right column">
+                        <figure class="image">
+                            {{ popup(entry.values.image, 480, 320) }}
+                        </figure>
+                    </div>
+                </article>
+            {% else %}
+                <p>{{ __("general.phrase.no-content-found") }}</p>
+            {% endfor %}
+            <div class="buttons">
+                <a class="button" href="{{ path('contentlisting', {'contenttypeslug': 'entries'}) }}">Read more <span class="is-hidden"> Entries</span></a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 {% endif %} #}
 
 

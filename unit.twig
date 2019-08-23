@@ -2,7 +2,7 @@
 
 {% block main %}
 
-
+{# Hero Image and Title/Tageline #}
 <section class="hero hero-image is-black is-bold is-large" {%- if record.image|default %} {% set filename = record.image.file|default(record.image) %} data-background-image="{{ asset(filename, 'files') }}" style="background-image: url({{ asset(filename, 'files') }})" {% endif -%}>
     <div class="hero-body">
         <div class="container has-text-centered">
@@ -14,42 +14,114 @@
     </div>
 </section>
 
-<section class="section section-record">
-    <div class="container">
-        {# {% if record.image is not empty %}
-            <figure class="image is-2by1">
-                <img src="{{ record.image|image(1280, 660) }}" alt="{{ record.values.image.alt|default() }}"/>
-                <figcaption>
-                    {{ record.values.image.title|default() }}
-                </figcaption>
-            </figure>
-        {% endif %} #}
 
-        <div class="columns is-centered">
-            <div class="column is-two-thirds">
-                <article class="content" role="article">
-                    {# <h1 class="title is-size-1 is-size-3-mobile">{{ record.title }}</h1> #}
-
-                    {# {% include 'partials/_record_meta.twig' with {'extended': true} %} #}
-
-                    {% with { 'record': record, 'extended': true, 'repeaters': true, 'blocks': true, 'exclude': ['title','imagelist','image'] } %}
-                    {{ block('sub_fields', 'partials/_sub_fields.twig') }}
-                    {% endwith %}
-            
-                    {{ include('partials/_recordfooter.twig', { 'record': record, 'extended': true }) }}
-                </article>
+{# HTML WYSIWYG #}
+{% if record.html %}
+    <section class="section section-record content">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-two-thirds">
+                {{ record.html }}
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+{% endif %}
+
+{# File list #}
+{% if record.filelist %}
+    <section class="section section-record file-list">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-two-thirds">
+                    <h2 class="title">Files</h2>
+                    <ul>
+                        {% for key,file in record.filelist %}
+                            <li><a href="{{ file.filename }}">{{ file.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}
+
+
+{# Amenities #}
+{% if record.amenities %}
+    <section class="section section-record amenities">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-two-thirds">
+                    <h2 class="title">Amenities</h2>
+                    <ul>
+                        {% for amenity in record.amenities %}
+                            {% for key,value in amenity %}
+                                <li {% if key is not empty %}data--amenity-key="{{ key }}"{% endif %}>
+                                    {{ value }}
+                                </li>
+                            {% endfor %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}
+
+{# Floorplans #}
+{% if record.amenities %}
+    <section class="section section-record amenities">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-two-thirds">
+                    <h2 class="title">Floorplans</h2>
+                    {% for floorplan in record.floorplans %}
+                        {% for key,plan in floorplan %}
+                            <h3 class="title">{{ dump(plan.title) }}</h3>
+                            {%- if record.image|default %}
+                                {% set filename = plan.image.file|default(plan.image) %}
+                                <img src="{{ asset(filename, 'files') }}" />
+                            {% endif -%}
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}
+
+
+
+{# Video #}
+{% if record.video %}
+    <section class="section section-record video">
+        <div class="container">
+            {{ record.video.responsive }}
+        </div>
+    </section>
+{% endif %}
+
+
 {# Image Gallery #}
-<div class="container is-fluid">
-    {% with { 'record': record, 'extended': true, 'repeaters': true, 'blocks': true, 'exclude': ['html','title','image','video','filelist'] } %}
-    {{ block('sub_fields', 'partials/_sub_fields.twig') }}
-    {% endwith %}
-</div>
+{% if record.imagelist %}
+    <section class="section section-record">
+        <div class="container is-fluid">
+            <div class="grid imagelist">
+                {% for image in record.imagelist %}
+                    <div class="photo-cell imageholder slide-in slide-up-fade-in">
+                        <a class="magnific" href="/thumbs/1000x750r/{{ image.filename }}" title="Image: {{ image.filename }}"><img alt="Image: {{ image.filename }}" height="500" src="/thumbs/500x500c/{{ image.filename }}" width="500"></a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endif %}
 
 
+{# {% include 'partials/_record_meta.twig' with {'extended': true} %} #}
 
-{% include "partials/_sub_recent_records.twig" %}{% endblock main %}
+{# {% include "partials/_sub_recent_records.twig" %} #}
+
+{% endblock main %}
 
