@@ -70,8 +70,13 @@
                 background: $primary;
                 color: #fff;
                 border-radius: 50%;
-                padding: 10px;
                 z-index: 100;
+                width: 20px;
+                height: 20px;
+                line-height: 20px;
+                font-size: 0.6em;
+                font-weight: 600;
+                text-align: center;
                 &.active {
                     background: $link;
                 }
