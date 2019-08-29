@@ -1,13 +1,14 @@
 {% extends 'partials/_content.twig' %}
 
 {% block main %}
+{% set amenitity = amenities[1].values  %}
 
-<section class="hero hero-image is-black is-bold is-large" {%- if record.image|default %} {% set filename = record.image.file|default(record.image) %} data-background-image="{{ asset(filename, 'files') }}" style="background-image: url({{ asset(filename, 'files') }})" {% endif -%}>
+<section class="hero hero-image is-black is-bold is-large" {%- if amenitity.image|default %} {% set filename = amenitity.image.file|default(amenitity.image) %} data-background-image="{{ asset(filename, 'files') }}" style="background-image: url({{ asset(filename, 'files') }})" {% endif -%}>
     <div class="hero-body">
         <div class="container has-text-centered">
-            <h1 class="title">{{ record.title }} Amenities</h1>
-            {% if record.tagline  %}
-                <h2 class="subtitle">{{ record.tagline }}</h2>
+            <h1 class="title">{{ amenitity.title }}</h1>
+            {% if amenitity.tagline  %}
+                <h2 class="subtitle">{{ amenitity.tagline }}</h2>
             {% endif %}
         </div>
     </div>
