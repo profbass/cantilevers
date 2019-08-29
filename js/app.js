@@ -152,9 +152,23 @@ document.addEventListener('DOMContentLoaded', function() {
         html.removeClass('is-clipped');
     }
 
-
-
-
+    var unitButton = $('.pins');
+    var currentPlan = 'defaultPlan';
+    var currentPin = '';
+    $.each(unitButton, function(el) {
+        var target = $(this).data('target');
+        var pin = $(this).attr('id');
+        $(this).on('click', function(e) {
+            e.preventDefault();
+            $('#' + currentPlan).fadeOut(function() {
+                $('#' + target).fadeIn();
+            });
+            $('#' + currentPin).removeClass('active');
+            $(this).addClass('active');
+            currentPin = pin;
+            currentPlan = target;
+        })
+    });
 });
 var Parallaxy = function () {
     this.win = $(window);
