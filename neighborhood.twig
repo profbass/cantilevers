@@ -1,5 +1,10 @@
 {% extends 'partials/_content.twig' %}
 
+{% block header %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+{% endblock header %}
+
+
 {% block main %}
 
 {% for neighborhood in neighborhood %}
@@ -21,13 +26,6 @@
             <div class="column is-two-thirds">
                 <article class="content" role="article">
                     {{ neighborhood.content }}
-
-                    {# If there are repeaters, we should output them. #}
-                    {% with { 'record': record, 'common': false, 'repeaters': true, 'blocks': true, 'exclude': ['title'] } %}
-                    {{ block('sub_fields', 'partials/_sub_fields.twig') }}
-                    {% endwith %}
-
-                    {# Map JS Example @ https://leafletjs.com/index.html #}
             
                     {{ include('partials/_recordfooter.twig', { 'neighborhood': neighborhood, 'extended': true }) }}
                 </article>
@@ -35,17 +33,66 @@
         </div>
     </div>
 </section>
+
+{# Map JS Example @ https://leafletjs.com/index.html #}
+<section class="">
+    <h2 class="title has-text-centered margin-top-50">Neighhborhood Map</h2>
+    <h4 class="has-text-centered margin-bottom-50">look what is around</h4>
+    <div id="map"></div>
+</section>
+
 {# Image Gallery #}
-<div class="container is-fluid">
-    {% with { 'record': record, 'extended': true, 'repeaters': true, 'blocks': true, 'exclude': ['html','title','image','video','filelist'] } %}
-    {{ block('sub_fields', 'partials/_sub_fields.twig') }}
-    {% endwith %}
-</div>
+{% if neighborhood.imagelist %}
+<section class="section slide-in section-record margin-top-40" id="gallery">
+        <h2 class="title has-text-centered margin-top-50">Neighhborhood Gallery</h2>
+        <h4 class="has-text-centered margin-bottom-50">a little about the what's around</h4>
+        <div class="container is-fluid">
+            <div class="grid imagelist">
+                {% for image in neighborhood.imagelist %}
+                    <div class="photo-cell imageholder slide-in slide-up-fade-in">
+                        <a class="magnific" href="/thumbs/1000x750r/{{ image.filename }}" title="Image: {{ image.filename }}"><img alt="Image: {{ image.filename }}" height="500" src="/thumbs/500x500c/{{ image.filename }}" width="500"></a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endif %}
+
 
 {% endfor %}
 
+{% endblock main %}
 
 
-{% include "partials/_sub_recent_records.twig" %}{% endblock main %}
-
-
+{% block footer %}
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
+    <script>
+        var map = L.map('map', {
+            center: [39.9778, -105.1319],
+            zoom: 17,
+            minZoom: 17,
+            maxZoom: 17,
+            static: true,
+            dragging: false,
+            zoomControl: false,
+            attributionControl: false
+        });
+        var latlngs = [
+            [39.977498287244686, -105.13299107551573],
+            [39.97793402392513, -105.13311982154846],
+            [39.978123116337045, -105.1327121257782],
+            [39.97925765982062, -105.13162851333618],
+            [39.97846019281713, -105.1308023929596],
+            [39.977120098439634, -105.13077020645142],
+            [39.97718587055608, -105.13138175010681],
+            [39.977440736909344, -105.13208985328674],
+            [39.97652814654308, -105.132315158844],
+            [39.976330828104786, -105.13378500938416],
+            [39.977498287244686, -105.13299107551573]        
+        ];
+        var polyline = L.polyline(latlngs, { color: '#333', fill: true, fillColor: '#666'}).addTo(map);
+        // zoom the map to the polyline
+        map.fitBounds(polyline.getBounds());
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}', {foo: 'bar', attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'}).addTo(map);
+    </script>
+{% endblock footer %}

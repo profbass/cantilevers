@@ -20,6 +20,8 @@
         <link href="https://fonts.googleapis.com/css?family=Bitter|Roboto:400,400i,700" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('css/bulma.css', 'theme') }}">
         <link rel="stylesheet" href="{{ asset('css/theme.css', 'theme') }}">
+        {% block heder %}{% endblock heder %}
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
 
         <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('img/apple-icon-57x57.png', 'theme') }}">
         <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('img/apple-icon-60x60.png', 'theme') }}">
@@ -60,6 +62,7 @@
 {% endblock body %}
 
 {{ include('partials/_footer.twig') }}
+{% block footer %}{% endblock footer %}
 
 <div id="contact-modal" class="modal">
 <div class="modal-background"></div>
