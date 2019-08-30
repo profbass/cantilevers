@@ -1,14 +1,48 @@
 {% extends 'partials/_content.twig' %}
 
 {% block main %}
-
+{% set record = records[1].values  %}
     <section class="hero hero-image is-black is-bold is-large" {%- if record.image|default %} {% set filename = record.image.file|default(record.image) %} data-background-image="{{ asset(filename, 'files') }}" style="background-image: url({{ asset(filename, 'files') }})" {% endif -%}>
         <div class="hero-body">
             <div class="container has-text-centered">
-                <h1 class="title">{{ record.title }} About Us</h1>
+                <h1 class="title">{{ record.title }}</h1>
                 {% if record.tagline  %}
                     <h2 class="subtitle">{{ record.tagline }}</h2>
                 {% endif %}
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section margin-top-50">
+        <div class="container">
+            <div class="columns">
+            {% for team in record.team %}
+                <div class="column is-half">
+                    <div class="card">
+                        <div class="card-image">
+                            {% set teamphoto = team.image.file|default(record.image) %}
+                            <figure class="image is-5by5">
+                                <img src="{{ asset(teamphoto, 'files') }}" alt="{{ team.name }} image">
+                            </figure>
+                        </div>
+                        <div class="card-content">
+                            <div class="media margin-top-20">
+                                <div class="media-content">
+                                    <h2 class="font-30 margin-bottom-5">{{ team.name }}</h2>
+                                    <h4 class="font-14">{{ team.title }}</h4>
+                                </div>
+                            </div>
+                            <div class="content">
+                                {{ team.bio|raw }}
+                                {% if team.website %}
+                                    <p class="margin-top-30"><a href="{{ team.website }}" target="_blank" class="button">Visit My Website</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
         </div>
     </section>

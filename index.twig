@@ -2,6 +2,8 @@
 
 {% block main %}
 
+
+
 {# Teaser #}
 {% set teaserphoto = homepage.teaser_photo.file|default(homepage.teaser_photo) %}
 <section class="section margin-top-70" id="our-mission">
@@ -18,7 +20,7 @@
 
 {# Callout #}
 {% if homepage.callouts %}
-    <section class="section slide-in" id="our-team">
+    <section class="section slide-in margin-botton-50" id="our-team">
         <div>
             {# Callout Repeating fields #}
             <h2 class="title has-text-centered margin-top-50">{{homepage.callout_title}}</h2>
@@ -26,7 +28,7 @@
 
             {% for key,callout in homepage.callouts %}
                 {%- if loop.index is even %}
-                <div class="container margin-bottom-15">
+                <div class="container margin-bottom-30">
                 <div class="corner-number">{# <i class="fas fa-adjust"> #} 0.{{ key }}</i></div>
                     <div class="columns bg-pattern">
                         <div class="column">
@@ -54,10 +56,10 @@
                 </div>
                 <p>&nbsp;</p>
                 {% else %}
-                    <div class="container margin-bottom-15">
+                    <div class="container margin-bottom-30">
                     <div class="corner-number">{# <i class="fas fa-adjust"> #} 0.{{ key }}</i></div>
                         <div class="columns">
-                            <div class="column is-vertical-center">
+                            <div class="column is-pulled-left is-vertical-center">
                                 <div class="content">
                                     {%- if callout.repeattitle %}
                                         <h2 class="is-size-4 is-size-3-mobile">{{ callout.repeattitle }}</h2>
@@ -86,12 +88,35 @@
     </section>
 {% endif %}
 
+{# Fullscreen Teaser #}
+{% if homepage.teaser2_photo or homepage.teaser2_title or homepage.teaser2_subtitle %}
+    {% set teaser2photo = homepage.teaser2_photo.file|default(homepage.teaser2_photo) %}
+    <section class=" slide-in margin-top-70">
+        <div class="columns is-marginless is-gapless is-vertical-center background-light">
+            <div class="column">
+                <div class="padding-left-60 padding-right-60 has-text-centered">
+                    <h2 class="title">{{ homepage.teaser2_title}}</h2>
+                    <h4>{{ homepage.teaser2_subtitle}}</h4>
+                    <p class="margin-top-10">{{ homepage.teaser2_teaser}}</p>
+                </div>
+            </div>
+            <div class="column is-two-thirds-desktop">
+                {% if homepage.teaser2_photo %}
+                    <figure class="image">
+                        <img src="{{ asset(teaser2photo, 'files') }}">
+                    </figure>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endif %}
 
 {# Image Gallery #}
 {% if homepage.imagelist %}
-    <section class="section section-record" id="gallery">
-        <div
-            class="container is-fluid">
+    <section class="section slide-in section-record margin-top-40" id="gallery">
+        <div class="container is-fluid">
+            <h2 class="title has-text-centered margin-top-50">{{homepage.gallerytitle}}</h2>
+            <h4 class="has-text-centered margin-bottom-50">{{homepage.gallerysubtitle}}</h4>
             <div class="grid imagelist">
                 {% for image in homepage.imagelist %}
                     <div class="photo-cell imageholder slide-in slide-up-fade-in">

@@ -152,6 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
         html.removeClass('is-clipped');
     }
 
+    // Floorplan Map Hide and Show
     var unitButton = $('.pins');
     var currentPlan = 'defaultPlan';
     var currentPin = '';

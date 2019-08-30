@@ -77,7 +77,8 @@
                 font-size: 0.6em;
                 font-weight: 600;
                 text-align: center;
-                &.active {
+                &.active,
+                &:hover {
                     background: $link;
                 }
             }
@@ -397,6 +398,17 @@
             position: fixed;
             bottom: 10px;
             right: 10px;
+            .contact-btn {
+                display: inline-block;
+                width: 50px;
+                height: 50px;
+                color: #fff;
+                line-height: 50px;
+                text-align: center;
+                background: $link;
+                border-radius: 50%;
+                font-size: 1.3em;
+            }
         }
         
         // meh...
@@ -443,6 +455,7 @@
             z-index: -1;
         }
         
+        button.button,
         .button,
         .button.is-primary {
             border: none;
@@ -457,6 +470,7 @@
             border-color: $primary;
         }
         
+        button.button,
         .button {
             position: relative;
             background: whitesmoke;
@@ -475,9 +489,11 @@
             -webkit-transition: 0.02s ease-in;
         }
         
+        button.button:hover,
         .button:hover {
             color: white;
             border-color: $link;
+            background: transparent;
             transition: color 0.2s ease;
             -webkit-transition: color 0.2s ease;
             -moz-transition: color 0.2s ease;
@@ -487,6 +503,7 @@
             border-color: $primary;
         }
         
+        button.button:before,
         .button:before {
             content: "";
             position: absolute;
@@ -506,6 +523,7 @@
             background: $primary;
         }
         
+        button.button:hover:before,
         .button:hover:before {
             bottom: 0;
         }
