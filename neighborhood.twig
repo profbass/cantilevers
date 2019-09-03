@@ -34,7 +34,7 @@
     </div>
 </section>
 
-{# Map JS Example @ https://leafletjs.com/index.html #}
+
 <section class="">
     <h2 class="title has-text-centered margin-top-50">Neighhborhood Map</h2>
     <h4 class="has-text-centered margin-bottom-50">look what is around</h4>
@@ -65,17 +65,13 @@
 
 
 {% block footer %}
+    {# Map JS Example @ https://leafletjs.com/index.html #}
     <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
     <script>
         var map = L.map('map', {
             center: [39.9778, -105.1319],
             zoom: 17,
-            minZoom: 17,
-            maxZoom: 17,
-            static: true,
-            dragging: false,
-            zoomControl: false,
-            attributionControl: false
+            scrollWheelZoom: false
         });
         var latlngs = [
             [39.977498287244686, -105.13299107551573],
@@ -90,9 +86,24 @@
             [39.976330828104786, -105.13378500938416],
             [39.977498287244686, -105.13299107551573]        
         ];
+        
         var polyline = L.polyline(latlngs, { color: '#333', fill: true, fillColor: '#666'}).addTo(map);
-        // zoom the map to the polyline
+        // zoom the map to the polyline. This overrides te center call in var map
         map.fitBounds(polyline.getBounds());
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}', {foo: 'bar', attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'}).addTo(map);
+
+        // create popup contents
+        var customPopup = "<small>the</small><br><h3>Cantilevers</h3>";
+        
+        // specify popup options 
+        var customOptions =
+            {
+            'maxWidth': '700',
+            'className' : 'custom'
+            }
+        
+        // create marker object, pass custom icon as option, pass content and options to popup, add to map
+        L.marker([39.9778, -105.1319]).bindPopup(customPopup,customOptions).addTo(map);
+
     </script>
 {% endblock footer %}
