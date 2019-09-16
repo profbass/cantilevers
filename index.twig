@@ -8,10 +8,10 @@
 {% set teaserphoto = homepage.teaser_photo.file|default(homepage.teaser_photo) %}
 <section class="section margin-top-70" id="our-mission">
     <div class="container">
-        <div class="teaser"  style="background-image:url({{ asset(teaserphoto, 'files') }})">&nbsp;</div>
+        <div class="teaser is-hidden-mobile"  style="background-image:url({{ asset(teaserphoto, 'files') }})">&nbsp;</div>
         <div class="teaser-body background-light has-text-centered">
-            <h2 class="title">{{homepage.title}}</h2>
-            <h4 class="margin-bottom-20">{{homepage.subtitle}}</h4>
+            <h2 class="title is-size-4-mobile">{{homepage.title}}</h2>
+            <h4 class="margin-bottom-20 is-size-5-mobile">{{homepage.subtitle}}</h4>
             {{homepage.teaser}}
         </div>
     </div>
@@ -42,7 +42,7 @@
                         <div class="column is-vertical-center">
                             <div class="content">
                                 {%- if callout.repeattitle %}
-                                    <h2 class="is-size-4 is-size-3-mobile">{{ callout.repeattitle }}</h2>
+                                    <h2 class="is-size-4 is-size-4-mobile">{{ callout.repeattitle }}</h2>
                                 {% endif %}
                                 {%- if callout.repeatcontent %}
                                     <p>{{ callout.repeatcontent|raw }}</p>
@@ -62,7 +62,7 @@
                             <div class="column is-pulled-left is-vertical-center">
                                 <div class="content">
                                     {%- if callout.repeattitle %}
-                                        <h2 class="is-size-4 is-size-3-mobile">{{ callout.repeattitle }}</h2>
+                                        <h2 class="is-size-4 is-size-4-mobile">{{ callout.repeattitle }}</h2>
                                     {% endif %}
                                     {%- if callout.repeatcontent %}
                                         {{ callout.repeatcontent|raw }}
@@ -91,10 +91,10 @@
 {# Fullscreen Teaser #}
 {% if homepage.teaser2_photo or homepage.teaser2_title or homepage.teaser2_subtitle %}
     {% set teaser2photo = homepage.teaser2_photo.file|default(homepage.teaser2_photo) %}
-    <section class=" slide-in margin-top-70">
-        <div class="columns is-marginless is-gapless is-vertical-center background-light">
-            <div class="column">
-                <div class="padding-left-60 padding-right-60 has-text-centered">
+    <section class="slide-in margin-top-70">
+        <div class="columns is-gapless background-light">
+            <div class="column is-vertical-center ">
+                <div class="padding-left-60 padding-right-60 padding-bottom-20  padding-top-20 has-text-centered">
                     <h2 class="title">{{ homepage.teaser2_title}}</h2>
                     <h4>{{ homepage.teaser2_subtitle}}</h4>
                     <p class="margin-top-10">{{ homepage.teaser2_teaser}}</p>

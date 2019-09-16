@@ -51,6 +51,30 @@
             display: none;
         }
         
+        .hero-foot {
+            z-index: 999;
+            .footer-arrow {
+                -webkit-animation: action 1s infinite alternate;
+                animation: action 1s infinite alternate;
+            }
+            @-webkit-keyframes action {
+                0% {
+                    transform: translateY(0);
+                }
+                100% {
+                    transform: translateY(-10px);
+                }
+            }
+            @keyframes action {
+                0% {
+                    transform: translateY(0);
+                }
+                100% {
+                    transform: translateY(-10px);
+                }
+            }
+        }
+        
         #floorPlanMap {
             area {
                 background: #ff00ff;
