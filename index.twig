@@ -3,11 +3,29 @@
 {% block main %}
 
 
+{# Video section if mobile #}
+{% set userAgent = app.request.headers.get('User-Agent') %}
+{% if 'iPhone' in userAgent or 'Android' in userAgent %}
+    <section class="section marhgin-top-50">
+        <div class="container">
+            <h2 class="is-size-4">A peak at what's to come</h2>
+            <h5 class="margin-bottom-30">What we've been working on</h5>
+                {% set filename = homepage.videothumb.file|default(homepage.videothumb) %}
+                <div class="video">
+                    <video controls progressive muted playsinline poster="{{ asset(filename, 'files') }}">
+                        <source src="{{homepage.videourl}}" type="video/mp4">
+                    </video>
+                </div>
+            {# <iframe width="100%" height="700" src="https://www.youtube.com/embed/Uy0Am3qAv4s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> #}
+        </div>
+    </section>
+{% endif %}
+
 
 {# Teaser #}
 {% set teaserphoto = homepage.teaser_photo.file|default(homepage.teaser_photo) %}
 <section class="section margin-top-70" id="our-mission">
-    <div class="container">
+    <div class="">
         <div class="teaser is-hidden-mobile"  style="background-image:url({{ asset(teaserphoto, 'files') }})">&nbsp;</div>
         <div class="teaser-body background-light has-text-centered">
             <h2 class="title is-size-4-mobile">{{homepage.title}}</h2>

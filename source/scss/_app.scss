@@ -233,60 +233,48 @@
         @keyframes flickerAnimation {
             0% {
                 opacity: 1;
-                color: #333333;
             }
             50% {
-                opacity: 0;
-                fill: #ff00ff;
+                opacity: 0.3;
             }
             100% {
                 opacity: 1;
-                color: #333333;
             }
         }
         
         @-o-keyframes flickerAnimation {
             0% {
                 opacity: 1;
-                color: #333333;
             }
             50% {
-                opacity: 0;
-                fill: #ff00ff;
+                opacity: 0.3;
             }
             100% {
                 opacity: 1;
-                color: #333333;
             }
         }
         
         @-moz-keyframes flickerAnimation {
             0% {
                 opacity: 1;
-                color: #333333;
             }
             50% {
-                opacity: 0;
-                fill: #ff00ff;
+                opacity: 0.3;
             }
             100% {
                 opacity: 1;
-                color: #333333;
             }
         }
         
         @-webkit-keyframes flickerAnimation {
             0% {
                 opacity: 1;
-                color: #333333;
             }
             50% {
-                opacity: 0;
-                fill: #ff00ff;
+                opacity: 0.3;
             }
             100% {
                 opacity: 1;
-                color: #333333;
             }
         }
         

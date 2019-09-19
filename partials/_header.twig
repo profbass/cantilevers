@@ -1,60 +1,65 @@
 {% if record.contenttype.slug|default() not in ['showcases', 'entries'] %}
-{% setcontent homepage = "homepage" limit 1 returnsingle %}
-<section class="hero hero-image is-dark is-bold is-medium is-hidden-desktop {% if app.request.get('_route') == "homepage" %}is-fullheight-with-navbar is-large {% endif %}"
-    {%- if homepage.image|default %}
+    {% setcontent homepage = "homepage" limit 1 returnsingle %}
+    {% set userAgent = app.request.headers.get('User-Agent') %}
+
+    {% if 'iPhone' in userAgent or 'Android' in userAgent %}
+        <section class="hero hero-image is-dark is-bold is-medium is-hidden-desktop {% if app.request.get('_route') == "homepage" %} is-large {% endif %}"
+            {%- if homepage.image|default %}
+                {% set filename = homepage.image.file|default(homepage.image) %}
+                data-background-image="{{ asset(filename, 'files') }}" style="background-image: url({{ asset(filename, 'files') }})"
+            {% endif -%}
+            >
+            <div id="home-hero" class="hero-body">
+                <div class="container has-text-centered">
+                    <small class="title is-size-4">the</small>
+                    {# <h1 class="title">{{ config.get('general/sitename') }}</h1> #}
+                    <h1 class="title">Cantilevers <!-- <small>at</small> CTC --></h1>
+                    {% if config.get('general/payoff') %}
+                    <h5 class="subtitle  is-size-4 is-size-6-mobile">{{ config.get('general/payoff') }}</h5>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hero-foot">
+                <div class="footer-arrow has-text-centered">
+                    <a class="scroll-spy" href="#our-mission"><i class="fas fa-chevron-down is-size-4"></i></a>
+                </div>
+            </div>
+        </section>
+    {% else %}
+        {# Video #}
         {% set filename = homepage.image.file|default(homepage.image) %}
-        data-background-image="{{ asset(filename, 'files') }}" style="background-image: url({{ asset(filename, 'files') }})"
-    {% endif -%}
-    >
-    <div id="home-hero" class="hero-body">
-        <div class="container has-text-centered">
-            <small class="title is-size-4">the</small>
-            {# <h1 class="title">{{ config.get('general/sitename') }}</h1> #}
-            <h1 class="title">Cantilevers <!-- <small>at</small> CTC --></h1>
-            {% if config.get('general/payoff') %}
-            <h5 class="subtitle  is-size-4 is-size-6-mobile">{{ config.get('general/payoff') }}</h5>
-            {% endif %}
-        </div>
-    </div>
-    <div class="hero-foot">
-        <div class="footer-arrow has-text-centered">
-            <a class="scroll-spy" href="#our-mission"><i class="fas fa-chevron-down is-size-4"></i></a>
-        </div>
-    </div>
-</section>
-
-
-{# Video #}
-{% set filename = homepage.image.file|default(homepage.image) %}
-<section class="hero is-fullheight-with-navbar is-dark video is-bold is-large is-hidden-touch margin-top-55">
-    <div class="hero-video">
-        <video autoplay id="bgvid" loop muted playsinline poster="{{ asset(filename, 'files') }}">
-            <source src="https://www.thecantilevers.com/theme/cantilevers/img/intro-video.mp4" type="video/mp4">
-        </video>
-    </div>
-    <div class="hero hero-image"
-    {%- if homepage.image|default %}
-        data-background-image="{{ asset(filename, 'files') }}" style="background-image: url({{ asset(filename, 'files') }})"
-    {% endif -%}
-    >
-    </div>
-    <div id="home-hero" class="hero-body">
-        <div class="container has-text-centered">
-             <small class="title is-size-4">the</small>
-            <h1 class="title">Cantilevers {# <small>at</small> CTC #} </h1>
-            {% if config.get('general/payoff') %}
-            <h5 class="subtitle  is-size-6">{{ config.get('general/payoff') }}</h5>
-            {% endif %}
-        </div>
-    </div>
-    <div class="hero-foot">
-        <div class="footer-arrow has-text-centered">
-<a class="scroll-spy" href="#our-mission">
-    <i class="fas fa-chevron-down is-size-2"></i>
-</a>
-
-        </div>
-    </div>
-</section>
+        <section class="hero is-fullheight-with-navbar is-dark video is-bold is-large is-hidden-touch margin-top-55">
+            <div class="hero-video">
+                <video autoplay id="bgvid" loop muted playsinline poster="{{ asset(filename, 'files') }}">
+                    <source src="https://www.thecantilevers.com/theme/cantilevers/img/intro-video.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="hero hero-image"
+            {%- if homepage.image|default %}
+                data-background-image="{{ asset(filename, 'files') }}" style="background-image: url({{ asset(filename, 'files') }})"
+            {% endif -%}
+            >
+            </div>
+            <div id="home-hero" class="hero-body">
+                <div class="container has-text-centered">
+                    <small class="title is-size-4">the</small>
+                    <h1 class="title">Cantilevers </h1>
+                    {% if config.get('general/payoff') %}
+                    <h5 class="subtitle  is-size-6">{{ config.get('general/payoff') }}</h5>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="hero-foot">
+                <div class="footer-arrow has-text-centered">
+                <a class="scroll-spy" href="#our-mission">
+                    <i class="fas fa-chevron-down is-size-2"></i>
+                </a>
+                </div>
+            </div>
+        </section>
+    {% endif %}
 
 {% endif %}
+
+
+
