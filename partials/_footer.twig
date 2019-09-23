@@ -5,7 +5,21 @@
     <div class="container">
     <div class="corner-number">00.</div>
         <div class="columns">
-            <div class="column is-one-fifth">
+            <div class="column is-one-fith">
+                <p class="margin-bottom-20">1411 S Arthur Ave, <br>Louisville, CO 80027</p>
+                <p><a class="contact-btn button" href="#">Stay In Touch</a></p>
+                {# {{ menu(
+                    identifier = 'main',
+                    template = 'partials/_sub_menu_footer.twig',
+                    params = {'withsubmenus': false}
+                ) }}  #}
+            </div>
+            <div class="column is-half has-text-centered is-hidden-mobile">
+                <span class="quote">"Make it simple,<br>but make it significant."</span>
+                <span class="author">Don Draper</span>
+            </div>
+            <div class="column">
+                <p class="is-vertical-bottom">&copy; {{ "now"|date("Y") }} Cantilevers,<br> All rights reserved</p>
                 {% if social %}
                     <ul class="menu-social">
                     {% for link in social.links %}
@@ -25,20 +39,7 @@
                     {% endfor %}
                     </ul>
                 {% else %}
-                    
                 {% endif %}
-                {# {{ menu(
-                    identifier = 'main',
-                    template = 'partials/_sub_menu_footer.twig',
-                    params = {'withsubmenus': false}
-                ) }}  #}
-            </div>
-            <div class="column is-half has-text-centered is-hidden-mobile">
-                <span class="quote">"Make it simple,<br>but make it significant."</span>
-                <span class="author">Don Draper</span>
-            </div>
-            <div class="column is-vertical-center"> 
-                <p class="is-vertical-bottom">&copy; {{ "now"|date("Y") }} Cantilevers,<br> All rights reserved</p>
             </div>
         </div>
         {{ widgets('footer') }}

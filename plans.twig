@@ -1,0 +1,78 @@
+{% extends 'partials/_content.twig' %}
+
+{% block main %}
+    {% set plan = plans[1].values  %}
+
+    <section class="hero hero-image is-black is-bold is-large" {%- if plan.image|default %} {% set filename = plan.image.file|default(plan.image) %} data-background-image="{{ asset(filename, 'files') }}" style="background-image: url({{ asset(filename, 'files') }})" {% endif -%}>
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title">{{ plan.title }}</h1>
+                {% if plan.tagline  %}
+                    <h2 class="subtitle">{{ plan.tagline }}</h2>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+{# Content #}
+{% if plan.content %}
+    <section class="section section-record content">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-two-thirds">
+                    {{ plan.content|raw }}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}
+
+
+
+    {# Floor Plans #}
+    <section class="section margin-top-70">
+        <h2 class="title has-text-centered">Floorplans</h2>
+        <div class="container">
+            <div class="columns is-vertical-center is-gapless">
+                <div class="column">
+                    <div id="floorMap">
+                        {% set planCount = 1 %}
+                        {% for plan in plan.floorplan %}
+                            <a class="pins" id="pin-{{planCount}}" data-target="plan-{{planCount}}" href="#">{{planCount}}</a>
+                            {% set planCount = planCount + 1 %}
+                        {% endfor %}
+                        {% set masterPlanImage = plan.masterplan.file|default(plan.masterplan) %}
+                        <img src="{{ asset(masterPlanImage, 'files') }}" class="image"/>
+                    </div>
+                </div>
+                <div class="column is-relative">
+                    <img src="/thumbs/1000x1000r/site-img/upper-floor.png" id="defaultPlan" width="512px"/>
+                    {% set count = 1 %}
+                    {% for plan in plan.floorplan %}
+                        <div id="plan-{{ count }}" class="unit-plans">
+                            <div class="columns is-vertical-center is-variable is-0">
+                                <div class="column is-two-thirds">
+                                    {% set planimage = plan.image.file|default(plan.image) %}
+                                    <figure class="image">
+                                        <img src="{{ asset(planimage, 'files') }}">
+                                    </figure>
+                                </div>
+                                <div class="column">
+                                    <div class="margin-left-20">
+                                        <h2 class="is-large margin-bottom-20 is-size-3">{{ plan.name }}</h2>
+                                        {{ plan.description|raw }}
+                                        <a class="button margin-top-40" href="#popup-plan-{{ count }}">View Grouping Options</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% set count = count + 1 %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock main %}
+

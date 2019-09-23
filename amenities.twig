@@ -14,70 +14,58 @@
     </div>
 </section>
 
+{# Content #}
+{% if amenitity.content %}
+    <section class="section section-record content">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column is-two-thirds">
+                    {{ amenitity.content|raw }}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}
+
+
+{# Floor Plans #}
 <section class="section margin-top-70">
     <h2 class="title has-text-centered">Floorplans</h2>
     <div class="container">
         <div class="columns is-vertical-center is-gapless">
             <div class="column">
                 <div id="floorMap">
-                    <a class="pins" id="pin-1" data-target="plan-1" href="#">1</a>
-                    <a class="pins" id="pin-2" data-target="plan-2" href="#">2</a>
-                    <a class="pins" id="pin-3" data-target="plan-3" href="#">3</a>
-                    <a class="pins" id="pin-4" data-target="plan-4" href="#">4</a>
-                    <a class="pins" id="pin-5" data-target="plan-5" href="#">5</a>
-                    <a class="pins" id="pin-6" data-target="plan-6" href="#">6</a>
-                    <a class="pins" id="pin-7" data-target="plan-7" href="#">7</a>
-                    <a class="pins" id="pin-8" data-target="plan-8" href="#">8</a>
-                    <a class="pins" id="pin-9" data-target="plan-9" href="#">9</a>
-                    <a class="pins" id="pin-10" data-target="plan-10" href="#">10</a>
-                    <a class="pins" id="pin-11" data-target="plan-11" href="#">11</a>
-                    <a class="pins" id="pin-12" data-target="plan-12" href="#">12</a>
-                    <a class="pins" id="pin-13" data-target="plan-13" href="#">13</a>
-                    {# <a class="pins" id="pin-14" data-target="plan-14" href="#"></a> #}
-
-                    <img src="/thumbs/1000x1000r/site-img/main-level.png" class="image"/>
+                    {% set planCount = 1 %}
+                    {% for plan in amenitity.floorplan %}
+                        <a class="pins" id="pin-{{planCount}}" data-target="plan-{{planCount}}" href="#">{{planCount}}</a>
+                        {% set planCount = planCount + 1 %}
+                    {% endfor %}
+                    {% set masterPlanImage = amenitity.masterplan.file|default(amenitity.masterplan) %}
+                    <img src="{{ asset(masterPlanImage, 'files') }}" class="image"/>
                 </div>
-                
-                {# <map id="floorPlanMap" name="Map">
-                    <area class="1" data-target="plan-1" coords="238,385,278,415,299,387,255,358,241,385" href="#" shape="poly">
-                    <area class="2" data-target="plan-2" coords="208,429,231,395,272,423,252,454,207,429,237,385" href="#" shape="poly">
-                    <area class="3" data-target="plan-3" coords="169,401,193,366,222,386,198,422,169,401" href="#" shape="poly">
-                    <area class="4" data-target="plan-4" coords="131,375,156,340,183,361,158,397" href="#" shape="poly">
-                    <area class="5" data-target="plan-5" coords="148,333,120,371,55,325,59,318,32,297,49,271" href="#" shape="poly">
-                    <area class="6" data-target="plan-6" coords="56,252,133,310,154,282,71,231" href="#" shape="poly">
-                    <area class="7" data-target="plan-7" coords="72,209,143,260,163,235,97,185" href="#" shape="poly">
-                    <area class="8" data-target="plan-8" coords="112,182,130,155,172,184,151,215" href="#" shape="poly">
-                    <area class="9" data-target="plan-9" coords="93,139,92,75,190,77,190,122,178,162" href="#" shape="poly">
-                    <area class="10" data-target="plan-10" coords="238,133,274,119,274,63,189,62,189,122" href="#" shape="poly">
-                    <area class="11" data-target="plan-11" coords="282,71,319,71,317,161,283,162" href="#" shape="poly">
-                    <area class="12" data-target="plan-12" coords="329,70,364,70,363,161,328,161" href="#" shape="poly">
-                    <area class="13" data-target="plan-13" coords="374,71,409,70,408,161,374,161" href="#" shape="poly">
-                    <area class="14" data-target="plan-14" coords="426,66,471,64,472,150,426,151" href="#" shape="poly">
-                </map>
-                <img src="/thumbs/1000x1000r/site-img/main-floor.png" usemap="#Map" width="512px"/> #}
             </div>
             <div class="column is-relative">
             <img src="/thumbs/1000x1000r/site-img/upper-floor.png" id="defaultPlan" width="512px"/>
-            {% for i in 1..14 %}
-                <div id="plan-{{ i }}" class="unit-plans">
+            {% set count = 1 %}
+            {% for plan in amenitity.floorplan %}
+                <div id="plan-{{ count }}" class="unit-plans">
                     <div class="columns is-vertical-center is-variable is-0">
                         <div class="column is-two-thirds">
+                            {% set planimage = plan.image.file|default(plan.image) %}
                             <figure class="image">
-                                <img src="/thumbs/1000x1000r/site-img/office-01.jpg">
+                                <img src="{{ asset(planimage, 'files') }}">
                             </figure>
                         </div>
                         <div class="column">
-                            <h2 class="is-large margin-bottom-20 is-size-3">Office {{ i }}</h2>
-                            <ul class="margin-bottom-40">
-                                <li>Floor Area - Approx. 1,142sf</li>
-                                <li>Patio Area - Approx. 1,142sf</li>
-                                <li>1 Restroom</li>
-                                <li>1 Server Storage</li>
-                            </ul>
-                            <a class="button" href="#">View Grouping Options</a>
+                            <div class="margin-left-20">
+                                <h2 class="is-large margin-bottom-20 is-size-3">{{ plan.name }}</h2>
+                                {{ plan.description|raw }}
+                                <a class="button margin-top-40" href="#popup-plan-{{ count }}">View Grouping Options</a>
+                            </div>
                         </div>
                     </div>
                 </div>
+                {% set count = count + 1 %}
             {% endfor %}
             </div>
         </div>

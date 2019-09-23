@@ -25,6 +25,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     normalizeBrightness();
 
+    $(window).load(function() {
+        $('#loading').fadeOut(500);
+    });
+
+    $(window).scroll(function() {
+        navScroll();
+        slideIn();
+    });
+
+    function navScroll() {
+        var scroll = $(window).scrollTop();
+        var navLogo = $("#nav-logo");
+        if (scroll >= 50) {
+            navLogo.addClass('logo-small');
+        } else if (scroll <= 50) {
+            navLogo.removeClass('logo-small');
+        }
+    }
+
     $('#contact-form').on('submit', function(e) {
         e.preventDefault();
         var $form = $(this);
@@ -51,31 +70,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // toggle class for nav based on scroll position
-    $(window).scroll(function() {
-        var scroll = $(window).scrollTop();
-        var navLogo = $("#nav-logo");
-        if (scroll >= 50) {
-            navLogo.addClass('logo-small');
-        } else if (scroll <= 50) {
-            navLogo.removeClass('logo-small');
-        }
-    });
-
-    $(window).load(function() {
-        $('#loading').fadeOut(500);
-    });
-
-    // document.addEventListener('DOMContentLoaded', () => {
-    //     (document.querySelectorAll('.notification .delete') || []).forEach(($delete) => {
-    //         $notification = $delete.parentNode;
-    //         $delete.preventDefault();
-    //         $delete.addEventListener('click', () => {
-    //             $notification.parentNode.removeChild($notification);
-    //             console.log("Closey");
-    //         });
-    //     });
-    // });
 
 
     deleteButton.on('click', function(e) {
@@ -84,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     }, false);
 
-    $(window).on('scroll', function() {
+    function slideIn() {
         $(".slide-in").each(function() {
             if (isScrolledIntoView($(this))) {
                 //console.log('scrolly');
@@ -101,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-    });
+    }
 
     function isScrolledIntoView(elem) {
         var docViewTop = $(window).scrollTop();
@@ -131,7 +125,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // return ((elemTop <= (docViewBottom - ($(window).height() / 3))));
     }
 
-    $('.contact-btn').on('click', function() {
+    $('.contact-btn').on('click', function(e) {
+        e.preventDefault();
         launchContactModal();
     })
     $('.modal-close').on('click', function() {

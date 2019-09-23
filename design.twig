@@ -1,0 +1,50 @@
+{% extends 'partials/_content.twig' %}
+
+{% block main %}
+    {% set design = design[1].values  %}
+
+    <section class="hero hero-image is-black is-bold is-large" {%- if design.image|default %} {% set filename = design.image.file|default(design.image) %} data-background-image="{{ asset(filename, 'files') }}" style="background-image: url({{ asset(filename, 'files') }})" {% endif -%}>
+        <div class="hero-body">
+            <div class="container has-text-centered">
+                <h1 class="title">{{ design.title }}</h1>
+                {% if design.tagline  %}
+                    <h2 class="subtitle">{{ design.tagline }}</h2>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    {# Content #}
+    {% if design.content %}
+        <section class="section section-record content">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column is-two-thirds">
+                        {{ design.content|raw }}
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+    {# Image Gallery #}
+    {% if design.imagelist %}
+        <section class="section slide-in section-record margin-top-40" id="gallery">
+            <div class="container is-fluid">
+                <h2 class="title has-text-centered margin-top-50">{{design.gallerytitle}}</h2>
+                <h4 class="has-text-centered margin-bottom-50">{{design.gallerysubtitle}}</h4>
+                <div class="grid imagelist">
+                    {% for image in design.imagelist %}
+                        <div class="photo-cell imageholder slide-in slide-up-fade-in">
+                            <a class="magnific" href="/thumbs/1000x750r/{{ image.filename }}" title="Image: {{ image.filename }}"><img alt="Image: {{ image.filename }}" height="500" src="/thumbs/500x500c/{{ image.filename }}" width="500"></a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+
+
+{% endblock main %}
+
