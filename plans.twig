@@ -14,65 +14,136 @@
         </div>
     </section>
 
-{# Content #}
-{% if plan.content %}
-    <section class="section section-record content">
-        <div class="container">
-            <div class="columns is-centered">
-                <div class="column is-two-thirds">
-                    {{ plan.content|raw }}
+    {# Content #}
+    {% if plan.content %}
+        <section class="section section-record content">
+            <div class="container">
+                <div class="columns is-centered">
+                    <div class="column is-two-thirds">
+                        {{ plan.content|raw }}
+                    </div>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+
+
+<section class="section">
+    <div class="tile is-ancestor">
+        <div class="tile is-vertical is-gapless is-6">
+            <div class="tile">
+                <div class="tile is-parent is-vertical">
+                    <article class="tile is-child">
+                        <figure class="image is-3by2">
+                            <img class="" src="http://www.thecantilevers.com/thumbs/1000x1000r/renderings/exterior/1114-arthur-ave11.5.jpg">
+                        </figure>
+                    </article>
+                    <article class="tile is-child">
+                        <figure class="image is-3by2">
+                            <img class="" src="http://www.thecantilevers.com/thumbs/1000x1000r/renderings/interior/1114-arthur-ave16.6.jpg">
+                        </figure>
+                    </article>
+                </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child background-tile" style="background-image:url(http://www.thecantilevers.com/thumbs/1000x1000r/renderings/interior/1569801404_1114-arthur-ave13.7.jpg);background-size: cover; background-position: center; background-repeat:no-repeat;">&nbsp;</article>
                 </div>
             </div>
         </div>
-    </section>
-{% endif %}
+        <div class="tile">
+            <div class="tile is-parent">
+                <article class="tile is-child background-tile" style="background-image:url(http://www.thecantilevers.com/thumbs/1000x1000r/renderings/exterior/1114-arthur-ave5.8.jpg);background-size: cover; background-position: center; background-repeat:no-repeat;">&nbsp;</article>
+            </div>
+            <div class="tile is-parent is-vertical">
+                <article class="tile is-child">
+                    <figure class="image is-3by2">
+                        <img class="" src="http://www.thecantilevers.com/thumbs/1000x1000r/renderings/interior/1114-arthur-ave20.4.jpg">
+                    </figure>
+                </article>
+                <article class="tile is-child">
+                    <figure class="image is-3by2">
+                        <img class="" src="http://www.thecantilevers.com/thumbs/1000x1000r/renderings/interior/1114-arthur-ave19.6.jpg">
+                    </figure>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
 
 
-
-    {# Floor Plans #}
-    <section class="section margin-top-70">
-        <h2 class="title has-text-centered">Floorplans</h2>
-        <div class="container">
-            <div class="columns is-vertical-center is-gapless">
-                <div class="column">
-                    <div id="floorMap">
-                        {% set planCount = 1 %}
-                        {% for plan in plan.floorplan %}
-                            <a class="pins" id="pin-{{planCount}}" data-target="plan-{{planCount}}" href="#">{{planCount}}</a>
-                            {% set planCount = planCount + 1 %}
-                        {% endfor %}
-                        {% set masterPlanImage = plan.masterplan.file|default(plan.masterplan) %}
-                        <img src="{{ asset(masterPlanImage, 'files') }}" class="image"/>
-                    </div>
-                </div>
-                <div class="column is-relative">
-                    <img src="/thumbs/1000x1000r/site-img/upper-floor.png" id="defaultPlan" width="512px"/>
-                    {% set count = 1 %}
+{# Floor Plans #}
+<section class="section margin-top-70">
+    <h2 class="title has-text-centered">Floorplans</h2>
+    <div class="container">
+        <div class="columns is-vertical-center">
+            <div class="column">
+                <div id="floorMap">
+                    {% set planCount = 1 %}
                     {% for plan in plan.floorplan %}
-                        <div id="plan-{{ count }}" class="unit-plans">
-                            <div class="columns is-vertical-center is-variable is-0">
-                                <div class="column is-two-thirds">
-                                    {% set planimage = plan.image.file|default(plan.image) %}
-                                    <figure class="image">
-                                        <img src="{{ asset(planimage, 'files') }}">
-                                    </figure>
-                                </div>
-                                <div class="column">
-                                    <div class="margin-left-20">
-                                        <h2 class="is-large margin-bottom-20 is-size-3">{{ plan.name }}</h2>
-                                        {{ plan.description|raw }}
-                                        <a class="button margin-top-40" href="#popup-plan-{{ count }}">View Grouping Options</a>
-                                    </div>
+                        <a class="pins" id="pin-{{planCount}}" data-target="plan-{{planCount}}" href="#">{{planCount}}</a>
+                        {% set planCount = planCount + 1 %}
+                    {% endfor %}
+                    {% set masterPlanImage = plan.masterplan.file|default(plan.masterplan) %}
+                    <img src="{{ asset(masterPlanImage, 'files') }}" class="image"/>
+                </div>
+            </div>
+            <div class="column is-relative">
+                <img src="/thumbs/1000x1000r/site-img/upper-floor.png" id="defaultPlan" width="512px"/>
+                {% set count = 1 %}
+                {% for plan in plan.floorplan %}
+                    <div id="plan-{{ count }}" class="unit-plans">
+                        <div class="columns is-vertical-center is-variable is-0">
+                            <div class="column">
+                                {% set planimage = plan.image.file|default(plan.image) %}
+                                <figure class="image">
+                                    <img src="{{ asset(planimage, 'files') }}">
+                                </figure>
+                            </div>
+                        </div>
+                        <div class="columns is-vertical-center is-variable is-0">
+                            <div class="column">
+                                <div class="margin-left-20">
+                                    <h2 class="is-large margin-bottom-20 is-size-3">{{ plan.name }}</h2>
+                                    {{ plan.description|raw }}
+                                    {# <a class="button margin-top-40" href="#popup-plan-{{ count }}">View Grouping Options</a> #}
                                 </div>
                             </div>
                         </div>
-                        {% set count = count + 1 %}
-                    {% endfor %}
-                </div>
+                    </div>
+                    {% set count = count + 1 %}
+                {% endfor %}
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<section class="section">
+    <div class="tile is-ancestor">
+        <div class="tile">
+            <div class="tile is-parent">
+                <article class="tile is-child background-tile" style="background-image:url(http://www.thecantilevers.com/thumbs/1000x1000r/renderings/interior/1114-arthur-ave17.7.jpg);background-size: cover; background-position: center; background-repeat:no-repeat;">&nbsp;</article>
+            </div>
+            <div class="tile is-parent">
+                <article class="tile is-child background-tile" style="background-image:url(http://www.thecantilevers.com/thumbs/1000x1000r/renderings/exterior/1114-arthur-ave4.5.jpg);background-size: cover; background-position: center; background-repeat:no-repeat;">&nbsp;</article>
+            </div>
+            <div class="tile is-parent">
+                <article class="tile is-child background-tile" style="background-image:url(http://www.thecantilevers.com/thumbs/1000x1000r/renderings/interior/1114-arthur-ave14.6.jpg);background-size: cover; background-position: center; background-repeat:no-repeat;">&nbsp;</article>
+            </div>
+            <div class="tile is-parent is-vertical">
+                <article class="tile is-child">
+                    <figure class="image is-3by2">
+                        <img class="" src="http://www.thecantilevers.com/thumbs/1000x1000r/renderings/exterior/1114-arthur-ave7.8.jpg">
+                    </figure>
+                </article>
+                <article class="tile is-child">
+                    <figure class="image is-3by2">
+                        <img class="" src="http://www.thecantilevers.com/thumbs/1000x1000r/renderings/interior/1114-arthur-ave19.6.jpg">
+                    </figure>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
+
 
 
 {% endblock main %}
-
