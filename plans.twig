@@ -3,6 +3,7 @@
 {% block main %}
     {% set plan = plans[1].values  %}
 
+    {# Hero #}
     <section class="hero hero-image is-black is-bold is-large" {%- if plan.image|default %} {% set filename = plan.image.file|default(plan.image) %} data-background-image="{{ asset(filename, 'files') }}" style="background-image: url({{ asset(filename, 'files') }})" {% endif -%}>
         <div class="hero-body">
             <div class="container has-text-centered">
@@ -27,122 +28,475 @@
         </section>
     {% endif %}
 
+    {# Floor One #}
+    <section class="margin-top-70">
+        <div class="columns">
+            <div class="column is-one-third padding-30 background-dark">
+                <h1 class="is-size-3 has-text-right">FLOOR ONE</h1>
+            </div>
+        </div>
+        <div class="columns is-gapless">
+            <div class="column is-two-thirds-desktop padding-right-20">
+                {# {% if homepage.teaser2_photo %} #}
+                    <figure class="image padding-20">
+                        <img src="http://www.thecantilevers.com/thumbs/1000x1000r/vectors/floorplan-main-floor-1.svg">
+                    </figure>
+                {# {% endif %} #}
+            </div>
+            <div class="column is-vertical-center ">
+                <div class="padding-left-60 padding-right-60 padding-bottom-20  padding-top-20">
+                    <h2 class="title">Lower Floor</h2>
+                    <h4 class="margin-bottom-30">Boma - Grouping Option</h4>
+                    <div class="tabs is-fullwidth">
+                        <ul>
+                            <li id="tab-1" class="is-active"><a data-target="main-stats-one">One</a></li>
+                            <li id="tab-2"><a data-target="main-stats-one">Two</a></li>
+                            <li id="tab-3"><a data-target="main-stats-one">Three</a></li>
+                        </ul>
+                    </div>
+                    <div id="main-stats-one">
+                        <table class="table is-fullwidth">
+                            <thead>
+                                <tr>
+                                    <th>LOCATION</th>
+                                    <th>AREA</th>
+                                    <th>PATIO</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th><strong>TOTAL OFFICE AREA<strong></th>
+                                    <th><strong>15,475 SqFt.<strong></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th><small>Vertical Circulation</small></th>
+                                    <th><small>1,264 SqFt.</small></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th><small>Common</small></th>
+                                    <th><small>4,944 SqFt.</small></th>
+                                    <th></th>
+                                </tr>
+                            </tfoor>
+                            <tbody>
+                                <tr>
+                                    <td>Office 1&amp;2</td>
+                                    <td>2,361 <small>SqFt.</td>
+                                    <td>4,726 <small>SqFt.</td>
+                                </tr>
+                                <tr>
+                                    <td>Office 3</td>
+                                    <td>1,807 <small>SqFt.</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 4</td>
+                                    <td>1,807 <small>SqFt.</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 5</td>
+                                    <td>1,807 <small>SqFt.</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 6</td>
+                                    <td>2,437 <small>SqFt.</td>
+                                    <td>910 <small>SqFt.</td>
+                                </tr>
+                                <tr>
+                                    <td>Office 7-10</td>
+                                    <td>7,524 <small>SqFt.</td>
+                                    <td>2,050 <small>SqFt.</td>
+                                </tr>
+                                <tr>
+                                    <td>Office 11-15</td>
+                                    <td>7,694 <small>SqFt.</td>
+                                    <td>2,629 <small>SqFt.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="main-stats-two" style="display:none;">
+                        <table class="table is-fullwidth">
+                            <thead>
+                                <tr>
+                                    <th>LOCATION</th>
+                                    <th>AREA</th>
+                                    <th>PATIO</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th><strong>TOTAL OFFICE AREA<strong></th>
+                                    <th><strong>15,475 SqFt.<strong></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th><small>Vertical Circulation</small></th>
+                                    <th><small>1,264 SqFt.</small></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th><small>Common</small></th>
+                                    <th><small>4,944 SqFt.</small></th>
+                                    <th></th>
+                                </tr>
+                            </tfoor>
+                            <tbody>
+                                <tr>
+                                    <td>Office 1&amp;2</td>
+                                    <td>2,361 <small>SqFt.</td>
+                                    <td>4,726 <small>SqFt.</td>
+                                </tr>
+                                <tr>
+                                    <td>Office 3</td>
+                                    <td>1,807 <small>SqFt.</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 4</td>
+                                    <td>1,807 <small>SqFt.</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 5</td>
+                                    <td>1,807 <small>SqFt.</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 6</td>
+                                    <td>2,437 <small>SqFt.</td>
+                                    <td>910 <small>SqFt.</td>
+                                </tr>
+                                <tr>
+                                    <td>Office 7-10</td>
+                                    <td>7,524 <small>SqFt.</td>
+                                    <td>2,050 <small>SqFt.</td>
+                                </tr>
+                                <tr>
+                                    <td>Office 11-15</td>
+                                    <td>7,694 <small>SqFt.</td>
+                                    <td>2,629 <small>SqFt.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="main-stats-three" style="display:none;">
+                        <table class="table is-fullwidth">
+                            <thead>
+                                <tr>
+                                    <th>LOCATION</th>
+                                    <th>AREA</th>
+                                    <th>PATIO</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th><strong>TOTAL OFFICE AREA<strong></th>
+                                    <th><strong>15,475 SqFt.<strong></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th><small>Vertical Circulation</small></th>
+                                    <th><small>1,264 SqFt.</small></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th><small>Common</small></th>
+                                    <th><small>4,944 SqFt.</small></th>
+                                    <th></th>
+                                </tr>
+                            </tfoor>
+                            <tbody>
+                                <tr>
+                                    <td>Office 1&amp;2</td>
+                                    <td>2,361 <small>SqFt.</td>
+                                    <td>4,726 <small>SqFt.</td>
+                                </tr>
+                                <tr>
+                                    <td>Office 3</td>
+                                    <td>1,807 <small>SqFt.</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 4</td>
+                                    <td>1,807 <small>SqFt.</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 5</td>
+                                    <td>1,807 <small>SqFt.</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 6</td>
+                                    <td>2,437 <small>SqFt.</td>
+                                    <td>910 <small>SqFt.</td>
+                                </tr>
+                                <tr>
+                                    <td>Office 7-10</td>
+                                    <td>7,524 <small>SqFt.</td>
+                                    <td>2,050 <small>SqFt.</td>
+                                </tr>
+                                <tr>
+                                    <td>Office 11-15</td>
+                                    <td>7,694 <small>SqFt.</td>
+                                    <td>2,629 <small>SqFt.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section class="section">
-    <div class="tile is-ancestor">
-        <div class="tile is-vertical is-gapless is-6">
+    {# Floor two #}
+    <section class="margin-top-70">
+        <div class="columns">
+            <div class="column is-one-third padding-30 background-dark">
+                <h1 class="is-size-3 has-text-right">FLOOR TWO</h1>
+            </div>
+        </div>
+        <div class="columns is-gapless">
+            <div class="column is-vertical-center ">
+                <div class="padding-left-60 padding-right-60 padding-bottom-20  padding-top-20">
+                    <h2 class="title">Upper Floor</h2>
+                    <p class="margin-bottom-30">When a grouping takes an entire end of the building (see Condos 11-15 and 20-24 as examples), then that owner would also acquire the public hallways as part of their square footage as there are no independent Condos that require public access anymore.</p>
+            
+                    <h4 class="margin-bottom-30">Boma - Grouping Option</h4>
+                    <div class="tabs is-fullwidth">
+                        <ul>
+                            <li id="tab-1" class="is-active"><a data-target="main-stats-one">One</a></li>
+                            <li id="tab-2"><a data-target="main-stats-one">Two</a></li>
+                            <li id="tab-3"><a data-target="main-stats-one">Three</a></li>
+                        </ul>
+                    </div>
+                    <table class="table is-fullwidth">
+                        <thead>
+                            <tr>
+                                <th>LOCATION</th>
+                                <th>AREA</th>
+                                <th>PATIO</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th><strong>TOTAL OFFICE AREA<strong></th>
+                                <th><strong>31,99 SqFt.<strong></th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <th><small>Vertical Circulation</small></th>
+                                <th><small>1,151 SqFt.</small></th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <th><small>Common</small></th>
+                                <th><small>4,472 SqFt.</small></th>
+                                <th></th>
+                            </tr>
+                        </tfoor>
+                        <tbody>
+                            <tr>
+                                <td>Office 16-19</td>
+                                <td>7,848 <small>SqFt.</small></td>
+                                <td>578 <small>SqFt.</small></td>
+                            </tr>
+                            <tr>
+                                <td>Office 20-24</td>
+                                <td>8,288 <small>SqFt.</small></td>
+                                <td>1,193 <small>SqFt.</small></td>
+                            </tr>
+                            <tr>
+                                <td>Office 25-27</td>
+                                <td>5,188 <small>SqFt.</small></td>
+                                <td>340 <small>SqFt.</small></td>
+                            </tr>
+                            <tr>
+                                <td>Office 28</td>
+                                <td>1,534 <small>SqFt.</small></td>
+                                <td>146 <small>SqFt.</small></td>
+                            </tr>
+                            <tr>
+                                <td>Office 29</td>
+                                <td>1,978 <small>SqFt.</small></td>
+                                <td>146 <small>SqFt.</small></td>
+                            </tr>
+                            <tr>
+                                <td>Office 30</td>
+                                <td>1,968 <small>SqFt.</small></td>
+                                <td>146 <small>SqFt.</small></td>
+                            </tr>
+                            <tr>
+                                <td>Office 31</td>
+                                <td>1,968 <small>SqFt.</small></td>
+                                <td>146 <small>SqFt.</small></td>
+                            </tr>
+                            <tr>
+                                <td>Office 32&amp;33</td>
+                                <td>2,426 <small>SqFt.</small></td>
+                                <td>670 <small>SqFt.</small></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="column is-two-thirds-desktop padding-right-20">
+                {# {% if homepage.teaser2_photo %} #}
+                <figure class="image padding-20">
+                    <img src="http://www.thecantilevers.com/thumbs/1000x1000r/vectors/floorplan-main-upper.svg">
+                </figure>
+                {# {% endif %} #}
+            </div>
+        </div>
+    </section>
+
+    {# Dream It #}
+    {# {% if homepage.teaser2_photo or homepage.teaser2_title or homepage.teaser2_subtitle %}
+        {% set teaser2photo = homepage.teaser2_photo.file|default(homepage.teaser2_photo) %} #}
+        <section class="slide-in margin-top-70">
+            <div class="columns is-gapless background-light">
+                <div class="column is-vertical-center ">
+                    <div class="padding-left-60 padding-right-60 padding-bottom-20  padding-top-20 has-text-centered">
+                        <h2 class="title">Dream It</h2>
+                        <h4>Built with for you</h4>
+                        <p class="margin-top-10">The Cantilevers is situated on a bluff overlooking the Front Range and treetops of Boulder County. The time of day and change of seasons displays a colorful story played out on the mountains and clouds above. Large windows frame mountain views and thread light into your office. It is a place that is a home away from home.</p>
+
+                    </div>
+                </div>
+                <div class="column is-two-thirds-desktop">
+                    {# {% if homepage.teaser2_photo %} #}
+                        <figure class="image">
+                            <img src="http://www.thecantilevers.com/thumbs/1000x1000r/renderings/interior/1114-arthur-ave17.7.jpg">
+                        </figure>
+                    {# {% endif %} #}
+                </div>
+            </div>
+        </section>
+    {# {% endif %} #}
+
+
+    {# Image Grid #}
+    <section class="section">
+        <div class="tile is-ancestor">
+            <div class="tile is-vertical is-gapless is-6">
+                <div class="tile">
+                    <div class="tile is-parent is-vertical">
+                        <article class="tile is-child">
+                            <figure class="image is-3by2">
+                                <img class="" src="http://www.thecantilevers.com/thumbs/1000x1000r/renderings/exterior/1114-arthur-ave11.5.jpg">
+                            </figure>
+                        </article>
+                        <article class="tile is-child">
+                            <figure class="image is-3by2">
+                                <img class="" src="http://www.thecantilevers.com/thumbs/1000x1000r/renderings/interior/1114-arthur-ave16.6.jpg">
+                            </figure>
+                        </article>
+                    </div>
+                    <div class="tile is-parent">
+                        <article class="tile is-child background-tile" style="background-image:url(http://www.thecantilevers.com/thumbs/1000x1000r/renderings/interior/1569801404_1114-arthur-ave13.7.jpg);background-size: cover; background-position: center; background-repeat:no-repeat;">&nbsp;</article>
+                    </div>
+                </div>
+            </div>
             <div class="tile">
+                <div class="tile is-parent">
+                    <article class="tile is-child background-tile" style="background-image:url(http://www.thecantilevers.com/thumbs/1000x1000r/renderings/exterior/1114-arthur-ave5.8.jpg);background-size: cover; background-position: center; background-repeat:no-repeat;">&nbsp;</article>
+                </div>
                 <div class="tile is-parent is-vertical">
                     <article class="tile is-child">
                         <figure class="image is-3by2">
-                            <img class="" src="http://www.thecantilevers.com/thumbs/1000x1000r/renderings/exterior/1114-arthur-ave11.5.jpg">
+                            <img class="" src="http://www.thecantilevers.com/thumbs/1000x1000r/renderings/interior/1114-arthur-ave20.4.jpg">
                         </figure>
                     </article>
                     <article class="tile is-child">
                         <figure class="image is-3by2">
-                            <img class="" src="http://www.thecantilevers.com/thumbs/1000x1000r/renderings/interior/1114-arthur-ave16.6.jpg">
+                            <img class="" src="http://www.thecantilevers.com/thumbs/1000x1000r/renderings/interior/1114-arthur-ave19.6.jpg">
                         </figure>
                     </article>
                 </div>
-                <div class="tile is-parent">
-                    <article class="tile is-child background-tile" style="background-image:url(http://www.thecantilevers.com/thumbs/1000x1000r/renderings/interior/1569801404_1114-arthur-ave13.7.jpg);background-size: cover; background-position: center; background-repeat:no-repeat;">&nbsp;</article>
+            </div>
+        </div>
+    </section>
+
+
+    {# Floor Plans #}
+    {# <section class="section margin-top-70">
+        <h2 class="title has-text-centered">Floorplans</h2>
+        <div class="container">
+            <div class="columns is-vertical-center">
+                <div class="column is-two-thirds">
+                    <div id="floorMap">
+                        {% set planCount = 1 %}
+                        {% for plan in plan.floorplan %}
+                            <a class="pins" id="pin-{{planCount}}" data-target="plan-{{planCount}}" href="#">{{planCount}}</a>
+                            {% set planCount = planCount + 1 %}
+                        {% endfor %}
+                        {% set masterPlanImage = plan.masterplan.file|default(plan.masterplan) %}
+                        <img src="{{ asset(masterPlanImage, 'files') }}" class="image"/>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="tile">
-            <div class="tile is-parent">
-                <article class="tile is-child background-tile" style="background-image:url(http://www.thecantilevers.com/thumbs/1000x1000r/renderings/exterior/1114-arthur-ave5.8.jpg);background-size: cover; background-position: center; background-repeat:no-repeat;">&nbsp;</article>
-            </div>
-            <div class="tile is-parent is-vertical">
-                <article class="tile is-child">
-                    <figure class="image is-3by2">
-                        <img class="" src="http://www.thecantilevers.com/thumbs/1000x1000r/renderings/interior/1114-arthur-ave20.4.jpg">
-                    </figure>
-                </article>
-                <article class="tile is-child">
-                    <figure class="image is-3by2">
-                        <img class="" src="http://www.thecantilevers.com/thumbs/1000x1000r/renderings/interior/1114-arthur-ave19.6.jpg">
-                    </figure>
-                </article>
-            </div>
-        </div>
-    </div>
-</section>
-
-
-{# Floor Plans #}
-<section class="section margin-top-70">
-    <h2 class="title has-text-centered">Floorplans</h2>
-    <div class="container">
-        <div class="columns is-vertical-center">
-            <div class="column">
-                <div id="floorMap">
-                    {% set planCount = 1 %}
+                <div class="column is-relative">
+                    <img src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/upper-floor.png" id="defaultPlan" width="512px"/>
+                    {% set count = 1 %}
                     {% for plan in plan.floorplan %}
-                        <a class="pins" id="pin-{{planCount}}" data-target="plan-{{planCount}}" href="#">{{planCount}}</a>
-                        {% set planCount = planCount + 1 %}
-                    {% endfor %}
-                    {% set masterPlanImage = plan.masterplan.file|default(plan.masterplan) %}
-                    <img src="{{ asset(masterPlanImage, 'files') }}" class="image"/>
-                </div>
-            </div>
-            <div class="column is-relative">
-                <img src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/upper-floor.png" id="defaultPlan" width="512px"/>
-                {% set count = 1 %}
-                {% for plan in plan.floorplan %}
-                    <div id="plan-{{ count }}" class="unit-plans">
-                        <div class="columns is-vertical-center is-variable is-0">
-                            <div class="column">
-                                {% set planimage = plan.image.file|default(plan.image) %}
-                                <figure class="image">
-                                    <img src="{{ asset(planimage, 'files') }}">
-                                </figure>
+                        <div id="plan-{{ count }}" class="unit-plans">
+                            <div class="columns is-vertical-center is-variable is-0">
+                                <div class="column">
+                                    {% set planimage = plan.image.file|default(plan.image) %}
+                                    <figure class="image">
+                                        <img src="{{ asset(planimage, 'files') }}">
+                                    </figure>
+                                </div>
                             </div>
-                        </div>
-                        <div class="columns is-vertical-center is-variable is-0">
-                            <div class="column">
-                                <div class="margin-left-20">
-                                    <h2 class="is-large margin-bottom-20 is-size-3">{{ plan.name }}</h2>
-                                    {{ plan.description|raw }}
-                                    {# <a class="button margin-top-40" href="#popup-plan-{{ count }}">View Grouping Options</a> #}
+                            <div class="columns is-vertical-center is-variable is-0">
+                                <div class="column">
+                                    <div class="margin-left-20">
+                                        <h2 class="is-large margin-bottom-20 is-size-3">{{ plan.name }}</h2>
+                                        {{ plan.description|raw }}
+                                        <a class="button margin-top-40" href="#popup-plan-{{ count }}">View Grouping Options</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    {% set count = count + 1 %}
-                {% endfor %}
+                        {% set count = count + 1 %}
+                    {% endfor %}
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section> #}
 
-<section class="section">
-    <div class="tile is-ancestor">
-        <div class="tile">
-            <div class="tile is-parent">
-                <article class="tile is-child background-tile" style="background-image:url(http://www.thecantilevers.com/thumbs/1000x1000r/renderings/interior/1114-arthur-ave17.7.jpg);background-size: cover; background-position: center; background-repeat:no-repeat;">&nbsp;</article>
-            </div>
-            <div class="tile is-parent">
-                <article class="tile is-child background-tile" style="background-image:url(http://www.thecantilevers.com/thumbs/1000x1000r/renderings/exterior/1114-arthur-ave4.5.jpg);background-size: cover; background-position: center; background-repeat:no-repeat;">&nbsp;</article>
-            </div>
-            <div class="tile is-parent">
-                <article class="tile is-child background-tile" style="background-image:url(http://www.thecantilevers.com/thumbs/1000x1000r/renderings/interior/1114-arthur-ave14.6.jpg);background-size: cover; background-position: center; background-repeat:no-repeat;">&nbsp;</article>
-            </div>
-            <div class="tile is-parent is-vertical">
-                <article class="tile is-child">
-                    <figure class="image is-3by2">
-                        <img class="" src="http://www.thecantilevers.com/thumbs/1000x1000r/renderings/exterior/1114-arthur-ave7.8.jpg">
-                    </figure>
-                </article>
-                <article class="tile is-child">
-                    <figure class="image is-3by2">
-                        <img class="" src="http://www.thecantilevers.com/thumbs/1000x1000r/renderings/interior/1114-arthur-ave19.6.jpg">
-                    </figure>
-                </article>
+    {# Image Grid 4x4 #}
+    {# <section class="section">
+        <div class="tile is-ancestor">
+            <div class="tile">
+                <div class="tile is-parent">
+                    <article class="tile is-child background-tile" style="background-image:url(http://www.thecantilevers.com/thumbs/1000x1000r/renderings/interior/1114-arthur-ave17.7.jpg);background-size: cover; background-position: center; background-repeat:no-repeat;">&nbsp;</article>
+                </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child background-tile" style="background-image:url(http://www.thecantilevers.com/thumbs/1000x1000r/renderings/exterior/1114-arthur-ave4.5.jpg);background-size: cover; background-position: center; background-repeat:no-repeat;">&nbsp;</article>
+                </div>
+                <div class="tile is-parent">
+                    <article class="tile is-child background-tile" style="background-image:url(http://www.thecantilevers.com/thumbs/1000x1000r/renderings/interior/1114-arthur-ave14.6.jpg);background-size: cover; background-position: center; background-repeat:no-repeat;">&nbsp;</article>
+                </div>
+                <div class="tile is-parent is-vertical">
+                    <article class="tile is-child">
+                        <figure class="image is-3by2">
+                            <img class="" src="http://www.thecantilevers.com/thumbs/1000x1000r/renderings/exterior/1114-arthur-ave7.8.jpg">
+                        </figure>
+                    </article>
+                    <article class="tile is-child">
+                        <figure class="image is-3by2">
+                            <img class="" src="http://www.thecantilevers.com/thumbs/1000x1000r/renderings/interior/1114-arthur-ave19.6.jpg">
+                        </figure>
+                    </article>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section> #}
 
 
 

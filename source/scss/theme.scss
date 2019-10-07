@@ -12,12 +12,12 @@
 
 .background-medium {
     background: $medium;
-    color: white;
+    color: white !important;
 }
 
 .background-dark {
     background: $dark;
-    color: white;
+    color: white !important;
 }
 
 #map {
