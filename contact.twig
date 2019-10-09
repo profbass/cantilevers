@@ -15,82 +15,78 @@
     </div>
 </section>
 
-
-<section class="section section-page contact-page">
+<section class="section">
     <div class="container">
-        <div class="columns is-centered">
-            <div class="column is-two-thirds">
-                <article class="content" role="article">
+        <strong>TEL:</strong> <a href="tel:7205490331">720.549.0331</a>
+        <span class="is-pulled-right"><strong>EMAIL:</strong> <a href="#" class="contact-btn">sales@thecantilevers.com</a></span>
+        <hr>
+    </div>
+</section>
 
-                    <h2 class="has-text-centered">{{ contact.address1 }}<br>{{ contact.address2 }}</h2>
-                    <h4 class="has-text-centered">{{ contact.contact_name }}<br><a class="is-italic" href="tel:{{ contact.phone }}">{{ contact.phone }}</a></h4>
 
-                    <div class="has-text-justified">{{ contact.content }}</div>
 
-                    {# If there are repeaters, we should output them. #}
-                    {% with { 'record': record, 'common': false, 'repeaters': true, 'blocks': true, 'exclude': ['teaser', 'body', 'image'] } %}
-                    {{ block('sub_fields', 'partials/_sub_fields.twig') }}
-                    {% endwith %}
-
-                    {# {{ include('partials/_recordfooter.twig', { 'record': record, 'extended': true }) }} #}
-                </article>
-                <hr>
-                {# Form #}
-                <div class="columns is-centered slide-in">
-                    <div class="column">
-                    <h2 class="is-size-5">Send Us a Message</h2>
-                    <div class="form-message"></div>
-                    <form id="contact-form" method="post" accept-charset="UTF-8" action="{{ asset('contact.php', 'theme') }}">
-                        {# {{ csrfInput() }} #}
-                        {# <input type="hidden" name="action" value="contact.php"> #}
-                        {# {{ redirectInput("") }} #}
-
-                        <section class="">
-                            <div class="field">
-                                {# <label class="label">Name</label> #}
-                                <div class="control has-icons-left has-icons-right">
-                                    <input class="input" id="nameInput" placeholder="First &amp; Last Name" type="text">
-                                    <span class="icon is-small is-left">
-                                        <i class="fas fa-user"></i>
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div class="field">
-                                {# <label class="label">Email</label> #}
-                                <div class="control has-icons-left has-icons-right">
-                                    <input class="input" id="emailInput" placeholder="myself@me.com" type="email" value="">
-
-                                    <span class="icon is-small is-left">
-                                        <i class="fas fa-envelope"></i>
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div class="field">
-                                {# <label class="label">Message</label> #}
-                                <div class="control">
-                                    <textarea class="textarea" id="messageField" placeholder="Your message here!"></textarea>
-                                </div>
-                            </div>
-
-                            <div class="field is-grouped">
-                                <div class="control">
-                                    <button class="button is-link">Submit</button>
-                                </div>
-                            </div>
-                        </section>
-                        </form>
-                    </div>
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column  is-vertical-center">
+                <div>
+                    <figure class="image margin-bottom-50">
+                        <img src="http://www.thecantilevers.com/thumbs/1000x1000r/logos/logo-collier-managementat4x-8.png" />
+                    </figure>
+                    <h2 class="is-size-4">JASON COLLIER, MBA, ME</h2>
+                    <h5>Principal – Collier Management, LLC</h5>
+                    <p>Jason Collier has Master’s in both Business Administration and Engineering Management and has a CHO certification (Certified Hospitality Owner) and LSSBB certification (Lean Six Sigma Black Belt). Jason has over 20 years in engineering, manufacturing and hotel operations, business, and project management experience. He has a background of investments in hotels and other real estate projects.</p>
                 </div>
-                {# End Form #}
+            </div>
+            <div class="column  is-vertical-center">
+                <div>
+                    <figure class="image margin-bottom-50">
+                        <img src="http://www.thecantilevers.com/thumbs/1000x1000r/logos/logo-land-capitalat4x-8.png" />
+                    </figure>
+                    <h2 class="is-size-4">MIKE EISENSTEIN</h2>
+                    <h5>President – Land Capital, LLC</h5>
+                    <p>With over 20 years of real estate experience Michael Eisenstein has created family real estate portfolios in Los Angeles and now Denver. His company Land Capital has commercial and residential developments in various stages in Denver and surrounding regions.</p>
+                </div>
             </div>
         </div>
     </div>
 </section>
-{% endfor %}
 
-{% include "partials/_sub_recent_records.twig" %}
+<section class="section">
+    <div class="container">
+        <hr>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="columns">
+            <div class="column has-text-centered is-vertical-center">
+                <figure class="image">
+                    <img src="http://www.thecantilevers.com/thumbs/1000x1000r/logos/logo-alcornat3x-8.png" />
+                </figure>
+            </div>
+            <div class="column has-text-centered is-vertical-center is-one-fith">
+                <figure class="image">
+                    <img src="http://www.thecantilevers.com/thumbs/1000x1000r/logos/logo-re.png" />
+                </figure>
+            </div>
+            <div class="column has-text-centered is-vertical-center">
+                <figure class="image">
+                    <img src="http://www.thecantilevers.com/thumbs/1000x1000r/logos/logo-daj-designsat4x-8.png" />
+                </figure>
+            </div>
+            <div class="column has-text-centered is-vertical-center">
+                <figure class="image">
+                    <img src="http://www.thecantilevers.com/thumbs/1000x1000r/logos/logo-nexus.png" />
+                </figure>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endfor %}
 
 {% endblock main %}
 

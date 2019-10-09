@@ -86,14 +86,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        $(".scroll-spy").each(function() {
-            var sectionId = $(this).attr("href");
-            var section = $(sectionId);
-            if (isScrolledToTop(section)) {
-                removeNavClass();
-                $(this).addClass('nav-active');
-            }
-        });
+        // $(".scroll-spy").each(function() {
+        //     var sectionId = $(this).attr("href");
+        //     var section = $(sectionId);
+        //     if (isScrolledToTop(section)) {
+        //         removeNavClass();
+        //         $(this).addClass('nav-active');
+        //     }
+        // });
 
     }
 
@@ -163,6 +163,31 @@ document.addEventListener('DOMContentLoaded', function() {
             $(this).addClass('active');
             currentPin = pin;
             currentPlan = target;
+        })
+    });
+
+    // tabs
+    var tabs = $('.tabs>ul>li');
+    var activeTab = 'main-stats-one';
+    var currentTab = '';
+    $.each(tabs, function(el) {
+        var link = $(this + " a");
+        var target = link.data('target');
+        var tab = $(this).attr('id');
+        // if ($(this).hasClass("is-active")) {
+        //     activeTab = target;
+        // }
+        console.log("asdasfd");
+        link.on('click', function(e) {
+            console.log("asdasfd");
+            //e.preventDefault();
+            $('#' + activeTab).fadeOut(function() {
+                $('#' + target).fadeIn();
+            });
+            $('#' + currentTab).removeClass('is-active');
+            $(this).addClass('is-active');
+            currentTab = tab;
+            activeTab = target;
         })
     });
 });

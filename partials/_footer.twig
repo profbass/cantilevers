@@ -20,26 +20,6 @@
             </div>
             <div class="column">
                 <p class="is-vertical-bottom">&copy; {{ "now"|date("Y") }} Cantilevers,<br> All rights reserved</p>
-                {% if social %}
-                    <ul class="menu-social">
-                    {% for link in social.links %}
-                        <li class="sn-icons">
-                            <a target="_blank" href="{{ link.link_url }}">
-                                {% if link.social_network == 1 %}
-                                    <i class="fab fa-twitter"></i> 
-                                {% elseif link.social_network ==  2 %}
-                                    <i class="fab fa-facebook-f"></i> 
-                                {% elseif link.social_network ==  3 %}
-                                    <i class="fab fa-instagram"></i> 
-                                {% elseif link.social_network ==  4 %}
-                                    <i class="fab fa-pinterest"></i> 
-                                {% endif %} {{ link.link_text }}
-                            </a>
-                        </li>
-                    {% endfor %}
-                    </ul>
-                {% else %}
-                {% endif %}
             </div>
         </div>
         {{ widgets('footer') }}
