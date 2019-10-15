@@ -168,100 +168,103 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // tabs
     var tabs = $('.tabs>ul>li');
-    var activeTab = 'main-stats-one';
-    var currentTab = '';
-    $.each(tabs, function(el) {
-        var link = $(this + " a");
-        var target = link.data('target');
-        var tab = $(this).attr('id');
-        // if ($(this).hasClass("is-active")) {
-        //     activeTab = target;
-        // }
-        console.log("asdasfd");
-        link.on('click', function(e) {
-            console.log("asdasfd");
-            //e.preventDefault();
-            $('#' + activeTab).fadeOut(function() {
-                $('#' + target).fadeIn();
-            });
-            $('#' + currentTab).removeClass('is-active');
-            $(this).addClass('is-active');
-            currentTab = tab;
-            activeTab = target;
-        })
+
+    tabs.on('click', function() {
+        var target = $(this).data('target');
+        var contnetTarget = $(this).data('targets');
+        var content = contnetTarget ? contnetTarget : "content-tab";
+        if (target) {
+            openTab(event, target, content);
+        }
     });
-});
-var Parallaxy = function () {
-    this.win = $(window);
-    this.body = $('body');
-    this.winHeight = window.innerHeight;
-    this.winWidth = window.innerWidth;
-    this.parallax = $('.parallax-layer');
-    this.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ? true : false;
-    this.init();
-};
-Parallaxy.prototype = {
-    init: function () {
 
-        var platform = navigator.platform.toLowerCase();
-        var userAgent = navigator.userAgent.toLowerCase();
-
-        if (this.isMobile) { 
-            this.dispelParallax();
+    // https://codepen.io/t7team/pen/ZowdRN
+    function openTab(evt, tabName, contentTab) {
+        var i, x, tablinks;
+        x = document.getElementsByClassName(contentTab);
+        for (i = 0; i < x.length; i++) {
+            //x[i].style.display = "none";
+            $(x).fadeOut();
         }
-
-        // else if (platform.indexOf('win32') != -1 || platform.indexOf('linux') != -1)
-        // {
-        // 	this.castParallax(this.parallax);					
-        // 	if ($.browser.webkit)
-        // 	{
-        // 		this.castSmoothScroll();
-        // 	}
-        // }
-
-        else {
-            this.castParallax(this.parallax); 
+        tablinks = document.getElementsByClassName("tab");
+        for (i = 0; i < x.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" is-active", "");
         }
+        $("#" + tabName).fadeIn();
+        evt.currentTarget.className += " is-active";
 
-    },
-
-    castParallax: function (el) {
-
-        var opThresh = 350;
-        var opFactor = 750;
-        var height = this.winHeight;
-
-        window.addEventListener("scroll", function (event) {
-
-            var top = this.pageYOffset;
-
-            var layers = el;
-            var layer, speed, yPos;
-            for (var i = 0; i < layers.length; i++) {
-                layer = layers[i];
-                speed = layer.getAttribute('data-speed');
-                var yPos = -(top * speed / 100);
-                layer.addAttribute('style', 'transform: translate3d(0px, ' + yPos + 'px, 0px); min-height: ' + height + 'px;');
-            }
-        });
-
-
-    },
-
-    dispelParallax: function () {
-        $(".nonparallax").css('display', 'block');
-        $(".parallax-layer").css('display', 'none');
-    },
-
-    castSmoothScroll: function () {
-        $.srSmoothscroll({
-            step: 80,
-            speed: 300,
-            ease: 'linear'
-        });
     }
-};
+});
+// var Parallaxy = function () {
+//     this.win = $(window);
+//     this.body = $('body');
+//     this.winHeight = window.innerHeight;
+//     this.winWidth = window.innerWidth;
+//     this.parallax = $('.parallax-layer');
+//     this.isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ? true : false;
+//     this.init();
+// };
+// Parallaxy.prototype = {
+//     init: function () {
 
+//         var platform = navigator.platform.toLowerCase();
+//         var userAgent = navigator.userAgent.toLowerCase();
+
+//         if (this.isMobile) { 
+//             this.dispelParallax();
+//         }
+
+//         // else if (platform.indexOf('win32') != -1 || platform.indexOf('linux') != -1)
+//         // {
+//         // 	this.castParallax(this.parallax);					
+//         // 	if ($.browser.webkit)
+//         // 	{
+//         // 		this.castSmoothScroll();
+//         // 	}
+//         // }
+
+//         else {
+//             this.castParallax(this.parallax); 
+//         }
+
+//     },
+
+//     castParallax: function (el) {
+
+//         var opThresh = 350;
+//         var opFactor = 750;
+//         var height = this.winHeight;
+
+//         window.addEventListener("scroll", function (event) {
+
+//             var top = this.pageYOffset;
+
+//             var layers = el;
+//             var layer, speed, yPos;
+//             for (var i = 0; i < layers.length; i++) {
+//                 layer = layers[i];
+//                 speed = layer.getAttribute('data-speed');
+//                 var yPos = -(top * speed / 100);
+//                 layer.addAttribute('style', 'transform: translate3d(0px, ' + yPos + 'px, 0px); min-height: ' + height + 'px;');
+//             }
+//         });
+
+
+//     },
+
+//     dispelParallax: function () {
+//         $(".nonparallax").css('display', 'block');
+//         $(".parallax-layer").css('display', 'none');
+//     },
+
+//     castSmoothScroll: function () {
+//         $.srSmoothscroll({
+//             step: 80,
+//             speed: 300,
+//             ease: 'linear'
+//         });
+//     }
+// };
 /*!
  * baguetteBox.js
  * @author  feimosi

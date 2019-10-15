@@ -16,7 +16,7 @@
     </section>
 
     {# Content #}
-    {% if plan.content %}
+    {# {% if plan.content %}
         <section class="section section-record content">
             <div class="container">
                 <div class="columns is-centered">
@@ -26,7 +26,7 @@
                 </div>
             </div>
         </section>
-    {% endif %}
+    {% endif %} #}
 
     {# Floor One #}
     <section class="margin-top-70">
@@ -35,219 +35,654 @@
                 <h1 class="is-size-3 has-text-right">FLOOR ONE</h1>
             </div>
         </div>
-        <div class="columns is-gapless">
-            <div class="column is-two-thirds-desktop padding-right-20">
-                {# {% if homepage.teaser2_photo %} #}
-                    <figure class="image padding-20">
-                        <img src="http://www.thecantilevers.com/thumbs/1000x1000r/vectors/floorplan-main-floor-1.svg">
-                    </figure>
-                {# {% endif %} #}
+        {% if plan.content %}
+            <div class="container section">
+                <div class="columns is-centered">
+                    <div class="column is-two-thirds">
+                        <h2 class="title">Lower Floor</h2>
+                        <h4 class="margin-bottom-30">Grouping Option</h4>
+                        {{ plan.content|raw }}
+                    </div>
+                </div>
             </div>
-            <div class="column is-vertical-center ">
-                <div class="padding-left-60 padding-right-60 padding-bottom-20  padding-top-20">
-                    <h2 class="title">Lower Floor</h2>
-                    <h4 class="margin-bottom-30">Boma - Grouping Option</h4>
-                    <div class="tabs is-fullwidth">
-                        <ul>
-                            <li id="tab-1" class="is-active"><a data-target="main-stats-one">One</a></li>
-                            <li id="tab-2"><a data-target="main-stats-one">Two</a></li>
-                            <li id="tab-3"><a data-target="main-stats-one">Three</a></li>
-                        </ul>
+        {% endif %}
+        {# Tabs #}
+        <div class="container">
+            <div class="tabs is-fullwidth is-medium">
+                <ul>
+                    <li class="tab is-active" data-targets="content-tab-1" data-target="main-options-one"><a >Groupings 1</a></li>
+                    <li class="tab" data-targets="content-tab-1" data-target="main-options-two"><a>Grouping 2</a></li>
+                    <li class="tab" data-targets="content-tab-1" data-target="main-options-three"><a>Grouping 3</a></li>
+                </ul>
+            </div>
+        </div>
+        {# Tabs Body #}
+        <div class="content-tab-1" id="main-options-one">
+            <div class="columns is-gapless">
+                <div class="column is-two-thirds-desktop padding-right-20">
+                    {# {% if homepage.teaser2_photo %} #}
+                        <figure class="image padding-20">
+                            <img src="http://www.thecantilevers.com/thumbs/1000x1000r/vectors/floorplan-main-floor-1.svg">
+                        </figure>
+                    {# {% endif %} #}
+                </div>
+                <div class="column is-vertical-center ">
+                    <div class="padding-left-60 padding-right-60 padding-bottom-20  padding-top-20">
+                        <div id="main-stats-one">
+                            <table class="table is-fullwidth">
+                                <thead>
+                                    <tr>
+                                        <th>LOCATION</th>
+                                        <th>AREA</th>
+                                        <th>PATIO</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th><strong>TOTAL OFFICE AREA<strong></th>
+                                        <th><strong>15,475 SqFt.<strong></th>
+                                        <th></th>
+                                    </tr>
+                                    <tr>
+                                        <th><small>Vertical Circulation</small></th>
+                                        <th><small>1,264 SqFt.</small></th>
+                                        <th></th>
+                                    </tr>
+                                    <tr>
+                                        <th><small>Common</small></th>
+                                        <th><small>4,944 SqFt.</small></th>
+                                        <th></th>
+                                    </tr>
+                                </tfoor>
+                                <tbody>
+                                    <tr>
+                                        <td>Office 1&amp;2</td>
+                                        <td>2,361 <small>SqFt.</td>
+                                        <td>4,726 <small>SqFt.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 3</td>
+                                        <td>1,807 <small>SqFt.</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 4</td>
+                                        <td>1,807 <small>SqFt.</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 5</td>
+                                        <td>1,807 <small>SqFt.</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 6</td>
+                                        <td>2,437 <small>SqFt.</td>
+                                        <td>910 <small>SqFt.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 7-10</td>
+                                        <td>7,524 <small>SqFt.</td>
+                                        <td>2,050 <small>SqFt.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 11-15</td>
+                                        <td>7,694 <small>SqFt.</td>
+                                        <td>2,629 <small>SqFt.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="main-stats-two" style="display:none;">
+                            <table class="table is-fullwidth">
+                                <thead>
+                                    <tr>
+                                        <th>LOCATION</th>
+                                        <th>AREA</th>
+                                        <th>PATIO</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th><strong>TOTAL OFFICE AREA<strong></th>
+                                        <th><strong>15,475 SqFt.<strong></th>
+                                        <th></th>
+                                    </tr>
+                                    <tr>
+                                        <th><small>Vertical Circulation</small></th>
+                                        <th><small>1,264 SqFt.</small></th>
+                                        <th></th>
+                                    </tr>
+                                    <tr>
+                                        <th><small>Common</small></th>
+                                        <th><small>4,944 SqFt.</small></th>
+                                        <th></th>
+                                    </tr>
+                                </tfoor>
+                                <tbody>
+                                    <tr>
+                                        <td>Office 1&amp;2</td>
+                                        <td>2,361 <small>SqFt.</td>
+                                        <td>4,726 <small>SqFt.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 3</td>
+                                        <td>1,807 <small>SqFt.</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 4</td>
+                                        <td>1,807 <small>SqFt.</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 5</td>
+                                        <td>1,807 <small>SqFt.</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 6</td>
+                                        <td>2,437 <small>SqFt.</td>
+                                        <td>910 <small>SqFt.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 7-10</td>
+                                        <td>7,524 <small>SqFt.</td>
+                                        <td>2,050 <small>SqFt.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 11-15</td>
+                                        <td>7,694 <small>SqFt.</td>
+                                        <td>2,629 <small>SqFt.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="main-stats-three" style="display:none;">
+                            <table class="table is-fullwidth">
+                                <thead>
+                                    <tr>
+                                        <th>LOCATION</th>
+                                        <th>AREA</th>
+                                        <th>PATIO</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th><strong>TOTAL OFFICE AREA<strong></th>
+                                        <th><strong>15,475 SqFt.<strong></th>
+                                        <th></th>
+                                    </tr>
+                                    <tr>
+                                        <th><small>Vertical Circulation</small></th>
+                                        <th><small>1,264 SqFt.</small></th>
+                                        <th></th>
+                                    </tr>
+                                    <tr>
+                                        <th><small>Common</small></th>
+                                        <th><small>4,944 SqFt.</small></th>
+                                        <th></th>
+                                    </tr>
+                                </tfoor>
+                                <tbody>
+                                    <tr>
+                                        <td>Office 1&amp;2</td>
+                                        <td>2,361 <small>SqFt.</td>
+                                        <td>4,726 <small>SqFt.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 3</td>
+                                        <td>1,807 <small>SqFt.</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 4</td>
+                                        <td>1,807 <small>SqFt.</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 5</td>
+                                        <td>1,807 <small>SqFt.</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 6</td>
+                                        <td>2,437 <small>SqFt.</td>
+                                        <td>910 <small>SqFt.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 7-10</td>
+                                        <td>7,524 <small>SqFt.</td>
+                                        <td>2,050 <small>SqFt.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 11-15</td>
+                                        <td>7,694 <small>SqFt.</td>
+                                        <td>2,629 <small>SqFt.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                    <div id="main-stats-one">
-                        <table class="table is-fullwidth">
-                            <thead>
-                                <tr>
-                                    <th>LOCATION</th>
-                                    <th>AREA</th>
-                                    <th>PATIO</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th><strong>TOTAL OFFICE AREA<strong></th>
-                                    <th><strong>15,475 SqFt.<strong></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th><small>Vertical Circulation</small></th>
-                                    <th><small>1,264 SqFt.</small></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th><small>Common</small></th>
-                                    <th><small>4,944 SqFt.</small></th>
-                                    <th></th>
-                                </tr>
-                            </tfoor>
-                            <tbody>
-                                <tr>
-                                    <td>Office 1&amp;2</td>
-                                    <td>2,361 <small>SqFt.</td>
-                                    <td>4,726 <small>SqFt.</td>
-                                </tr>
-                                <tr>
-                                    <td>Office 3</td>
-                                    <td>1,807 <small>SqFt.</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 4</td>
-                                    <td>1,807 <small>SqFt.</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 5</td>
-                                    <td>1,807 <small>SqFt.</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 6</td>
-                                    <td>2,437 <small>SqFt.</td>
-                                    <td>910 <small>SqFt.</td>
-                                </tr>
-                                <tr>
-                                    <td>Office 7-10</td>
-                                    <td>7,524 <small>SqFt.</td>
-                                    <td>2,050 <small>SqFt.</td>
-                                </tr>
-                                <tr>
-                                    <td>Office 11-15</td>
-                                    <td>7,694 <small>SqFt.</td>
-                                    <td>2,629 <small>SqFt.</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                </div>
+            </div>
+-1        </div>
+        <div class="content-tab-1" id="main-options-two" style="display:none;">
+            <div class="columns is-gapless">
+                <div class="column is-two-thirds-desktop padding-right-20">
+                    {# {% if homepage.teaser2_photo %} #}
+                        <figure class="image padding-20">
+                            <img src="http://www.thecantilevers.com/thumbs/1000x1000r/vectors/floorplan-main-floor-1.svg">
+                        </figure>
+                    {# {% endif %} #}
+                </div>
+                <div class="column is-vertical-center ">
+                    <div class="padding-left-60 padding-right-60 padding-bottom-20  padding-top-20">
+                        <div id="main-stats-one">
+                            <table class="table is-fullwidth">
+                                <thead>
+                                    <tr>
+                                        <th>LOCATION</th>
+                                        <th>AREA</th>
+                                        <th>PATIO</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th><strong>TOTAL OFFICE AREA<strong></th>
+                                        <th><strong>15,475 SqFt.<strong></th>
+                                        <th></th>
+                                    </tr>
+                                    <tr>
+                                        <th><small>Vertical Circulation</small></th>
+                                        <th><small>1,264 SqFt.</small></th>
+                                        <th></th>
+                                    </tr>
+                                    <tr>
+                                        <th><small>Common</small></th>
+                                        <th><small>4,944 SqFt.</small></th>
+                                        <th></th>
+                                    </tr>
+                                </tfoor>
+                                <tbody>
+                                    <tr>
+                                        <td>Office 2&amp;2</td>
+                                        <td>2,361 <small>SqFt.</td>
+                                        <td>4,726 <small>SqFt.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 3</td>
+                                        <td>1,807 <small>SqFt.</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 4</td>
+                                        <td>1,807 <small>SqFt.</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 5</td>
+                                        <td>1,807 <small>SqFt.</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 6</td>
+                                        <td>2,437 <small>SqFt.</td>
+                                        <td>910 <small>SqFt.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 7-10</td>
+                                        <td>7,524 <small>SqFt.</td>
+                                        <td>2,050 <small>SqFt.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 11-15</td>
+                                        <td>7,694 <small>SqFt.</td>
+                                        <td>2,629 <small>SqFt.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="main-stats-two" style="display:none;">
+                            <table class="table is-fullwidth">
+                                <thead>
+                                    <tr>
+                                        <th>LOCATION</th>
+                                        <th>AREA</th>
+                                        <th>PATIO</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th><strong>TOTAL OFFICE AREA<strong></th>
+                                        <th><strong>15,475 SqFt.<strong></th>
+                                        <th></th>
+                                    </tr>
+                                    <tr>
+                                        <th><small>Vertical Circulation</small></th>
+                                        <th><small>1,264 SqFt.</small></th>
+                                        <th></th>
+                                    </tr>
+                                    <tr>
+                                        <th><small>Common</small></th>
+                                        <th><small>4,944 SqFt.</small></th>
+                                        <th></th>
+                                    </tr>
+                                </tfoor>
+                                <tbody>
+                                    <tr>
+                                        <td>Office 1&amp;2</td>
+                                        <td>2,361 <small>SqFt.</td>
+                                        <td>4,726 <small>SqFt.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 3</td>
+                                        <td>1,807 <small>SqFt.</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 4</td>
+                                        <td>1,807 <small>SqFt.</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 5</td>
+                                        <td>1,807 <small>SqFt.</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 6</td>
+                                        <td>2,437 <small>SqFt.</td>
+                                        <td>910 <small>SqFt.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 7-10</td>
+                                        <td>7,524 <small>SqFt.</td>
+                                        <td>2,050 <small>SqFt.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 11-15</td>
+                                        <td>7,694 <small>SqFt.</td>
+                                        <td>2,629 <small>SqFt.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="main-stats-three" style="display:none;">
+                            <table class="table is-fullwidth">
+                                <thead>
+                                    <tr>
+                                        <th>LOCATION</th>
+                                        <th>AREA</th>
+                                        <th>PATIO</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th><strong>TOTAL OFFICE AREA<strong></th>
+                                        <th><strong>15,475 SqFt.<strong></th>
+                                        <th></th>
+                                    </tr>
+                                    <tr>
+                                        <th><small>Vertical Circulation</small></th>
+                                        <th><small>1,264 SqFt.</small></th>
+                                        <th></th>
+                                    </tr>
+                                    <tr>
+                                        <th><small>Common</small></th>
+                                        <th><small>4,944 SqFt.</small></th>
+                                        <th></th>
+                                    </tr>
+                                </tfoor>
+                                <tbody>
+                                    <tr>
+                                        <td>Office 1&amp;2</td>
+                                        <td>2,361 <small>SqFt.</td>
+                                        <td>4,726 <small>SqFt.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 3</td>
+                                        <td>1,807 <small>SqFt.</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 4</td>
+                                        <td>1,807 <small>SqFt.</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 5</td>
+                                        <td>1,807 <small>SqFt.</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 6</td>
+                                        <td>2,437 <small>SqFt.</td>
+                                        <td>910 <small>SqFt.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 7-10</td>
+                                        <td>7,524 <small>SqFt.</td>
+                                        <td>2,050 <small>SqFt.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 11-15</td>
+                                        <td>7,694 <small>SqFt.</td>
+                                        <td>2,629 <small>SqFt.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                    <div id="main-stats-two" style="display:none;">
-                        <table class="table is-fullwidth">
-                            <thead>
-                                <tr>
-                                    <th>LOCATION</th>
-                                    <th>AREA</th>
-                                    <th>PATIO</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th><strong>TOTAL OFFICE AREA<strong></th>
-                                    <th><strong>15,475 SqFt.<strong></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th><small>Vertical Circulation</small></th>
-                                    <th><small>1,264 SqFt.</small></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th><small>Common</small></th>
-                                    <th><small>4,944 SqFt.</small></th>
-                                    <th></th>
-                                </tr>
-                            </tfoor>
-                            <tbody>
-                                <tr>
-                                    <td>Office 1&amp;2</td>
-                                    <td>2,361 <small>SqFt.</td>
-                                    <td>4,726 <small>SqFt.</td>
-                                </tr>
-                                <tr>
-                                    <td>Office 3</td>
-                                    <td>1,807 <small>SqFt.</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 4</td>
-                                    <td>1,807 <small>SqFt.</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 5</td>
-                                    <td>1,807 <small>SqFt.</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 6</td>
-                                    <td>2,437 <small>SqFt.</td>
-                                    <td>910 <small>SqFt.</td>
-                                </tr>
-                                <tr>
-                                    <td>Office 7-10</td>
-                                    <td>7,524 <small>SqFt.</td>
-                                    <td>2,050 <small>SqFt.</td>
-                                </tr>
-                                <tr>
-                                    <td>Office 11-15</td>
-                                    <td>7,694 <small>SqFt.</td>
-                                    <td>2,629 <small>SqFt.</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div id="main-stats-three" style="display:none;">
-                        <table class="table is-fullwidth">
-                            <thead>
-                                <tr>
-                                    <th>LOCATION</th>
-                                    <th>AREA</th>
-                                    <th>PATIO</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th><strong>TOTAL OFFICE AREA<strong></th>
-                                    <th><strong>15,475 SqFt.<strong></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th><small>Vertical Circulation</small></th>
-                                    <th><small>1,264 SqFt.</small></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th><small>Common</small></th>
-                                    <th><small>4,944 SqFt.</small></th>
-                                    <th></th>
-                                </tr>
-                            </tfoor>
-                            <tbody>
-                                <tr>
-                                    <td>Office 1&amp;2</td>
-                                    <td>2,361 <small>SqFt.</td>
-                                    <td>4,726 <small>SqFt.</td>
-                                </tr>
-                                <tr>
-                                    <td>Office 3</td>
-                                    <td>1,807 <small>SqFt.</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 4</td>
-                                    <td>1,807 <small>SqFt.</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 5</td>
-                                    <td>1,807 <small>SqFt.</td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 6</td>
-                                    <td>2,437 <small>SqFt.</td>
-                                    <td>910 <small>SqFt.</td>
-                                </tr>
-                                <tr>
-                                    <td>Office 7-10</td>
-                                    <td>7,524 <small>SqFt.</td>
-                                    <td>2,050 <small>SqFt.</td>
-                                </tr>
-                                <tr>
-                                    <td>Office 11-15</td>
-                                    <td>7,694 <small>SqFt.</td>
-                                    <td>2,629 <small>SqFt.</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                </div>
+            </div>
+        </div>
+        <div class="content-tab-1" id="main-options-three" style="display:none;">
+            <div class="columns is-gapless">
+                <div class="column is-two-thirds-desktop padding-right-20">
+                    {# {% if homepage.teaser2_photo %} #}
+                        <figure class="image padding-20">
+                            <img src="http://www.thecantilevers.com/thumbs/1000x1000r/vectors/floorplan-main-floor-1.svg">
+                        </figure>
+                    {# {% endif %} #}
+                </div>
+                <div class="column is-vertical-center ">
+                    <div class="padding-left-60 padding-right-60 padding-bottom-20  padding-top-20">
+                        <div id="main-stats-one">
+                            <table class="table is-fullwidth">
+                                <thead>
+                                    <tr>
+                                        <th>LOCATION</th>
+                                        <th>AREA</th>
+                                        <th>PATIO</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th><strong>TOTAL OFFICE AREA<strong></th>
+                                        <th><strong>15,475 SqFt.<strong></th>
+                                        <th></th>
+                                    </tr>
+                                    <tr>
+                                        <th><small>Vertical Circulation</small></th>
+                                        <th><small>1,264 SqFt.</small></th>
+                                        <th></th>
+                                    </tr>
+                                    <tr>
+                                        <th><small>Common</small></th>
+                                        <th><small>4,944 SqFt.</small></th>
+                                        <th></th>
+                                    </tr>
+                                </tfoor>
+                                <tbody>
+                                    <tr>
+                                        <td>Office 3&amp;2</td>
+                                        <td>2,361 <small>SqFt.</td>
+                                        <td>4,726 <small>SqFt.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 3</td>
+                                        <td>1,807 <small>SqFt.</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 4</td>
+                                        <td>1,807 <small>SqFt.</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 5</td>
+                                        <td>1,807 <small>SqFt.</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 6</td>
+                                        <td>2,437 <small>SqFt.</td>
+                                        <td>910 <small>SqFt.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 7-10</td>
+                                        <td>7,524 <small>SqFt.</td>
+                                        <td>2,050 <small>SqFt.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 11-15</td>
+                                        <td>7,694 <small>SqFt.</td>
+                                        <td>2,629 <small>SqFt.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="main-stats-two" style="display:none;">
+                            <table class="table is-fullwidth">
+                                <thead>
+                                    <tr>
+                                        <th>LOCATION</th>
+                                        <th>AREA</th>
+                                        <th>PATIO</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th><strong>TOTAL OFFICE AREA<strong></th>
+                                        <th><strong>15,475 SqFt.<strong></th>
+                                        <th></th>
+                                    </tr>
+                                    <tr>
+                                        <th><small>Vertical Circulation</small></th>
+                                        <th><small>1,264 SqFt.</small></th>
+                                        <th></th>
+                                    </tr>
+                                    <tr>
+                                        <th><small>Common</small></th>
+                                        <th><small>4,944 SqFt.</small></th>
+                                        <th></th>
+                                    </tr>
+                                </tfoor>
+                                <tbody>
+                                    <tr>
+                                        <td>Office 1&amp;2</td>
+                                        <td>2,361 <small>SqFt.</td>
+                                        <td>4,726 <small>SqFt.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 3</td>
+                                        <td>1,807 <small>SqFt.</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 4</td>
+                                        <td>1,807 <small>SqFt.</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 5</td>
+                                        <td>1,807 <small>SqFt.</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 6</td>
+                                        <td>2,437 <small>SqFt.</td>
+                                        <td>910 <small>SqFt.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 7-10</td>
+                                        <td>7,524 <small>SqFt.</td>
+                                        <td>2,050 <small>SqFt.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 11-15</td>
+                                        <td>7,694 <small>SqFt.</td>
+                                        <td>2,629 <small>SqFt.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="main-stats-three" style="display:none;">
+                            <table class="table is-fullwidth">
+                                <thead>
+                                    <tr>
+                                        <th>LOCATION</th>
+                                        <th>AREA</th>
+                                        <th>PATIO</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th><strong>TOTAL OFFICE AREA<strong></th>
+                                        <th><strong>15,475 SqFt.<strong></th>
+                                        <th></th>
+                                    </tr>
+                                    <tr>
+                                        <th><small>Vertical Circulation</small></th>
+                                        <th><small>1,264 SqFt.</small></th>
+                                        <th></th>
+                                    </tr>
+                                    <tr>
+                                        <th><small>Common</small></th>
+                                        <th><small>4,944 SqFt.</small></th>
+                                        <th></th>
+                                    </tr>
+                                </tfoor>
+                                <tbody>
+                                    <tr>
+                                        <td>Office 1&amp;2</td>
+                                        <td>2,361 <small>SqFt.</td>
+                                        <td>4,726 <small>SqFt.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 3</td>
+                                        <td>1,807 <small>SqFt.</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 4</td>
+                                        <td>1,807 <small>SqFt.</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 5</td>
+                                        <td>1,807 <small>SqFt.</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 6</td>
+                                        <td>2,437 <small>SqFt.</td>
+                                        <td>910 <small>SqFt.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 7-10</td>
+                                        <td>7,524 <small>SqFt.</td>
+                                        <td>2,050 <small>SqFt.</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 11-15</td>
+                                        <td>7,694 <small>SqFt.</td>
+                                        <td>2,629 <small>SqFt.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -261,98 +696,276 @@
                 <h1 class="is-size-3 has-text-right">FLOOR TWO</h1>
             </div>
         </div>
-        <div class="columns is-gapless">
-            <div class="column is-vertical-center ">
-                <div class="padding-left-60 padding-right-60 padding-bottom-20  padding-top-20">
+        <div class="container section">
+            <div class="columns is-centered">
+                <div class="column is-two-thirds">
                     <h2 class="title">Upper Floor</h2>
+                    <h4 class="margin-bottom-30">Grouping Option</h4>
                     <p class="margin-bottom-30">When a grouping takes an entire end of the building (see Condos 11-15 and 20-24 as examples), then that owner would also acquire the public hallways as part of their square footage as there are no independent Condos that require public access anymore.</p>
-            
-                    <h4 class="margin-bottom-30">Boma - Grouping Option</h4>
-                    <div class="tabs is-fullwidth">
-                        <ul>
-                            <li id="tab-1" class="is-active"><a data-target="main-stats-one">One</a></li>
-                            <li id="tab-2"><a data-target="main-stats-one">Two</a></li>
-                            <li id="tab-3"><a data-target="main-stats-one">Three</a></li>
-                        </ul>
-                    </div>
-                    <table class="table is-fullwidth">
-                        <thead>
-                            <tr>
-                                <th>LOCATION</th>
-                                <th>AREA</th>
-                                <th>PATIO</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th><strong>TOTAL OFFICE AREA<strong></th>
-                                <th><strong>31,99 SqFt.<strong></th>
-                                <th></th>
-                            </tr>
-                            <tr>
-                                <th><small>Vertical Circulation</small></th>
-                                <th><small>1,151 SqFt.</small></th>
-                                <th></th>
-                            </tr>
-                            <tr>
-                                <th><small>Common</small></th>
-                                <th><small>4,472 SqFt.</small></th>
-                                <th></th>
-                            </tr>
-                        </tfoor>
-                        <tbody>
-                            <tr>
-                                <td>Office 16-19</td>
-                                <td>7,848 <small>SqFt.</small></td>
-                                <td>578 <small>SqFt.</small></td>
-                            </tr>
-                            <tr>
-                                <td>Office 20-24</td>
-                                <td>8,288 <small>SqFt.</small></td>
-                                <td>1,193 <small>SqFt.</small></td>
-                            </tr>
-                            <tr>
-                                <td>Office 25-27</td>
-                                <td>5,188 <small>SqFt.</small></td>
-                                <td>340 <small>SqFt.</small></td>
-                            </tr>
-                            <tr>
-                                <td>Office 28</td>
-                                <td>1,534 <small>SqFt.</small></td>
-                                <td>146 <small>SqFt.</small></td>
-                            </tr>
-                            <tr>
-                                <td>Office 29</td>
-                                <td>1,978 <small>SqFt.</small></td>
-                                <td>146 <small>SqFt.</small></td>
-                            </tr>
-                            <tr>
-                                <td>Office 30</td>
-                                <td>1,968 <small>SqFt.</small></td>
-                                <td>146 <small>SqFt.</small></td>
-                            </tr>
-                            <tr>
-                                <td>Office 31</td>
-                                <td>1,968 <small>SqFt.</small></td>
-                                <td>146 <small>SqFt.</small></td>
-                            </tr>
-                            <tr>
-                                <td>Office 32&amp;33</td>
-                                <td>2,426 <small>SqFt.</small></td>
-                                <td>670 <small>SqFt.</small></td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
             </div>
-            <div class="column is-two-thirds-desktop padding-right-20">
-                {# {% if homepage.teaser2_photo %} #}
-                <figure class="image padding-20">
-                    <img src="http://www.thecantilevers.com/thumbs/1000x1000r/vectors/floorplan-main-upper.svg">
-                </figure>
-                {# {% endif %} #}
+        </div>
+        {# Tabs #}
+        <div class="container">
+            <div class="tabs is-fullwidth is-medium">
+                <ul>
+                    <li class="tab is-active" data-target="upper-options-one"><a >Grouping 1</a></li>
+                    <li class="tab" data-target="upper-options-two"><a>Grouping 2</a></li>
+                    <li class="tab" data-target="upper-options-three"><a>Grouping 3</a></li>
+                </ul>
             </div>
         </div>
+        {# Tab Body #}
+        <div class="content-tab" id="upper-options-one">
+            <div class="columns is-gapless">
+                <div class="column is-vertical-center ">
+                    <div class="padding-left-60 padding-right-60 padding-bottom-20  padding-top-20">
+                        <table class="table is-fullwidth">
+                            <thead>
+                                <tr>
+                                    <th>LOCATION</th>
+                                    <th>AREA</th>
+                                    <th>PATIO</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th><strong>TOTAL OFFICE AREA<strong></th>
+                                    <th><strong>31,99 SqFt.<strong></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th><small>Vertical Circulation</small></th>
+                                    <th><small>1,151 SqFt.</small></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th><small>Common</small></th>
+                                    <th><small>4,472 SqFt.</small></th>
+                                    <th></th>
+                                </tr>
+                            </tfoor>
+                            <tbody>
+                                <tr>
+                                    <td>Office 16-19</td>
+                                    <td>7,848 <small>SqFt.</small></td>
+                                    <td>578 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 20-24</td>
+                                    <td>8,288 <small>SqFt.</small></td>
+                                    <td>1,193 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 25-27</td>
+                                    <td>5,188 <small>SqFt.</small></td>
+                                    <td>340 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 28</td>
+                                    <td>1,534 <small>SqFt.</small></td>
+                                    <td>146 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 29</td>
+                                    <td>1,978 <small>SqFt.</small></td>
+                                    <td>146 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 30</td>
+                                    <td>1,968 <small>SqFt.</small></td>
+                                    <td>146 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 31</td>
+                                    <td>1,968 <small>SqFt.</small></td>
+                                    <td>146 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 32&amp;33</td>
+                                    <td>2,426 <small>SqFt.</small></td>
+                                    <td>670 <small>SqFt.</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="column is-two-thirds-desktop padding-right-20">
+                    {# {% if homepage.teaser2_photo %} #}
+                    <figure class="image padding-20">
+                        <img src="http://www.thecantilevers.com/thumbs/1000x1000r/vectors/floorplan-main-upper.svg">
+                    </figure>
+                    {# {% endif %} #}
+                </div>
+            </div>
+        </div>
+        <div class="content-tab" id="upper-options-two" style="display:none;">
+            <div class="columns is-gapless">
+                <div class="column is-vertical-center ">
+                    <div class="padding-left-60 padding-right-60 padding-bottom-20  padding-top-20">
+                        <table class="table is-fullwidth">
+                            <thead>
+                                <tr>
+                                    <th>LOCATION</th>
+                                    <th>AREA</th>
+                                    <th>PATIO</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th><strong>TOTAL OFFICE AREA<strong></th>
+                                    <th><strong>31,99 SqFt.<strong></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th><small>Vertical Circulation</small></th>
+                                    <th><small>1,151 SqFt.</small></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th><small>Common</small></th>
+                                    <th><small>4,472 SqFt.</small></th>
+                                    <th></th>
+                                </tr>
+                            </tfoor>
+                            <tbody>
+                                <tr>
+                                    <td>Office 16-19</td>
+                                    <td>7,848 <small>SqFt.</small></td>
+                                    <td>578 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 20-24</td>
+                                    <td>8,288 <small>SqFt.</small></td>
+                                    <td>1,193 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 25-27</td>
+                                    <td>5,188 <small>SqFt.</small></td>
+                                    <td>340 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 28</td>
+                                    <td>1,534 <small>SqFt.</small></td>
+                                    <td>146 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 29</td>
+                                    <td>1,978 <small>SqFt.</small></td>
+                                    <td>146 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 30</td>
+                                    <td>1,968 <small>SqFt.</small></td>
+                                    <td>146 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 31</td>
+                                    <td>1,968 <small>SqFt.</small></td>
+                                    <td>146 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 32&amp;33</td>
+                                    <td>2,426 <small>SqFt.</small></td>
+                                    <td>670 <small>SqFt.</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="column is-two-thirds-desktop padding-right-20">
+                    {# {% if homepage.teaser2_photo %} #}
+                    <figure class="image padding-20">
+                        <img src="http://www.thecantilevers.com/thumbs/1000x1000r/vectors/floorplan-main-upper.svg">
+                    </figure>
+                    {# {% endif %} #}
+                </div>
+            </div>
+        </div>
+        <div class="content-tab" id="upper-options-three" style="display:none;">
+            <div class="columns is-gapless">
+                <div class="column is-vertical-center ">
+                    <div class="padding-left-60 padding-right-60 padding-bottom-20  padding-top-20">
+                        <table class="table is-fullwidth">
+                            <thead>
+                                <tr>
+                                    <th>LOCATION</th>
+                                    <th>AREA</th>
+                                    <th>PATIO</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th><strong>TOTAL OFFICE AREA<strong></th>
+                                    <th><strong>31,99 SqFt.<strong></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th><small>Vertical Circulation</small></th>
+                                    <th><small>1,151 SqFt.</small></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th><small>Common</small></th>
+                                    <th><small>4,472 SqFt.</small></th>
+                                    <th></th>
+                                </tr>
+                            </tfoor>
+                            <tbody>
+                                <tr>
+                                    <td>Office 16-19</td>
+                                    <td>7,848 <small>SqFt.</small></td>
+                                    <td>578 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 20-24</td>
+                                    <td>8,288 <small>SqFt.</small></td>
+                                    <td>1,193 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 25-27</td>
+                                    <td>5,188 <small>SqFt.</small></td>
+                                    <td>340 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 28</td>
+                                    <td>1,534 <small>SqFt.</small></td>
+                                    <td>146 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 29</td>
+                                    <td>1,978 <small>SqFt.</small></td>
+                                    <td>146 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 30</td>
+                                    <td>1,968 <small>SqFt.</small></td>
+                                    <td>146 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 31</td>
+                                    <td>1,968 <small>SqFt.</small></td>
+                                    <td>146 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 32&amp;33</td>
+                                    <td>2,426 <small>SqFt.</small></td>
+                                    <td>670 <small>SqFt.</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="column is-two-thirds-desktop padding-right-20">
+                    {# {% if homepage.teaser2_photo %} #}
+                    <figure class="image padding-20">
+                        <img src="http://www.thecantilevers.com/thumbs/1000x1000r/vectors/floorplan-main-upper.svg">
+                    </figure>
+                    {# {% endif %} #}
+                </div>
+            </div>
+        </div>
+        
     </section>
 
     {# Dream It #}
@@ -424,7 +1037,7 @@
 
 
     {# Floor Plans #}
-    <section class="section margin-top-70">
+    {# <section class="section margin-top-70">
         <h2 class="title has-text-centered">Floorplans</h2>
         <div class="container">
             <div class="columns is-vertical-center">
@@ -467,7 +1080,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> #}
 
     {# Image Grid 4x4 #}
     {# <section class="section">

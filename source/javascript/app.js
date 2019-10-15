@@ -168,26 +168,30 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // tabs
     var tabs = $('.tabs>ul>li');
-    var activeTab = 'main-stats-one';
-    var currentTab = '';
-    $.each(tabs, function(el) {
-        var link = $(this + " a");
-        var target = link.data('target');
-        var tab = $(this).attr('id');
-        // if ($(this).hasClass("is-active")) {
-        //     activeTab = target;
-        // }
-        console.log("asdasfd");
-        link.on('click', function(e) {
-            console.log("asdasfd");
-            //e.preventDefault();
-            $('#' + activeTab).fadeOut(function() {
-                $('#' + target).fadeIn();
-            });
-            $('#' + currentTab).removeClass('is-active');
-            $(this).addClass('is-active');
-            currentTab = tab;
-            activeTab = target;
-        })
+
+    tabs.on('click', function() {
+        var target = $(this).data('target');
+        var contnetTarget = $(this).data('targets');
+        var content = contnetTarget ? contnetTarget : "content-tab";
+        if (target) {
+            openTab(event, target, content);
+        }
     });
+
+    // https://codepen.io/t7team/pen/ZowdRN
+    function openTab(evt, tabName, contentTab) {
+        var i, x, tablinks;
+        x = document.getElementsByClassName(contentTab);
+        for (i = 0; i < x.length; i++) {
+            //x[i].style.display = "none";
+            $(x).fadeOut();
+        }
+        tablinks = document.getElementsByClassName("tab");
+        for (i = 0; i < x.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" is-active", "");
+        }
+        $("#" + tabName).fadeIn();
+        evt.currentTarget.className += " is-active";
+
+    }
 });
