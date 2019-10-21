@@ -32,7 +32,7 @@
 <section class="section margin-top-70">
         <h2 class="title has-text-centered">Floorplans</h2>
         <div class="container">
-            <div class="columns is-vertical-center">
+            <div class="columns is-vcentered">
                 <div class="column is-two-thirds">
                     <div id="floorMap">
                         {% set planCount = 1 %}
@@ -44,14 +44,14 @@
                         <img src="{{ asset(masterPlanImage, 'files') }}" class="image"/>
                     </div>
                 </div>
-                <div class="column is-relative">
+                <div class="column">
                     <img src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/upper-floor.png" id="defaultPlan" width="512px"/>
                     {% set count = 1 %}
                     {% for plan in plan.floorplan %}
                         <div id="plan-{{ count }}" class="unit-plans">
-                            <div class="columns is-vertical-center is-variable is-0">
+                            <div class="columns is-variable is-0">
                                 <div class="column">
-                                    <h2 class="is-large margin-bottom-20 is-size-3">{{ plan.name }}</h2>
+                                    <h2 class="is-large has-text-centered margin-bottom-20 is-size-3">{{ plan.name }}</h2>
                                     {% set planimage = plan.image.file|default(plan.image) %}
                                     <figure class="image">
                                         <img src="{{ asset(planimage, 'files') }}">
