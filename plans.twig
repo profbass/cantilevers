@@ -28,6 +28,55 @@
         </section>
     {% endif %} #}
 
+{# Floor Plans #}
+<section class="section margin-top-70">
+        <h2 class="title has-text-centered">Floorplans</h2>
+        <div class="container">
+            <div class="columns is-vertical-center">
+                <div class="column is-two-thirds">
+                    <div id="floorMap">
+                        {% set planCount = 1 %}
+                        {% for plan in plan.floorplan %}
+                            <a class="pins" id="pin-{{planCount}}" data-target="plan-{{planCount}}" href="#">{{planCount}}</a>
+                            {% set planCount = planCount + 1 %}
+                        {% endfor %}
+                        {% set masterPlanImage = plan.masterplan.file|default(plan.masterplan) %}
+                        <img src="{{ asset(masterPlanImage, 'files') }}" class="image"/>
+                    </div>
+                </div>
+                <div class="column is-relative">
+                    <img src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/upper-floor.png" id="defaultPlan" width="512px"/>
+                    {% set count = 1 %}
+                    {% for plan in plan.floorplan %}
+                        <div id="plan-{{ count }}" class="unit-plans">
+                            <div class="columns is-vertical-center is-variable is-0">
+                                <div class="column">
+                                    <h2 class="is-large margin-bottom-20 is-size-3">{{ plan.name }}</h2>
+                                    {% set planimage = plan.image.file|default(plan.image) %}
+                                    <figure class="image">
+                                        <img src="{{ asset(planimage, 'files') }}">
+                                    </figure>
+                                </div>
+                            </div>
+                            {# <div class="columns is-vertical-center is-variable is-0">
+                                <div class="column">
+                                    <div class="margin-left-20">
+                                        <h2 class="is-large margin-bottom-20 is-size-3">{{ plan.name }}</h2>
+                                        {{ plan.description|raw }}
+                                        <a class="button margin-top-40" href="#popup-plan-{{ count }}">View Grouping Options</a>
+                                    </div>
+                                </div>
+                            </div> #}
+                        </div>
+                        {% set count = count + 1 %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
     {# Floor One #}
     <section class="margin-top-70">
         <div class="columns">
@@ -62,7 +111,7 @@
                 <div class="column is-two-thirds-desktop padding-right-20">
                     {# {% if homepage.teaser2_photo %} #}
                         <figure class="image padding-20">
-                            <img src="http://www.thecantilevers.com/thumbs/1000x1000r/vectors/floorplan-main-floor-1.svg">
+                            <img src="http://www.thecantilevers.com/thumbs/1000x1000r/vectors/groupings-first-floor/first-floor-grouping-1.svg">
                         </figure>
                     {# {% endif %} #}
                 </div>
@@ -97,38 +146,38 @@
                                 <tbody>
                                     <tr>
                                         <td>Office 1&amp;2</td>
-                                        <td>2,361 <small>SqFt.</td>
-                                        <td>4,726 <small>SqFt.</td>
+                                        <td>2,361 <small>SqFt.</small></td>
+                                        <td>4,726 <small>SqFt.</small></td>
                                     </tr>
                                     <tr>
                                         <td>Office 3</td>
-                                        <td>1,807 <small>SqFt.</td>
+                                        <td>1,807 <small>SqFt.</small></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>Office 4</td>
-                                        <td>1,807 <small>SqFt.</td>
+                                        <td>1,807 <small>SqFt.</small></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>Office 5</td>
-                                        <td>1,807 <small>SqFt.</td>
+                                        <td>1,807 <small>SqFt.</small></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>Office 6</td>
-                                        <td>2,437 <small>SqFt.</td>
-                                        <td>910 <small>SqFt.</td>
+                                        <td>2,437 <small>SqFt.</small></td>
+                                        <td>910 <small>SqFt.</small></td>
                                     </tr>
                                     <tr>
                                         <td>Office 7-10</td>
-                                        <td>7,524 <small>SqFt.</td>
-                                        <td>2,050 <small>SqFt.</td>
+                                        <td>7,524 <small>SqFt.</small></td>
+                                        <td>2,050 <small>SqFt.</small></td>
                                     </tr>
                                     <tr>
                                         <td>Office 11-15</td>
-                                        <td>7,694 <small>SqFt.</td>
-                                        <td>2,629 <small>SqFt.</td>
+                                        <td>7,694 <small>SqFt.</small></td>
+                                        <td>2,629 <small>SqFt.</small></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -162,38 +211,38 @@
                                 <tbody>
                                     <tr>
                                         <td>Office 1&amp;2</td>
-                                        <td>2,361 <small>SqFt.</td>
-                                        <td>4,726 <small>SqFt.</td>
+                                        <td>2,361 <small>SqFt.</small></td>
+                                        <td>4,726 <small>SqFt.</small></td>
                                     </tr>
                                     <tr>
                                         <td>Office 3</td>
-                                        <td>1,807 <small>SqFt.</td>
+                                        <td>1,807 <small>SqFt.</small></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>Office 4</td>
-                                        <td>1,807 <small>SqFt.</td>
+                                        <td>1,807 <small>SqFt.</small></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>Office 5</td>
-                                        <td>1,807 <small>SqFt.</td>
+                                        <td>1,807 <small>SqFt.</small></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>Office 6</td>
-                                        <td>2,437 <small>SqFt.</td>
-                                        <td>910 <small>SqFt.</td>
+                                        <td>2,437 <small>SqFt.</small></td>
+                                        <td>910 <small>SqFt.</small></td>
                                     </tr>
                                     <tr>
                                         <td>Office 7-10</td>
-                                        <td>7,524 <small>SqFt.</td>
-                                        <td>2,050 <small>SqFt.</td>
+                                        <td>7,524 <small>SqFt.</small></td>
+                                        <td>2,050 <small>SqFt.</small></td>
                                     </tr>
                                     <tr>
                                         <td>Office 11-15</td>
-                                        <td>7,694 <small>SqFt.</td>
-                                        <td>2,629 <small>SqFt.</td>
+                                        <td>7,694 <small>SqFt.</small></td>
+                                        <td>2,629 <small>SqFt.</small></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -227,38 +276,38 @@
                                 <tbody>
                                     <tr>
                                         <td>Office 1&amp;2</td>
-                                        <td>2,361 <small>SqFt.</td>
-                                        <td>4,726 <small>SqFt.</td>
+                                        <td>2,361 <small>SqFt.</small></td>
+                                        <td>4,726 <small>SqFt.</small></td>
                                     </tr>
                                     <tr>
                                         <td>Office 3</td>
-                                        <td>1,807 <small>SqFt.</td>
+                                        <td>1,807 <small>SqFt.</small></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>Office 4</td>
-                                        <td>1,807 <small>SqFt.</td>
+                                        <td>1,807 <small>SqFt.</small></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>Office 5</td>
-                                        <td>1,807 <small>SqFt.</td>
+                                        <td>1,807 <small>SqFt.</small></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>Office 6</td>
-                                        <td>2,437 <small>SqFt.</td>
-                                        <td>910 <small>SqFt.</td>
+                                        <td>2,437 <small>SqFt.</small></td>
+                                        <td>910 <small>SqFt.</small></td>
                                     </tr>
                                     <tr>
                                         <td>Office 7-10</td>
-                                        <td>7,524 <small>SqFt.</td>
-                                        <td>2,050 <small>SqFt.</td>
+                                        <td>7,524 <small>SqFt.</small></td>
+                                        <td>2,050 <small>SqFt.</small></td>
                                     </tr>
                                     <tr>
                                         <td>Office 11-15</td>
-                                        <td>7,694 <small>SqFt.</td>
-                                        <td>2,629 <small>SqFt.</td>
+                                        <td>7,694 <small>SqFt.</small></td>
+                                        <td>2,629 <small>SqFt.</small></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -266,13 +315,13 @@
                     </div>
                 </div>
             </div>
--1        </div>
+        </div>
         <div class="content-tab-1" id="main-options-two" style="display:none;">
             <div class="columns is-gapless">
                 <div class="column is-two-thirds-desktop padding-right-20">
                     {# {% if homepage.teaser2_photo %} #}
                         <figure class="image padding-20">
-                            <img src="http://www.thecantilevers.com/thumbs/1000x1000r/vectors/floorplan-main-floor-1.svg">
+                            <img src="http://www.thecantilevers.com/thumbs/1000x1000r/vectors/groupings-first-floor/first-floor-grouping-2.svg">
                         </figure>
                     {# {% endif %} #}
                 </div>
@@ -290,55 +339,45 @@
                                 <tfoot>
                                     <tr>
                                         <th><strong>TOTAL OFFICE AREA<strong></th>
-                                        <th><strong>15,475 SqFt.<strong></th>
+                                        <th><strong>29,312 SqFt.<strong></th>
                                         <th></th>
                                     </tr>
                                     <tr>
                                         <th><small>Vertical Circulation</small></th>
-                                        <th><small>1,264 SqFt.</small></th>
+                                        <th><small>866 SqFt.</small></th>
                                         <th></th>
                                     </tr>
                                     <tr>
                                         <th><small>Common</small></th>
-                                        <th><small>4,944 SqFt.</small></th>
+                                        <th><small>1,612 SqFt.</small></th>
                                         <th></th>
                                     </tr>
                                 </tfoor>
                                 <tbody>
                                     <tr>
-                                        <td>Office 2&amp;2</td>
-                                        <td>2,361 <small>SqFt.</td>
-                                        <td>4,726 <small>SqFt.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Office 3</td>
-                                        <td>1,807 <small>SqFt.</td>
-                                        <td></td>
+                                        <td>Office 1-3</td>
+                                        <td>4,903 <small>SqFt.</small></td>
+                                        <td>476 <small>SqFt.</small></td>
                                     </tr>
                                     <tr>
                                         <td>Office 4</td>
-                                        <td>1,807 <small>SqFt.</td>
+                                        <td>1,807 <small>SqFt.</small></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>Office 5</td>
-                                        <td>1,807 <small>SqFt.</td>
+                                        <td>1,815 <small>SqFt.</small></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>Office 6</td>
-                                        <td>2,437 <small>SqFt.</td>
-                                        <td>910 <small>SqFt.</td>
+                                        <td>2,437 <small>SqFt.</small></td>
+                                        <td>910 <small>SqFt.</small></td>
                                     </tr>
                                     <tr>
-                                        <td>Office 7-10</td>
-                                        <td>7,524 <small>SqFt.</td>
-                                        <td>2,050 <small>SqFt.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Office 11-15</td>
-                                        <td>7,694 <small>SqFt.</td>
-                                        <td>2,629 <small>SqFt.</td>
+                                        <td>Office 7-15</td>
+                                        <td>18,350 <small>SqFt.</small></td>
+                                        <td>4,667 <small>SqFt.</small></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -355,55 +394,90 @@
                                 <tfoot>
                                     <tr>
                                         <th><strong>TOTAL OFFICE AREA<strong></th>
-                                        <th><strong>15,475 SqFt.<strong></th>
+                                        <th><strong>25,671 SqFt.<strong></th>
                                         <th></th>
                                     </tr>
                                     <tr>
                                         <th><small>Vertical Circulation</small></th>
-                                        <th><small>1,264 SqFt.</small></th>
+                                        <th><small>411 SqFt.</small></th>
                                         <th></th>
                                     </tr>
                                     <tr>
                                         <th><small>Common</small></th>
-                                        <th><small>4,944 SqFt.</small></th>
+                                        <th><small>5,636 SqFt.</small></th>
                                         <th></th>
                                     </tr>
                                 </tfoor>
                                 <tbody>
                                     <tr>
                                         <td>Office 1&amp;2</td>
-                                        <td>2,361 <small>SqFt.</td>
-                                        <td>4,726 <small>SqFt.</td>
+                                        <td>2,391 <small>SqFt.</small></td>
+                                        <td>467 <small>SqFt.</small></td>
                                     </tr>
                                     <tr>
                                         <td>Office 3</td>
-                                        <td>1,807 <small>SqFt.</td>
+                                        <td>2,034 <small>SqFt.</small></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>Office 4</td>
-                                        <td>1,807 <small>SqFt.</td>
+                                        <td>2,034 <small>SqFt.</small></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>Office 5</td>
-                                        <td>1,807 <small>SqFt.</td>
+                                        <td>2,034 <small>SqFt.</small></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>Office 6</td>
-                                        <td>2,437 <small>SqFt.</td>
-                                        <td>910 <small>SqFt.</td>
+                                        <td>2,437 <small>SqFt.</small></td>
+                                        <td>910 <small>SqFt.</small></td>
                                     </tr>
                                     <tr>
-                                        <td>Office 7-10</td>
-                                        <td>7,524 <small>SqFt.</td>
-                                        <td>2,050 <small>SqFt.</td>
+                                        <td>Office 7</td>
+                                        <td>1,399 <small>SqFt.</small></td>
+                                        <td>539 <small>SqFt.</small></td>
                                     </tr>
                                     <tr>
-                                        <td>Office 11-15</td>
-                                        <td>7,694 <small>SqFt.</td>
-                                        <td>2,629 <small>SqFt.</td>
+                                        <td>Office 8</td>
+                                        <td>1,810 <small>SqFt.</small></td>
+                                        <td>514 <small>SqFt.</small></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 9</td>
+                                        <td>2,036 <small>SqFt.</small></td>
+                                        <td>506 <small>SqFt.</small></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 10</td>
+                                        <td>2,811 <small>SqFt.</small></td>
+                                        <td>498 <small>SqFt.</small></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 11</td>
+                                        <td>1,099 <small>SqFt.</small></td>
+                                        <td>182 <small>SqFt.</small></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 12</td>
+                                        <td>1,098 <small>SqFt.</small></td>
+                                        <td>182 <small>SqFt.</small></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 13</td>
+                                        <td>1,514 <small>SqFt.</small></td>
+                                        <td>182 <small>SqFt.</small></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 14</td>
+                                        <td>1,191 <small>SqFt.</small></td>
+                                        <td>1,312 <small>SqFt.</small></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Office 15</td>
+                                        <td>1,773 <small>SqFt.</small></td>
+                                        <td>780 <small>SqFt.</small></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -437,38 +511,38 @@
                                 <tbody>
                                     <tr>
                                         <td>Office 1&amp;2</td>
-                                        <td>2,361 <small>SqFt.</td>
-                                        <td>4,726 <small>SqFt.</td>
+                                        <td>2,361 <small>SqFt.</small></td>
+                                        <td>4,726 <small>SqFt.</small></td>
                                     </tr>
                                     <tr>
                                         <td>Office 3</td>
-                                        <td>1,807 <small>SqFt.</td>
+                                        <td>1,807 <small>SqFt.</small></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>Office 4</td>
-                                        <td>1,807 <small>SqFt.</td>
+                                        <td>1,807 <small>SqFt.</small></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>Office 5</td>
-                                        <td>1,807 <small>SqFt.</td>
+                                        <td>1,807 <small>SqFt.</small></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>Office 6</td>
-                                        <td>2,437 <small>SqFt.</td>
-                                        <td>910 <small>SqFt.</td>
+                                        <td>2,437 <small>SqFt.</small></td>
+                                        <td>910 <small>SqFt.</small></td>
                                     </tr>
                                     <tr>
                                         <td>Office 7-10</td>
-                                        <td>7,524 <small>SqFt.</td>
-                                        <td>2,050 <small>SqFt.</td>
+                                        <td>7,524 <small>SqFt.</small></td>
+                                        <td>2,050 <small>SqFt.</small></td>
                                     </tr>
                                     <tr>
                                         <td>Office 11-15</td>
-                                        <td>7,694 <small>SqFt.</td>
-                                        <td>2,629 <small>SqFt.</td>
+                                        <td>7,694 <small>SqFt.</small></td>
+                                        <td>2,629 <small>SqFt.</small></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -482,7 +556,7 @@
                 <div class="column is-two-thirds-desktop padding-right-20">
                     {# {% if homepage.teaser2_photo %} #}
                         <figure class="image padding-20">
-                            <img src="http://www.thecantilevers.com/thumbs/1000x1000r/vectors/floorplan-main-floor-1.svg">
+                            <img src="http://www.thecantilevers.com/thumbs/1000x1000r/vectors/groupings-first-floor/first-floor-grouping-3.svg">
                         </figure>
                     {# {% endif %} #}
                 </div>
@@ -500,185 +574,90 @@
                                 <tfoot>
                                     <tr>
                                         <th><strong>TOTAL OFFICE AREA<strong></th>
-                                        <th><strong>15,475 SqFt.<strong></th>
+                                        <th><strong>25,671 SqFt.<strong></th>
                                         <th></th>
                                     </tr>
                                     <tr>
                                         <th><small>Vertical Circulation</small></th>
-                                        <th><small>1,264 SqFt.</small></th>
+                                        <th><small>411 SqFt.</small></th>
                                         <th></th>
                                     </tr>
                                     <tr>
                                         <th><small>Common</small></th>
-                                        <th><small>4,944 SqFt.</small></th>
-                                        <th></th>
-                                    </tr>
-                                </tfoor>
-                                <tbody>
-                                    <tr>
-                                        <td>Office 3&amp;2</td>
-                                        <td>2,361 <small>SqFt.</td>
-                                        <td>4,726 <small>SqFt.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Office 3</td>
-                                        <td>1,807 <small>SqFt.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Office 4</td>
-                                        <td>1,807 <small>SqFt.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Office 5</td>
-                                        <td>1,807 <small>SqFt.</td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Office 6</td>
-                                        <td>2,437 <small>SqFt.</td>
-                                        <td>910 <small>SqFt.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Office 7-10</td>
-                                        <td>7,524 <small>SqFt.</td>
-                                        <td>2,050 <small>SqFt.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Office 11-15</td>
-                                        <td>7,694 <small>SqFt.</td>
-                                        <td>2,629 <small>SqFt.</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div id="main-stats-two" style="display:none;">
-                            <table class="table is-fullwidth">
-                                <thead>
-                                    <tr>
-                                        <th>LOCATION</th>
-                                        <th>AREA</th>
-                                        <th>PATIO</th>
-                                    </tr>
-                                </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th><strong>TOTAL OFFICE AREA<strong></th>
-                                        <th><strong>15,475 SqFt.<strong></th>
-                                        <th></th>
-                                    </tr>
-                                    <tr>
-                                        <th><small>Vertical Circulation</small></th>
-                                        <th><small>1,264 SqFt.</small></th>
-                                        <th></th>
-                                    </tr>
-                                    <tr>
-                                        <th><small>Common</small></th>
-                                        <th><small>4,944 SqFt.</small></th>
+                                        <th><small>5,636 SqFt.</small></th>
                                         <th></th>
                                     </tr>
                                 </tfoor>
                                 <tbody>
                                     <tr>
                                         <td>Office 1&amp;2</td>
-                                        <td>2,361 <small>SqFt.</td>
-                                        <td>4,726 <small>SqFt.</td>
+                                        <td>2,391 <small>SqFt.</small></td>
+                                        <td>467 <small>SqFt.</small></td>
                                     </tr>
                                     <tr>
                                         <td>Office 3</td>
-                                        <td>1,807 <small>SqFt.</td>
+                                        <td>2,034 <small>SqFt.</small></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>Office 4</td>
-                                        <td>1,807 <small>SqFt.</td>
+                                        <td>2,034 <small>SqFt.</small></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>Office 5</td>
-                                        <td>1,807 <small>SqFt.</td>
+                                        <td>2,034 <small>SqFt.</small></td>
                                         <td></td>
                                     </tr>
                                     <tr>
                                         <td>Office 6</td>
-                                        <td>2,437 <small>SqFt.</td>
-                                        <td>910 <small>SqFt.</td>
+                                        <td>2,437 <small>SqFt.</small></td>
+                                        <td>910 <small>SqFt.</small></td>
                                     </tr>
                                     <tr>
-                                        <td>Office 7-10</td>
-                                        <td>7,524 <small>SqFt.</td>
-                                        <td>2,050 <small>SqFt.</td>
+                                        <td>Office 7</td>
+                                        <td>1,399 <small>SqFt.</small></td>
+                                        <td>539 <small>SqFt.</small></td>
                                     </tr>
                                     <tr>
-                                        <td>Office 11-15</td>
-                                        <td>7,694 <small>SqFt.</td>
-                                        <td>2,629 <small>SqFt.</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div id="main-stats-three" style="display:none;">
-                            <table class="table is-fullwidth">
-                                <thead>
-                                    <tr>
-                                        <th>LOCATION</th>
-                                        <th>AREA</th>
-                                        <th>PATIO</th>
-                                    </tr>
-                                </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th><strong>TOTAL OFFICE AREA<strong></th>
-                                        <th><strong>15,475 SqFt.<strong></th>
-                                        <th></th>
+                                        <td>Office 8</td>
+                                        <td>1,810 <small>SqFt.</small></td>
+                                        <td>514 <small>SqFt.</small></td>
                                     </tr>
                                     <tr>
-                                        <th><small>Vertical Circulation</small></th>
-                                        <th><small>1,264 SqFt.</small></th>
-                                        <th></th>
+                                        <td>Office 9</td>
+                                        <td>2,036 <small>SqFt.</small></td>
+                                        <td>506 <small>SqFt.</small></td>
                                     </tr>
                                     <tr>
-                                        <th><small>Common</small></th>
-                                        <th><small>4,944 SqFt.</small></th>
-                                        <th></th>
-                                    </tr>
-                                </tfoor>
-                                <tbody>
-                                    <tr>
-                                        <td>Office 1&amp;2</td>
-                                        <td>2,361 <small>SqFt.</td>
-                                        <td>4,726 <small>SqFt.</td>
+                                        <td>Office 10</td>
+                                        <td>2,811 <small>SqFt.</small></td>
+                                        <td>498 <small>SqFt.</small></td>
                                     </tr>
                                     <tr>
-                                        <td>Office 3</td>
-                                        <td>1,807 <small>SqFt.</td>
-                                        <td></td>
+                                        <td>Office 11</td>
+                                        <td>1,099 <small>SqFt.</small></td>
+                                        <td>182 <small>SqFt.</small></td>
                                     </tr>
                                     <tr>
-                                        <td>Office 4</td>
-                                        <td>1,807 <small>SqFt.</td>
-                                        <td></td>
+                                        <td>Office 12</td>
+                                        <td>1,098 <small>SqFt.</small></td>
+                                        <td>182 <small>SqFt.</small></td>
                                     </tr>
                                     <tr>
-                                        <td>Office 5</td>
-                                        <td>1,807 <small>SqFt.</td>
-                                        <td></td>
+                                        <td>Office 13</td>
+                                        <td>1,514 <small>SqFt.</small></td>
+                                        <td>182 <small>SqFt.</small></td>
                                     </tr>
                                     <tr>
-                                        <td>Office 6</td>
-                                        <td>2,437 <small>SqFt.</td>
-                                        <td>910 <small>SqFt.</td>
+                                        <td>Office 14</td>
+                                        <td>1,191 <small>SqFt.</small></td>
+                                        <td>1,312 <small>SqFt.</small></td>
                                     </tr>
                                     <tr>
-                                        <td>Office 7-10</td>
-                                        <td>7,524 <small>SqFt.</td>
-                                        <td>2,050 <small>SqFt.</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Office 11-15</td>
-                                        <td>7,694 <small>SqFt.</td>
-                                        <td>2,629 <small>SqFt.</td>
+                                        <td>Office 15</td>
+                                        <td>1,773 <small>SqFt.</small></td>
+                                        <td>780 <small>SqFt.</small></td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -793,7 +772,7 @@
                 <div class="column is-two-thirds-desktop padding-right-20">
                     {# {% if homepage.teaser2_photo %} #}
                     <figure class="image padding-20">
-                        <img src="http://www.thecantilevers.com/thumbs/1000x1000r/vectors/floorplan-main-upper.svg">
+                        <img src="http://www.thecantilevers.com/thumbs/1000x1000r/vectors/groupings-second-floor/grouping-second-floor-1.svg">
                     </figure>
                     {# {% endif %} #}
                 </div>
@@ -814,30 +793,25 @@
                             <tfoot>
                                 <tr>
                                     <th><strong>TOTAL OFFICE AREA<strong></th>
-                                    <th><strong>31,99 SqFt.<strong></th>
+                                    <th><strong>34,721 SqFt.<strong></th>
                                     <th></th>
                                 </tr>
                                 <tr>
                                     <th><small>Vertical Circulation</small></th>
-                                    <th><small>1,151 SqFt.</small></th>
+                                    <th><small>457 SqFt.</small></th>
                                     <th></th>
                                 </tr>
                                 <tr>
                                     <th><small>Common</small></th>
-                                    <th><small>4,472 SqFt.</small></th>
+                                    <th><small>2,014 SqFt.</small></th>
                                     <th></th>
                                 </tr>
                             </tfoor>
                             <tbody>
                                 <tr>
-                                    <td>Office 16-19</td>
-                                    <td>7,848 <small>SqFt.</small></td>
-                                    <td>578 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 20-24</td>
-                                    <td>8,288 <small>SqFt.</small></td>
-                                    <td>1,193 <small>SqFt.</small></td>
+                                    <td>Office 16-14</td>
+                                    <td>18,613 <small>SqFt.</small></td>
+                                    <td>1,769 <small>SqFt.</small></td>
                                 </tr>
                                 <tr>
                                     <td>Office 25-27</td>
@@ -851,23 +825,18 @@
                                 </tr>
                                 <tr>
                                     <td>Office 29</td>
-                                    <td>1,978 <small>SqFt.</small></td>
+                                    <td>2,150 <small>SqFt.</small></td>
                                     <td>146 <small>SqFt.</small></td>
                                 </tr>
                                 <tr>
                                     <td>Office 30</td>
-                                    <td>1,968 <small>SqFt.</small></td>
+                                    <td>2,140 <small>SqFt.</small></td>
                                     <td>146 <small>SqFt.</small></td>
                                 </tr>
                                 <tr>
-                                    <td>Office 31</td>
-                                    <td>1,968 <small>SqFt.</small></td>
-                                    <td>146 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 32&amp;33</td>
-                                    <td>2,426 <small>SqFt.</small></td>
-                                    <td>670 <small>SqFt.</small></td>
+                                    <td>Office 31-33</td>
+                                    <td>5,095 <small>SqFt.</small></td>
+                                    <td>814 <small>SqFt.</small></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -876,7 +845,7 @@
                 <div class="column is-two-thirds-desktop padding-right-20">
                     {# {% if homepage.teaser2_photo %} #}
                     <figure class="image padding-20">
-                        <img src="http://www.thecantilevers.com/thumbs/1000x1000r/vectors/floorplan-main-upper.svg">
+                        <img src="http://www.thecantilevers.com/thumbs/1000x1000r/vectors/groupings-second-floor/grouping-second-floor-2.svg">
                     </figure>
                     {# {% endif %} #}
                 </div>
@@ -897,30 +866,60 @@
                             <tfoot>
                                 <tr>
                                     <th><strong>TOTAL OFFICE AREA<strong></th>
-                                    <th><strong>31,99 SqFt.<strong></th>
+                                    <th><strong>30,594 SqFt.<strong></th>
                                     <th></th>
                                 </tr>
                                 <tr>
                                     <th><small>Vertical Circulation</small></th>
-                                    <th><small>1,151 SqFt.</small></th>
+                                    <th><small>636 SqFt.</small></th>
                                     <th></th>
                                 </tr>
                                 <tr>
                                     <th><small>Common</small></th>
-                                    <th><small>4,472 SqFt.</small></th>
+                                    <th><small>5,011 SqFt.</small></th>
                                     <th></th>
                                 </tr>
                             </tfoor>
                             <tbody>
                                 <tr>
-                                    <td>Office 16-19</td>
-                                    <td>7,848 <small>SqFt.</small></td>
-                                    <td>578 <small>SqFt.</small></td>
+                                    <td>Office 16</td>
+                                    <td>1,497 <small>SqFt.</small></td>
+                                    <td>146 <small>SqFt.</small></td>
                                 </tr>
                                 <tr>
-                                    <td>Office 20-24</td>
-                                    <td>8,288 <small>SqFt.</small></td>
-                                    <td>1,193 <small>SqFt.</small></td>
+                                    <td>Office 17</td>
+                                    <td>1,772 <small>SqFt.</small></td>
+                                    <td>146 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 18</td>
+                                    <td>2,139 <small>SqFt.</small></td>
+                                    <td>146 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 19</td>
+                                    <td>2,447 <small>SqFt.</small></td>
+                                    <td>146 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 20</td>
+                                    <td>1,324 <small>SqFt.</small></td>
+                                    <td>170 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 21</td>
+                                    <td>1,294 <small>SqFt.</small></td>
+                                    <td>146 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 22-23</td>
+                                    <td>3,075 <small>SqFt.</small></td>
+                                    <td>660 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 24</td>
+                                    <td>1,983 <small>SqFt.</small></td>
+                                    <td>223 <small>SqFt.</small></td>
                                 </tr>
                                 <tr>
                                     <td>Office 25-27</td>
@@ -948,7 +947,7 @@
                                     <td>146 <small>SqFt.</small></td>
                                 </tr>
                                 <tr>
-                                    <td>Office 32&amp;33</td>
+                                    <td>Office 32-33</td>
                                     <td>2,426 <small>SqFt.</small></td>
                                     <td>670 <small>SqFt.</small></td>
                                 </tr>
@@ -959,7 +958,7 @@
                 <div class="column is-two-thirds-desktop padding-right-20">
                     {# {% if homepage.teaser2_photo %} #}
                     <figure class="image padding-20">
-                        <img src="http://www.thecantilevers.com/thumbs/1000x1000r/vectors/floorplan-main-upper.svg">
+                        <img src="http://www.thecantilevers.com/thumbs/1000x1000r/vectors/groupings-second-floor/grouping-second-floor-3.svg">
                     </figure>
                     {# {% endif %} #}
                 </div>
@@ -1035,52 +1034,6 @@
         </div>
     </section>
 
-
-    {# Floor Plans #}
-    {# <section class="section margin-top-70">
-        <h2 class="title has-text-centered">Floorplans</h2>
-        <div class="container">
-            <div class="columns is-vertical-center">
-                <div class="column is-two-thirds">
-                    <div id="floorMap">
-                        {% set planCount = 1 %}
-                        {% for plan in plan.floorplan %}
-                            <a class="pins" id="pin-{{planCount}}" data-target="plan-{{planCount}}" href="#">{{planCount}}</a>
-                            {% set planCount = planCount + 1 %}
-                        {% endfor %}
-                        {% set masterPlanImage = plan.masterplan.file|default(plan.masterplan) %}
-                        <img src="{{ asset(masterPlanImage, 'files') }}" class="image"/>
-                    </div>
-                </div>
-                <div class="column is-relative">
-                    <img src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/upper-floor.png" id="defaultPlan" width="512px"/>
-                    {% set count = 1 %}
-                    {% for plan in plan.floorplan %}
-                        <div id="plan-{{ count }}" class="unit-plans">
-                            <div class="columns is-vertical-center is-variable is-0">
-                                <div class="column">
-                                    {% set planimage = plan.image.file|default(plan.image) %}
-                                    <figure class="image">
-                                        <img src="{{ asset(planimage, 'files') }}">
-                                    </figure>
-                                </div>
-                            </div>
-                            <div class="columns is-vertical-center is-variable is-0">
-                                <div class="column">
-                                    <div class="margin-left-20">
-                                        <h2 class="is-large margin-bottom-20 is-size-3">{{ plan.name }}</h2>
-                                        {{ plan.description|raw }}
-                                        <a class="button margin-top-40" href="#popup-plan-{{ count }}">View Grouping Options</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {% set count = count + 1 %}
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
-    </section> #}
 
     {# Image Grid 4x4 #}
     {# <section class="section">

@@ -95,98 +95,106 @@
                 color: #fff;
                 border-radius: 50%;
                 z-index: 100;
-                width: 20px;
-                height: 20px;
-                line-height: 20px;
-                font-size: 0.6em;
+                width: 25px;
+                height: 25px;
+                line-height: 24px;
+                font-size: 0.9em;
                 font-weight: 600;
                 text-align: center;
                 &.active,
                 &:hover {
                     background: $link;
                 }
+                @include tablet {}
+                @include mobile {}
             }
-            #pin-1 {
+            #pin-15 {
+                top: 65%;
+                left: 37%;
+                @include tablet {}
+                @include mobile {}
+            }
+            #pin-14 {
                 top: 75%;
                 left: 50%;
                 @include tablet {}
                 @include mobile {}
             }
-            #pin-2 {
+            #pin-13 {
                 top: 82%;
                 left: 46%;
                 @include tablet {}
                 @include mobile {}
             }
-            #pin-3 {
+            #pin-12 {
                 top: 76%;
                 left: 37%;
                 @include tablet {}
                 @include mobile {}
             }
-            #pin-4 {
+            #pin-11 {
                 top: 71%;
                 left: 30%;
                 @include tablet {}
                 @include mobile {}
             }
-            #pin-5 {
+            #pin-10 {
                 top: 65%;
                 left: 19%;
                 @include tablet {}
                 @include mobile {}
             }
-            #pin-6 {
+            #pin-9 {
                 top: 54%;
                 left: 21%;
                 @include tablet {}
                 @include mobile {}
             }
-            #pin-7 {
+            #pin-8 {
                 top: 45%;
                 left: 23%;
                 @include tablet {}
                 @include mobile {}
             }
-            #pin-8 {
+            #pin-7 {
                 top: 36%;
                 left: 26%;
                 @include tablet {}
                 @include mobile {}
             }
-            #pin-9 {
+            #pin-6 {
                 top: 19%;
                 left: 42%;
                 @include tablet {}
                 @include mobile {}
             }
-            #pin-10 {
+            #pin-5 {
                 top: 21%;
                 left: 57%;
                 @include tablet {}
                 @include mobile {}
             }
-            #pin-11 {
+            #pin-4 {
                 top: 21%;
                 left: 66%;
                 @include tablet {}
                 @include mobile {}
             }
-            #pin-12 {
+            #pin-3 {
                 top: 21%;
                 left: 75%;
                 @include tablet {}
                 @include mobile {}
             }
-            #pin-13 {
+            #pin-2 {
                 top: 17%;
                 left: 86%;
                 @include tablet {}
                 @include mobile {}
             }
-            #pin-14 {
-                top: 76%;
-                left: 37%;
+            #pin-1 {
+                top: 25%;
+                left: 86%;
                 @include tablet {}
                 @include mobile {}
             }
