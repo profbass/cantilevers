@@ -28,11 +28,18 @@
         </section>
     {% endif %} #}
 
-{# Floor Plans #}
-<section class="section margin-top-70">
+    {# Floor Plans #}
+    <section class="section margin-top-70">
         <h2 class="title has-text-centered">Floorplans</h2>
         <div class="container">
-            <div class="columns is-vcentered">
+            {% if plan.content %}
+            <div class="columns is-centered">
+                <div class="column is-two-thirds">
+                    {{ plan.content|raw }}
+                </div>
+            </div>
+            {% endif %}
+            <div class="columns is-vcentered margin-top-30">
                 <div class="column is-two-thirds">
                     <div id="floorMap">
                         {% set planCount = 1 %}
@@ -41,7 +48,9 @@
                             {% set planCount = planCount + 1 %}
                         {% endfor %}
                         {% set masterPlanImage = plan.masterplan.file|default(plan.masterplan) %}
-                        <img src="{{ asset(masterPlanImage, 'files') }}" class="image"/>
+                        
+                        <img src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/floor-plan-first.png" class="image"/>
+                        {# <img src="{{ asset(masterPlanImage, 'files') }}" class="image"/> #}
                     </div>
                 </div>
                 <div class="column">
@@ -74,6 +83,8 @@
             </div>
         </div>
     </section>
+
+    
 
 
 {# Dream It #}
@@ -154,7 +165,7 @@
                                 <tfoot>
                                     <tr>
                                         <th><strong>TOTAL OFFICE AREA<strong></th>
-                                        <th><strong>15,475 SqFt.<strong></th>
+                                        <th><strong>25,475 SqFt.<strong></th>
                                         <th></th>
                                     </tr>
                                     <tr>
@@ -436,7 +447,7 @@
                                 <tbody>
                                     <tr>
                                         <td>Office 1&amp;2</td>
-                                        <td>2,391 <small>SqFt.</small></td>
+                                        <td>2,361 <small>SqFt.</small></td>
                                         <td>467 <small>SqFt.</small></td>
                                     </tr>
                                     <tr>
@@ -451,7 +462,7 @@
                                     </tr>
                                     <tr>
                                         <td>Office 5</td>
-                                        <td>2,034 <small>SqFt.</small></td>
+                                        <td>2,043 <small>SqFt.</small></td>
                                         <td></td>
                                     </tr>
                                     <tr>
@@ -551,7 +562,7 @@
                                     </tr>
                                     <tr>
                                         <td>Office 5</td>
-                                        <td>1,807 <small>SqFt.</small></td>
+                                        <td>1,815 <small>SqFt.</small></td>
                                         <td></td>
                                     </tr>
                                     <tr>
@@ -735,7 +746,7 @@
                             <tfoot>
                                 <tr>
                                     <th><strong>TOTAL OFFICE AREA<strong></th>
-                                    <th><strong>31,99 SqFt.<strong></th>
+                                    <th><strong>31,199 SqFt.<strong></th>
                                     <th></th>
                                 </tr>
                                 <tr>
@@ -834,7 +845,7 @@
                             </tfoor>
                             <tbody>
                                 <tr>
-                                    <td>Office 16-14</td>
+                                    <td>Office 16-24</td>
                                     <td>18,613 <small>SqFt.</small></td>
                                     <td>1,769 <small>SqFt.</small></td>
                                 </tr>
