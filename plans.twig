@@ -113,9 +113,11 @@
                             <div class="column"> 
                                 <h2 class="is-large has-text-centered margin-bottom-20 is-size-3">{{ plan.name }}</h2>
                                 {% set planimage = plan.image.file|default(plan.image) %}
-                                <figure class="image">
-                                    <img src="{{ asset(planimage, 'files') }}">
-                                </figure>
+                                {% if planimage %}
+                                    <figure class="image">
+                                        <img src="{{ asset(planimage, 'files') }}">
+                                    </figure>
+                               {% endif %} 
                             </div>
                         </div>
                         {# <div class="columns is-vertical-center is-variable is-0">
