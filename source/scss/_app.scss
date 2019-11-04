@@ -81,7 +81,8 @@
             }
         }
         
-        #floorMap {
+        #floorMapTop,
+        #floorMapBottom {
             position: relative;
             overflow: hidden;
             height: 100%;
@@ -119,6 +120,7 @@
                     line-height: 20px;
                 }
             }
+            // Top Pins
             #pin-15 {
                 top: 70%;
                 left: 42%;
@@ -206,6 +208,115 @@
             #pin-1 {
                 top: 19%;
                 left: 87%;
+                @include tablet {}
+                @include mobile {}
+            }
+            // bottom pins
+            #pin-16 {
+                top: 33%;
+                left: 34%;
+                @include tablet {}
+                @include mobile {}
+            }
+            #pin-17 {
+                top: 44%;
+                left: 32%;
+                @include tablet {}
+                @include mobile {}
+            }
+            #pin-18 {
+                top: 56%;
+                left: 30%;
+                @include tablet {}
+                @include mobile {}
+            }
+            #pin-19 {
+                top: 67%;
+                left: 29%;
+                @include tablet {}
+                @include mobile {}
+            }
+            #pin-20 {
+                top: 78%;
+                left: 33%;
+                @include tablet {}
+                @include mobile {}
+            }
+            #pin-21 {
+                top: 84%;
+                left: 40%;
+                @include tablet {}
+                @include mobile {}
+            }
+            #pin-22 {
+                top: 89%;
+                left: 47%;
+                @include tablet {}
+                @include mobile {}
+            }
+            #pin-23 {
+                top: 78%;
+                left: 53%;
+                @include tablet {}
+                @include mobile {}
+            }
+            #pin-24 {
+                top: 70%;
+                left: 46%;
+                @include tablet {}
+                @include mobile {}
+            }
+            #pin-25 {
+                top: 12%;
+                left: 27%;
+                @include tablet {}
+                @include mobile {}
+            }
+            #pin-26 {
+                top: 12%;
+                left: 44%;
+                @include tablet {}
+                @include mobile {}
+            }
+            #pin-27 {
+                top: 9%;
+                left: 51%;
+                @include tablet {}
+                @include mobile {}
+            }
+            #pin-28 {
+                top: 26%;
+                left: 51%;
+                @include tablet {}
+                @include mobile {}
+            }
+            #pin-29 {
+                top: 8%;
+                left: 60%;
+                @include tablet {}
+                @include mobile {}
+            }
+            #pin-30 {
+                top: 8%;
+                left: 69%;
+                @include tablet {}
+                @include mobile {}
+            }
+            #pin-31 {
+                top: 8%;
+                left: 77%;
+                @include tablet {}
+                @include mobile {}
+            }
+            #pin-32 {
+                top: 16%;
+                left: 88%;
+                @include tablet {}
+                @include mobile {}
+            }
+            #pin-33 {
+                top: 8%;
+                left: 88%;
                 @include tablet {}
                 @include mobile {}
             }

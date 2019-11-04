@@ -148,22 +148,28 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Floorplan Map Hide and Show
-    var unitButton = $('.pins');
-    var currentPlan = 'defaultPlan';
-    var currentPin = '';
-    $.each(unitButton, function(el) {
-        var target = $(this).data('target');
-        var pin = $(this).attr('id');
-        $(this).on('click', function(e) {
-            e.preventDefault();
-            $('#' + currentPlan).fadeOut(function() {
-                $('#' + target).fadeIn();
-            });
-            $('#' + currentPin).removeClass('active');
-            $(this).addClass('active');
-            currentPin = pin;
-            currentPlan = target;
-        })
+    var floorPlan = $('.floorPlan');
+    $.each(floorPlan, function(el) {
+        var currentPin = '';
+        var id = $(this).attr("id");
+        var currentPlan = $(this).data('default');
+        var unitButton = $('#' + id + ' .pins');
+        console.log("sdklfjh");
+        $.each(unitButton, function(el) {
+            var target = $(this).data('target');
+            var pin = $(this).attr('id');
+
+            $(this).on('click', function(e) {
+                e.preventDefault();
+                $('#' + currentPlan).fadeOut(function() {
+                    $('#' + target).fadeIn();
+                });
+                $('#' + currentPin).removeClass('active');
+                $(this).addClass('active');
+                currentPin = pin;
+                currentPlan = target;
+            })
+        });
     });
 
     // tabs

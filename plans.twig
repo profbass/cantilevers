@@ -28,7 +28,7 @@
         </section>
     {% endif %} #}
 
-    {# Floor Plans #}
+    {# Floor Plans Top #}
     <section class="section margin-top-70">
         <h2 class="title has-text-centered">Floorplans</h2>
         <h4 class="has-text-centered margin-bottom-30">Mountainside &amp; The Flats</h4>
@@ -43,7 +43,7 @@
             {% endif %}
             <div class="columns is-vcentered margin-top-30">
                 <div class="column is-two-thirds">
-                    <div id="floorMap">
+                    <div id="floorMapTop" class="floorPlan" data-default="defaultPlan">
                         {% set planCount = 1 %}
                         {% for plan in plan.floorplan %}
                             <a class="pins" id="pin-{{planCount}}" data-target="plan-{{planCount}}" href="#">{{planCount}}</a>
@@ -85,6 +85,56 @@
             </div>
         </div>
     </section>
+<section class="section"><hr/></section>
+{# Floor Plans Bottom #}
+<section class="section margin-top-70">
+    <div class="container">
+        <div class="columns is-vcentered margin-top-30">
+            <div class="column is-two-thirds">
+                <div id="floorMapBottom" class="floorPlan" data-default="defaultPlan2">
+                    {% set planCount = 16 %}
+                    {% for plan in plan.floorplan2 %}
+                        <a class="pins" id="pin-{{planCount}}" data-target="plan-{{planCount}}" href="#">{{planCount}}</a>
+                        {% set planCount = planCount + 1 %}
+                    {% endfor %}
+                    {% set masterPlanImage = plan.masterplan.file|default(plan.masterplan) %}
+
+                    <img
+                    src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/floor-plan-secoond.png" class="image"/>
+                {# <img src="{{ asset(masterPlanImage, 'files') }}" class="image"/> #}
+                </div>
+            </div>
+            <div class="column">
+                <img src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/upper-floor.png" id="defaultPlan2" width="512px"/>
+                {% set count = 16 %}
+                {% for plan in plan.floorplan2 %}
+                    <div id="plan-{{ count }}" class="unit-plans">
+                        <div class="columns is-variable is-0">
+                            <div class="column">
+                                <h2 class="is-large has-text-centered margin-bottom-20 is-size-3">{{ plan.name }}</h2>
+                                {% set planimage = plan.image.file|default(plan.image) %}
+                                <figure class="image">
+                                    <img src="{{ asset(planimage, 'files') }}">
+                                </figure>
+                            </div>
+                        </div>
+                        {# <div class="columns is-vertical-center is-variable is-0">
+                            <div class="column">
+                                <div class="margin-left-20">
+                                    <h2 class="is-large margin-bottom-20 is-size-3">{{ plan.name }}</h2>
+                                    {{ plan.description|raw }}
+                                    <a class="button margin-top-40" href="#popup-plan-{{ count }}">View Grouping Options</a>
+                                </div>
+                            </div>
+                        </div> #}
+                    </div>
+                    {% set count = count + 1 %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
 
     
 
@@ -135,7 +185,7 @@
         {% endif %}
         {# Tabs #}
         <div class="container">
-            <div class="tabs is-fullwidth is-medium">
+            <div id="first-floor-tabs" class="tabs is-fullwidth is-medium">
                 <ul>
                     <li class="tab is-active" data-targets="content-tab-1" data-target="main-options-one"><a >Groupings 1</a></li>
                     <li class="tab" data-targets="content-tab-1" data-target="main-options-two"><a>Grouping 2</a></li>
@@ -149,7 +199,7 @@
                 <div class="column is-two-thirds-desktop padding-right-20">
                     {# {% if homepage.teaser2_photo %} #}
                         <figure class="image padding-20">
-                            <img src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/groupings-first-floor/first-floor-grouping-1.jpg">
+                            <img src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/groupings/first-floor-grouping-1.jpg">
                         </figure>
                     {# {% endif %} #}
                 </div>
@@ -229,7 +279,7 @@
                 <div class="column is-two-thirds-desktop padding-right-20">
                     {# {% if homepage.teaser2_photo %} #}
                         <figure class="image padding-20">
-                            <img src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/groupings-first-floor/first-floor-grouping-2.jpg">
+                            <img src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/groupings/first-floor-grouping-2.jpg">
                         </figure>
                     {# {% endif %} #}
                 </div>
@@ -299,7 +349,7 @@
                 <div class="column is-two-thirds-desktop padding-right-20">
                     {# {% if homepage.teaser2_photo %} #}
                         <figure class="image padding-20">
-                            <img src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/groupings-first-floor/first-floor-grouping-3.jpg">
+                            <img src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/groupings/first-floor-grouping-3.jpg">
                         </figure>
                     {# {% endif %} #}
                 </div>
@@ -515,7 +565,7 @@
                 <div class="column is-two-thirds-desktop padding-right-20">
                     {# {% if homepage.teaser2_photo %} #}
                     <figure class="image padding-20">
-                        <img src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/groupings-second-floor/grouping-second-floor-1.jpg">
+                        <img src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/groupings/grouping-second-floor-1.jpg">
                     </figure>
                     {# {% endif %} #}
                 </div>
@@ -588,7 +638,7 @@
                 <div class="column is-two-thirds-desktop padding-right-20">
                     {# {% if homepage.teaser2_photo %} #}
                     <figure class="image padding-20">
-                        <img src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/groupings-second-floor/grouping-second-floor-2.jpg">
+                        <img src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/groupings/grouping-second-floor-2.jpg">
                     </figure>
                     {# {% endif %} #}
                 </div>
@@ -701,7 +751,7 @@
                 <div class="column is-two-thirds-desktop padding-right-20">
                     {# {% if homepage.teaser2_photo %} #}
                     <figure class="image padding-20">
-                        <img src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/groupings-second-floor/grouping-second-floor-3.jpg">
+                        <img src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/groupings/grouping-second-floor-3.jpg">
                     </figure>
                     {# {% endif %} #}
                 </div>
