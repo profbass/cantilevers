@@ -115,9 +115,9 @@
                             <div class="column"> 
                                 <h2 class="is-large has-text-centered margin-bottom-20 is-size-3">{{ plan.name }}</h2>
                                 {%- if plan.image|default %}
-                                    {% set planimage = plan.image.file|default(plan.image) %}
+                                    {% set planimage2 = plan.image.file|default(plan.image) %}
                                     <figure class="image">
-                                        <img src="{{ asset(planimage, 'files') }}">
+                                        <img src="{{ asset(planimage2, 'files') }}">
                                     </figure>
                                {% endif %} 
                             </div>
