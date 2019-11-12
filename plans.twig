@@ -41,6 +41,13 @@
                 </div>
             </div>
             {% endif %}
+        </div>
+        <div class="columns margin-top-50">
+            <div class="column is-one-third padding-30 background-dark">
+                <h1 class="is-size-3 has-text-right">Upper Flooor</h1>
+            </div>
+        </div>
+        <div class="container">
             <div class="columns is-vcentered margin-top-30">
                 <div class="column is-two-thirds">
                     <div id="floorMapTop" class="floorPlan" data-default="defaultPlan">
@@ -90,6 +97,11 @@
 <section class="section"><hr/></section>
 {# Floor Plans Bottom #}
 <section class="section margin-top-70">
+    <div class="columns margin-top-50">
+        <div class="column is-one-third padding-30 background-dark">
+            <h1 class="is-size-3 has-text-right">Lower Floor</h1>
+        </div>
+    </div>
     <div class="container">
         <div class="columns is-vcentered margin-top-30">
             <div class="column is-two-thirds">
@@ -117,7 +129,7 @@
                                 {%- if plan.image|default %}
                                     {% set planimage2 = plan.image.file|default(plan.image) %}
                                     <figure class="image">
-                                        <img src="{{ asset(planimage2, 'files') }}">
+                                    <img src="{{ asset(planimage2, 'files') }}">
                                     </figure>
                                {% endif %} 
                             </div>
@@ -169,19 +181,14 @@
 
 
 
-    {# Floor One #}
+    {# Floor Plan Options #}
     <section class="margin-top-50">
-        <div class="columns margin-top-50">
-            <div class="column is-one-third padding-30 background-dark">
-                <h1 class="is-size-3 has-text-right">FLOOR ONE</h1>
-            </div>
-        </div>
         {% if plan.content %}
             <div class="container section">
                 <div class="columns is-centered">
-                    <div class="column is-two-thirds">
-                        <h2 class="title">Lower Floor</h2>
-                        <h4 class="margin-bottom-30">Grouping Option</h4>
+                    <div class="column is-two-thirds">      
+                        <h2 class="title has-text-centered">Option Groups</h2>
+                        <h4 class="has-text-centered margin-bottom-30">Floor Plan Option Groups</h4>
                         {{ plan.content|raw }}
                     </div>
                 </div>
@@ -189,7 +196,7 @@
         {% endif %}
         {# Tabs #}
         <div class="container">
-            <div id="first-floor-tabs" class="tabs is-fullwidth is-medium">
+            <div id="first-floor-tabs" class="tabs is-fullwidth is-medium is-toggle">
                 <ul>
                     <li class="tab is-active" data-targets="content-tab-1" data-target="main-options-one"><a >Groupings 1</a></li>
                     <li class="tab" data-targets="content-tab-1" data-target="main-options-two"><a>Grouping 2</a></li>
@@ -199,6 +206,11 @@
         </div>
         {# Tabs Body #}
         <div class="content-tab-1" id="main-options-one">
+            <div class="columns margin-top-50">
+                <div class="column is-one-third padding-30 background-dark">
+                    <h1 class="is-size-3 has-text-right">1-Lower Floor</h1>
+                </div>
+            </div>
             <div class="columns is-gapless">
                 <div class="column is-two-thirds-desktop padding-right-20">
                     {# {% if homepage.teaser2_photo %} #}
@@ -277,8 +289,100 @@
                     </div>
                 </div>
             </div>
+            <div class="container"><hr/></div>
+            <div class="columns margin-top-50">
+                <div class="column is-one-third padding-30 background-dark">
+                    <h1 class="is-size-3 has-text-right">1-Upper Floor</h1>
+                </div>
+            </div>
+            <div class="columns is-gapless">
+                <div class="column is-vertical-center ">
+                    <div class="padding-left-60 padding-right-60 padding-bottom-20  padding-top-20">
+                        <table class="table is-fullwidth">
+                            <thead>
+                                <tr>
+                                    <th>LOCATION</th>
+                                    <th>AREA</th>
+                                    <th>PATIO</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th><strong>TOTAL OFFICE AREA<strong></th>
+                                    <th><strong>31,199 SqFt.<strong></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th><small>Vertical Circulation</small></th>
+                                    <th><small>1,151 SqFt.</small></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th><small>Common</small></th>
+                                    <th><small>4,472 SqFt.</small></th>
+                                    <th></th>
+                                </tr>
+                            </tfoor>
+                            <tbody>
+                                <tr>
+                                    <td>Office 16-19</td>
+                                    <td>7,848 <small>SqFt.</small></td>
+                                    <td>578 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 20-24</td>
+                                    <td>8,288 <small>SqFt.</small></td>
+                                    <td>1,193 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 25-27</td>
+                                    <td>5,188 <small>SqFt.</small></td>
+                                    <td>340 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 28</td>
+                                    <td>1,534 <small>SqFt.</small></td>
+                                    <td>146 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 29</td>
+                                    <td>1,978 <small>SqFt.</small></td>
+                                    <td>146 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 30</td>
+                                    <td>1,968 <small>SqFt.</small></td>
+                                    <td>146 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 31</td>
+                                    <td>1,968 <small>SqFt.</small></td>
+                                    <td>146 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 32&amp;33</td>
+                                    <td>2,426 <small>SqFt.</small></td>
+                                    <td>670 <small>SqFt.</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="column is-two-thirds-desktop padding-right-20">
+                    {# {% if homepage.teaser2_photo %} #}
+                    <figure class="image padding-20">
+                        <img src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/groupings/grouping-second-floor-1.jpg">
+                    </figure>
+                    {# {% endif %} #}
+                </div>
+            </div>
         </div>
         <div class="content-tab-1" id="main-options-two" style="display:none;">
+            <div class="columns margin-top-50">
+                <div class="column is-one-third padding-30 background-dark">
+                    <h1 class="is-size-3 has-text-right">2-Lower Floor</h1>
+                </div>
+            </div>
             <div class="columns is-gapless">
                 <div class="column is-two-thirds-desktop padding-right-20">
                     {# {% if homepage.teaser2_photo %} #}
@@ -347,8 +451,90 @@
                     </div>
                 </div>
             </div>
+            <div class="container"><hr/></div>
+            <div class="columns margin-top-50">
+                <div class="column is-one-third padding-30 background-dark">
+                    <h1 class="is-size-3 has-text-right">2-Upper Floor</h1>
+                </div>
+            </div>
+            <div class="columns is-gapless">
+                <div class="column is-vertical-center ">
+                    <div class="padding-left-60 padding-right-60 padding-bottom-20  padding-top-20">
+                        <table class="table is-fullwidth">
+                            <thead>
+                                <tr>
+                                    <th>LOCATION</th>
+                                    <th>AREA</th>
+                                    <th>PATIO</th>
+                                </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th><strong>TOTAL OFFICE AREA<strong></th>
+                                    <th><strong>34,721 SqFt.<strong></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th><small>Vertical Circulation</small></th>
+                                    <th><small>457 SqFt.</small></th>
+                                    <th></th>
+                                </tr>
+                                <tr>
+                                    <th><small>Common</small></th>
+                                    <th><small>2,014 SqFt.</small></th>
+                                    <th></th>
+                                </tr>
+                            </tfoor>
+                            <tbody>
+                                <tr>
+                                    <td>Office 16-24</td>
+                                    <td>18,613 <small>SqFt.</small></td>
+                                    <td>1,769 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 25-27</td>
+                                    <td>5,188 <small>SqFt.</small></td>
+                                    <td>340 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 28</td>
+                                    <td>1,534 <small>SqFt.</small></td>
+                                    <td>146 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 29</td>
+                                    <td>2,150 <small>SqFt.</small></td>
+                                    <td>146 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 30</td>
+                                    <td>2,140 <small>SqFt.</small></td>
+                                    <td>146 <small>SqFt.</small></td>
+                                </tr>
+                                <tr>
+                                    <td>Office 31-33</td>
+                                    <td>5,095 <small>SqFt.</small></td>
+                                    <td>814 <small>SqFt.</small></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="column is-two-thirds-desktop padding-right-20">
+                    {# {% if homepage.teaser2_photo %} #}
+                    <figure class="image padding-20">
+                        <img src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/groupings/grouping-second-floor-2.jpg">
+                    </figure>
+                    {# {% endif %} #}
+                </div>
+            </div>
         </div>
-        <div class="content-tab-1" id="main-options-three" style="display:none;">
+        <div class="content-tab-1" id="main-options-three" style="display:none;"> 
+            <div class="columns margin-top-50">
+                <div class="column is-one-third padding-30 background-dark">
+                    <h1 class="is-size-3 has-text-right">3-Lower Floor</h1>
+                </div>
+            </div>
             <div class="columns is-gapless">
                 <div class="column is-two-thirds-desktop padding-right-20">
                     {# {% if homepage.teaser2_photo %} #}
@@ -462,193 +648,12 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    {# Floor two #}
-    <section class="margin-top-70">
-        <div class="columns">
-            <div class="column is-one-third padding-30 background-dark">
-                <h1 class="is-size-3 has-text-right">FLOOR TWO</h1>
-            </div>
-        </div>
-        <div class="container section">
-            <div class="columns is-centered">
-                <div class="column is-two-thirds">
-                    <h2 class="title">Upper Floor</h2>
-                    <h4 class="margin-bottom-30">Grouping Option</h4>
-                    <p class="margin-bottom-30">When a grouping takes an entire end of the building (see Condos 11-15 and 20-24 as examples), then that owner would also acquire the public hallways as part of their square footage as there are no independent Condos that require public access anymore.</p>
-                </div>
-            </div>
-        </div>
-        {# Tabs #}
-        <div class="container">
-            <div class="tabs is-fullwidth is-medium">
-                <ul>
-                    <li class="tab is-active" data-target="upper-options-one"><a >Grouping 1</a></li>
-                    <li class="tab" data-target="upper-options-two"><a>Grouping 2</a></li>
-                    <li class="tab" data-target="upper-options-three"><a>Grouping 3</a></li>
-                </ul>
-            </div>
-        </div>
-        {# Tab Body #}
-        <div class="content-tab" id="upper-options-one">
-            <div class="columns is-gapless">
-                <div class="column is-vertical-center ">
-                    <div class="padding-left-60 padding-right-60 padding-bottom-20  padding-top-20">
-                        <table class="table is-fullwidth">
-                            <thead>
-                                <tr>
-                                    <th>LOCATION</th>
-                                    <th>AREA</th>
-                                    <th>PATIO</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th><strong>TOTAL OFFICE AREA<strong></th>
-                                    <th><strong>31,199 SqFt.<strong></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th><small>Vertical Circulation</small></th>
-                                    <th><small>1,151 SqFt.</small></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th><small>Common</small></th>
-                                    <th><small>4,472 SqFt.</small></th>
-                                    <th></th>
-                                </tr>
-                            </tfoor>
-                            <tbody>
-                                <tr>
-                                    <td>Office 16-19</td>
-                                    <td>7,848 <small>SqFt.</small></td>
-                                    <td>578 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 20-24</td>
-                                    <td>8,288 <small>SqFt.</small></td>
-                                    <td>1,193 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 25-27</td>
-                                    <td>5,188 <small>SqFt.</small></td>
-                                    <td>340 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 28</td>
-                                    <td>1,534 <small>SqFt.</small></td>
-                                    <td>146 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 29</td>
-                                    <td>1,978 <small>SqFt.</small></td>
-                                    <td>146 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 30</td>
-                                    <td>1,968 <small>SqFt.</small></td>
-                                    <td>146 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 31</td>
-                                    <td>1,968 <small>SqFt.</small></td>
-                                    <td>146 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 32&amp;33</td>
-                                    <td>2,426 <small>SqFt.</small></td>
-                                    <td>670 <small>SqFt.</small></td>
-                                </tr>
-                            </tbody>
-                        </table>
+            <div class="container"><hr/></div>
+                <div class="columns margin-top-50">
+                    <div class="column is-one-third padding-30 background-dark">
+                        <h1 class="is-size-3 has-text-right">3-Upper Floor</h1>
                     </div>
                 </div>
-                <div class="column is-two-thirds-desktop padding-right-20">
-                    {# {% if homepage.teaser2_photo %} #}
-                    <figure class="image padding-20">
-                        <img src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/groupings/grouping-second-floor-1.jpg">
-                    </figure>
-                    {# {% endif %} #}
-                </div>
-            </div>
-        </div>
-        <div class="content-tab" id="upper-options-two" style="display:none;">
-            <div class="columns is-gapless">
-                <div class="column is-vertical-center ">
-                    <div class="padding-left-60 padding-right-60 padding-bottom-20  padding-top-20">
-                        <table class="table is-fullwidth">
-                            <thead>
-                                <tr>
-                                    <th>LOCATION</th>
-                                    <th>AREA</th>
-                                    <th>PATIO</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th><strong>TOTAL OFFICE AREA<strong></th>
-                                    <th><strong>34,721 SqFt.<strong></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th><small>Vertical Circulation</small></th>
-                                    <th><small>457 SqFt.</small></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th><small>Common</small></th>
-                                    <th><small>2,014 SqFt.</small></th>
-                                    <th></th>
-                                </tr>
-                            </tfoor>
-                            <tbody>
-                                <tr>
-                                    <td>Office 16-24</td>
-                                    <td>18,613 <small>SqFt.</small></td>
-                                    <td>1,769 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 25-27</td>
-                                    <td>5,188 <small>SqFt.</small></td>
-                                    <td>340 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 28</td>
-                                    <td>1,534 <small>SqFt.</small></td>
-                                    <td>146 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 29</td>
-                                    <td>2,150 <small>SqFt.</small></td>
-                                    <td>146 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 30</td>
-                                    <td>2,140 <small>SqFt.</small></td>
-                                    <td>146 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 31-33</td>
-                                    <td>5,095 <small>SqFt.</small></td>
-                                    <td>814 <small>SqFt.</small></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="column is-two-thirds-desktop padding-right-20">
-                    {# {% if homepage.teaser2_photo %} #}
-                    <figure class="image padding-20">
-                        <img src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/groupings/grouping-second-floor-2.jpg">
-                    </figure>
-                    {# {% endif %} #}
-                </div>
-            </div>
-        </div>
-        <div class="content-tab" id="upper-options-three" style="display:none;">
             <div class="columns is-gapless">
                 <div class="column is-vertical-center ">
                     <div class="padding-left-60 padding-right-60 padding-bottom-20  padding-top-20">
@@ -761,8 +766,43 @@
                 </div>
             </div>
         </div>
-        
     </section>
+
+    {# Floor two #}
+    {# <section class="margin-top-70">
+        <div class="columns">
+            <div class="column is-one-third padding-30 background-dark">
+                <h1 class="is-size-3 has-text-right">FLOOR TWO</h1>
+            </div>
+        </div>
+        <div class="container section">
+            <div class="columns is-centered">
+                <div class="column is-two-thirds">
+                    <h2 class="title">Upper Floor</h2>
+                    <h4 class="margin-bottom-30">Grouping Option</h4>
+                    <p class="margin-bottom-30">When a grouping takes an entire end of the building (see Condos 11-15 and 20-24 as examples), then that owner would also acquire the public hallways as part of their square footage as there are no independent Condos that require public access anymore.</p>
+                </div>
+            </div>
+        </div>
+        Tabs
+        <div class="container">
+            <div class="tabs is-fullwidth is-medium">
+                <ul>
+                    <li class="tab is-active" data-target="upper-options-one"><a >Grouping 1</a></li>
+                    <li class="tab" data-target="upper-options-two"><a>Grouping 2</a></li>
+                    <li class="tab" data-target="upper-options-three"><a>Grouping 3</a></li>
+                </ul>
+            </div>
+        </div>
+        Tab Body
+        <div class="content-tab" id="upper-options-one">
+        </div>
+        <div class="content-tab" id="upper-options-two" style="display:none;">
+        </div>
+        <div class="content-tab" id="upper-options-three" style="display:none;">
+        </div>
+        
+    </section> #}
 
 
 
