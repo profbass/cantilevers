@@ -53,17 +53,25 @@
                     <div id="floorMapTop" class="floorPlan" data-default="defaultPlan">
                         {% set planCount = 1 %}
                         {% for plan in plan.floorplan %}
-                            <a class="pins" id="pin-{{planCount}}" data-target="plan-{{planCount}}" href="#">{{planCount}}</a>
+                            {% if planCount == 1 %}
+                                <a class="pins active" id="pin-{{planCount}}" data-target="plan-{{planCount}}" href="#">{{planCount}}</a>
+                            {% else %}
+                                <a class="pins" id="pin-{{planCount}}" data-target="plan-{{planCount}}" href="#">{{planCount}}</a>
+                            {% endif %}
                             {% set planCount = planCount + 1 %}
                         {% endfor %}
                         {% set masterPlanImage = plan.masterplan.file|default(plan.masterplan) %}
                         
-                        <img src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/floor-plan-first.png" class="image"/>
-                        {# <img src="{{ asset(masterPlanImage, 'files') }}" class="image"/> #}
+                        {# <img src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/floor-plan-first.png" class="image"/> #}
+                        <img src="{{ asset(masterPlanImage, 'files') }}" class="image"/>
                     </div>
                 </div>
                 <div class="column">
-                    <img src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/upper-floor.png" id="defaultPlan" width="512px"/>
+                    {% set planimageDefault = plan.floorplan[0].image.file|default(plan.floorplan[0]) %}
+                    <div id="defaultPlan">
+                        <h2 class="is-large has-text-centered margin-bottom-20 is-size-3">{{ plan.floorplan[0].name }}</h2>
+                        <img src="{{ asset(planimageDefault, 'files') }}" id="" width="512px"/>
+                    </div>
                     {% set count = 1 %}
                     {% for plan in plan.floorplan %}
                         <div id="plan-{{ count }}" class="unit-plans">
@@ -108,18 +116,22 @@
                 <div id="floorMapBottom" class="floorPlan" data-default="defaultPlan2">
                     {% set planCount = 16 %}
                     {% for plan in plan.floorplan2 %}
-                        <a class="pins" id="pin-{{planCount}}" data-target="plan-{{planCount}}" href="#">{{planCount}}</a>
-                        {% set planCount = planCount + 1 %}
+                        {% if planCount == 16 %}
+                            <a class="pins active" id="pin-{{planCount}}" data-target="plan-{{planCount}}" href="#">{{planCount}}</a>
+                        {% else %}
+                            <a class="pins" id="pin-{{planCount}}" data-target="plan-{{planCount}}" href="#">{{planCount}}</a>
+                        {% endif %}{% set planCount = planCount + 1 %}
                     {% endfor %}
-                    {% set masterPlanImage = plan.masterplan.file|default(plan.masterplan) %}
-
-                    <img
-                    src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/floor-plan-secoond.png" class="image"/>
-                {# <img src="{{ asset(masterPlanImage, 'files') }}" class="image"/> #}
+                    {% set masterPlanImageBottom = plan.masterplanbottom.file|default(plan.masterplanbottom) %}
+                    <img src="{{ asset(masterPlanImageBottom, 'files') }}" class="image"/>
                 </div>
             </div>
             <div class="column">
-                <img src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/upper-floor.png" id="defaultPlan2" width="512px"/>
+                <div id="defaultPlan2">
+                    <h2 class="is-large has-text-centered margin-bottom-20 is-size-3">{{ plan.floorplan2[0].name }}</h2>
+                    {% set planimage2Default = plan.floorplan2[0].image.file|default(plan.floorplan2[0]) %}
+                    <img src="{{ asset(planimage2Default, 'files') }}" width="512px"/>
+                </div>
                 {% set count = 16 %}
                 {% for plan in plan.floorplan2 %}
                     <div id="plan-{{ count }}" class="unit-plans">
@@ -198,31 +210,35 @@
         <div class="container">
             <div id="first-floor-tabs" class="tabs is-fullwidth is-medium is-toggle">
                 <ul>
-                    <li class="tab is-active" data-targets="content-tab-1" data-target="main-options-one"><a >Groupings 1</a></li>
-                    <li class="tab" data-targets="content-tab-1" data-target="main-options-two"><a>Grouping 2</a></li>
-                    <li class="tab" data-targets="content-tab-1" data-target="main-options-three"><a>Grouping 3</a></li>
-                </ul>
+                    <li class="tab is-active" data-targets="content-tab-0" data-target="main-options-1"><a >Groupings 1</a></li>
+                    <li class="tab" data-targets="content-tab-1" data-target="main-options-2"><a>Grouping 2</a></li>
+                    <li class="tab" data-targets="content-tab-2" data-target="main-options-3"><a>Grouping 3</a></li>
+                </ul> 
             </div>
         </div>
         {# Tabs Body #}
-        <div class="content-tab-1" id="main-options-one">
+        {% set groupCount = 1 %}
+        {% for key,group in plan.groupings %}
+        <div class="content-tab content-tab-{{key}}" id="main-options-{{groupCount}}"{% if groupCount > 1 %} style="display:none"{% endif %}>
             <div class="columns margin-top-50">
                 <div class="column is-one-third padding-30 background-dark">
-                    <h1 class="is-size-3 has-text-right">1-First Floor</h1>
+                    <h1 class="is-size-3 has-text-right">{{groupCount}}-First Floor</h1>
                 </div>
             </div>
             <div class="columns is-gapless">
                 <div class="column is-two-thirds-desktop padding-right-20">
-                    {# {% if homepage.teaser2_photo %} #}
-                        <figure class="image padding-20">
-                            <img src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/groupings/first-floor-grouping-1.jpg">
+                    {% if group.imagefloor1 %}
+                        {% set imageFloor = group.imagefloor1.file|default(group.imagefloor1) %}
+                        <figure class="image padding-390">
+                            <img src="{{ asset(imageFloor, 'files') }}">
                         </figure>
-                    {# {% endif %} #}
+                    {% endif %}
                 </div>
                 <div class="column is-vertical-center ">
                     <div class="padding-left-60 padding-right-60 padding-bottom-20  padding-top-20">
-                        <div id="main-stats-one">
-                            <table class="table is-fullwidth">
+                        <div id="main-stats-{{groupCount}}">
+                        {{grooup.descriptionfloor1|raw}}
+                            {# <table class="table is-fullwidth">
                                 <thead>
                                     <tr>
                                         <th>LOCATION</th>
@@ -284,7 +300,7 @@
                                         <td>2,629 <small>SqFt.</small></td>
                                     </tr>
                                 </tbody>
-                            </table>
+                            </table> #}
                         </div>
                     </div>
                 </div>
@@ -292,7 +308,7 @@
             <div class="container"><hr/></div>
             <div class="columns margin-top-50">
                 <div class="column is-one-third padding-30 background-dark">
-                    <h1 class="is-size-3 has-text-right">1-Second Floor</h1>
+                    <h1 class="is-size-3 has-text-right">{{groupCount}}-Second Floor</h1>
                 </div>
             </div>
             <div class="columns is-gapless">
@@ -369,403 +385,17 @@
                     </div>
                 </div>
                 <div class="column is-two-thirds-desktop padding-right-20">
-                    {# {% if homepage.teaser2_photo %} #}
-                    <figure class="image padding-20">
-                        <img src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/groupings/grouping-second-floor-1.jpg">
-                    </figure>
-                    {# {% endif %} #}
-                </div>
-            </div>
-        </div>
-        <div class="content-tab-1" id="main-options-two" style="display:none;">
-            <div class="columns margin-top-50">
-                <div class="column is-one-third padding-30 background-dark">
-                    <h1 class="is-size-3 has-text-right">2-First Floor</h1>
-                </div>
-            </div>
-            <div class="columns is-gapless">
-                <div class="column is-two-thirds-desktop padding-right-20">
-                    {# {% if homepage.teaser2_photo %} #}
-                        <figure class="image padding-20">
-                            <img src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/groupings/first-floor-grouping-2.jpg">
+                    {% if group.imagefloor2 %}
+                        {% set imageFloor2 = group.imagefloor2.file|default(group.imagefloor2) %}
+                        <figure class="image padding-390">
+                            <img src="{{ asset(imageFloor2, 'files') }}">
                         </figure>
-                    {# {% endif %} #}
-                </div>
-                <div class="column is-vertical-center ">
-                    <div class="padding-left-60 padding-right-60 padding-bottom-20  padding-top-20">
-                        <div id="main-stats-one">
-                            <table class="table is-fullwidth">
-                                <thead>
-                                    <tr>
-                                        <th>LOCATION</th>
-                                        <th>AREA</th>
-                                        <th>PATIO</th>
-                                    </tr>
-                                </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th><strong>TOTAL OFFICE AREA<strong></th>
-                                        <th><strong>29,312 SqFt.<strong></th>
-                                        <th></th>
-                                    </tr>
-                                    <tr>
-                                        <th><small>Vertical Circulation</small></th>
-                                        <th><small>866 SqFt.</small></th>
-                                        <th></th>
-                                    </tr>
-                                    <tr>
-                                        <th><small>Common</small></th>
-                                        <th><small>1,612 SqFt.</small></th>
-                                        <th></th>
-                                    </tr>
-                                </tfoor>
-                                <tbody>
-                                    <tr>
-                                        <td>Office 1-3</td>
-                                        <td>4,903 <small>SqFt.</small></td>
-                                        <td>476 <small>SqFt.</small></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Office 4</td>
-                                        <td>1,807 <small>SqFt.</small></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Office 5</td>
-                                        <td>1,815 <small>SqFt.</small></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Office 6</td>
-                                        <td>2,437 <small>SqFt.</small></td>
-                                        <td>910 <small>SqFt.</small></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Office 7-15</td>
-                                        <td>18,350 <small>SqFt.</small></td>
-                                        <td>4,667 <small>SqFt.</small></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container"><hr/></div>
-            <div class="columns margin-top-50">
-                <div class="column is-one-third padding-30 background-dark">
-                    <h1 class="is-size-3 has-text-right">2-Second Floor</h1>
-                </div>
-            </div>
-            <div class="columns is-gapless">
-                <div class="column is-vertical-center ">
-                    <div class="padding-left-60 padding-right-60 padding-bottom-20  padding-top-20">
-                        <table class="table is-fullwidth">
-                            <thead>
-                                <tr>
-                                    <th>LOCATION</th>
-                                    <th>AREA</th>
-                                    <th>PATIO</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th><strong>TOTAL OFFICE AREA<strong></th>
-                                    <th><strong>34,721 SqFt.<strong></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th><small>Vertical Circulation</small></th>
-                                    <th><small>457 SqFt.</small></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th><small>Common</small></th>
-                                    <th><small>2,014 SqFt.</small></th>
-                                    <th></th>
-                                </tr>
-                            </tfoor>
-                            <tbody>
-                                <tr>
-                                    <td>Office 16-24</td>
-                                    <td>18,613 <small>SqFt.</small></td>
-                                    <td>1,769 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 25-27</td>
-                                    <td>5,188 <small>SqFt.</small></td>
-                                    <td>340 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 28</td>
-                                    <td>1,534 <small>SqFt.</small></td>
-                                    <td>146 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 29</td>
-                                    <td>2,150 <small>SqFt.</small></td>
-                                    <td>146 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 30</td>
-                                    <td>2,140 <small>SqFt.</small></td>
-                                    <td>146 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 31-33</td>
-                                    <td>5,095 <small>SqFt.</small></td>
-                                    <td>814 <small>SqFt.</small></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="column is-two-thirds-desktop padding-right-20">
-                    {# {% if homepage.teaser2_photo %} #}
-                    <figure class="image padding-20">
-                        <img src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/groupings/grouping-second-floor-2.jpg">
-                    </figure>
-                    {# {% endif %} #}
+                    {% endif %}
                 </div>
             </div>
         </div>
-        <div class="content-tab-1" id="main-options-three" style="display:none;"> 
-            <div class="columns margin-top-50">
-                <div class="column is-one-third padding-30 background-dark">
-                    <h1 class="is-size-3 has-text-right">3-First Floor</h1>
-                </div>
-            </div>
-            <div class="columns is-gapless">
-                <div class="column is-two-thirds-desktop padding-right-20">
-                    {# {% if homepage.teaser2_photo %} #}
-                        <figure class="image padding-20">
-                            <img src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/groupings/first-floor-grouping-3.jpg">
-                        </figure>
-                    {# {% endif %} #}
-                </div>
-                <div class="column is-vertical-center ">
-                    <div class="padding-left-60 padding-right-60 padding-bottom-20  padding-top-20">
-                        <div id="main-stats-one">
-                            <table class="table is-fullwidth">
-                                <thead>
-                                    <tr>
-                                        <th>LOCATION</th>
-                                        <th>AREA</th>
-                                        <th>PATIO</th>
-                                    </tr>
-                                </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th><strong>TOTAL OFFICE AREA<strong></th>
-                                        <th><strong>25,671 SqFt.<strong></th>
-                                        <th></th>
-                                    </tr>
-                                    <tr>
-                                        <th><small>Vertical Circulation</small></th>
-                                        <th><small>411 SqFt.</small></th>
-                                        <th></th>
-                                    </tr>
-                                    <tr>
-                                        <th><small>Common</small></th>
-                                        <th><small>5,636 SqFt.</small></th>
-                                        <th></th>
-                                    </tr>
-                                </tfoor>
-                                <tbody>
-                                    <tr>
-                                        <td>Office 1&amp;2</td>
-                                        <td>2,391 <small>SqFt.</small></td>
-                                        <td>467 <small>SqFt.</small></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Office 3</td>
-                                        <td>2,034 <small>SqFt.</small></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Office 4</td>
-                                        <td>2,034 <small>SqFt.</small></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Office 5</td>
-                                        <td>2,034 <small>SqFt.</small></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Office 6</td>
-                                        <td>2,437 <small>SqFt.</small></td>
-                                        <td>910 <small>SqFt.</small></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Office 7</td>
-                                        <td>1,399 <small>SqFt.</small></td>
-                                        <td>539 <small>SqFt.</small></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Office 8</td>
-                                        <td>1,810 <small>SqFt.</small></td>
-                                        <td>514 <small>SqFt.</small></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Office 9</td>
-                                        <td>2,036 <small>SqFt.</small></td>
-                                        <td>506 <small>SqFt.</small></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Office 10</td>
-                                        <td>2,811 <small>SqFt.</small></td>
-                                        <td>498 <small>SqFt.</small></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Office 11</td>
-                                        <td>1,099 <small>SqFt.</small></td>
-                                        <td>182 <small>SqFt.</small></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Office 12</td>
-                                        <td>1,098 <small>SqFt.</small></td>
-                                        <td>182 <small>SqFt.</small></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Office 13</td>
-                                        <td>1,514 <small>SqFt.</small></td>
-                                        <td>182 <small>SqFt.</small></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Office 14</td>
-                                        <td>1,191 <small>SqFt.</small></td>
-                                        <td>1,312 <small>SqFt.</small></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Office 15</td>
-                                        <td>1,773 <small>SqFt.</small></td>
-                                        <td>780 <small>SqFt.</small></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="container"><hr/></div>
-                <div class="columns margin-top-50">
-                    <div class="column is-one-third padding-30 background-dark">
-                        <h1 class="is-size-3 has-text-right">3-Second Floor</h1>
-                    </div>
-                </div>
-            <div class="columns is-gapless">
-                <div class="column is-vertical-center ">
-                    <div class="padding-left-60 padding-right-60 padding-bottom-20  padding-top-20">
-                        <table class="table is-fullwidth">
-                            <thead>
-                                <tr>
-                                    <th>LOCATION</th>
-                                    <th>AREA</th>
-                                    <th>PATIO</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th><strong>TOTAL OFFICE AREA<strong></th>
-                                    <th><strong>30,594 SqFt.<strong></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th><small>Vertical Circulation</small></th>
-                                    <th><small>636 SqFt.</small></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th><small>Common</small></th>
-                                    <th><small>5,011 SqFt.</small></th>
-                                    <th></th>
-                                </tr>
-                            </tfoor>
-                            <tbody>
-                                <tr>
-                                    <td>Office 16</td>
-                                    <td>1,497 <small>SqFt.</small></td>
-                                    <td>146 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 17</td>
-                                    <td>1,772 <small>SqFt.</small></td>
-                                    <td>146 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 18</td>
-                                    <td>2,139 <small>SqFt.</small></td>
-                                    <td>146 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 19</td>
-                                    <td>2,447 <small>SqFt.</small></td>
-                                    <td>146 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 20</td>
-                                    <td>1,324 <small>SqFt.</small></td>
-                                    <td>170 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 21</td>
-                                    <td>1,294 <small>SqFt.</small></td>
-                                    <td>146 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 22-23</td>
-                                    <td>3,075 <small>SqFt.</small></td>
-                                    <td>660 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 24</td>
-                                    <td>1,983 <small>SqFt.</small></td>
-                                    <td>223 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 25-27</td>
-                                    <td>5,188 <small>SqFt.</small></td>
-                                    <td>340 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 28</td>
-                                    <td>1,534 <small>SqFt.</small></td>
-                                    <td>146 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 29</td>
-                                    <td>1,978 <small>SqFt.</small></td>
-                                    <td>146 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 30</td>
-                                    <td>1,968 <small>SqFt.</small></td>
-                                    <td>146 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 31</td>
-                                    <td>1,968 <small>SqFt.</small></td>
-                                    <td>146 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 32-33</td>
-                                    <td>2,426 <small>SqFt.</small></td>
-                                    <td>670 <small>SqFt.</small></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="column is-two-thirds-desktop padding-right-20">
-                    {# {% if homepage.teaser2_photo %} #}
-                    <figure class="image padding-20">
-                        <img src="http://www.thecantilevers.com/thumbs/1000x1000r/floor-plans/groupings/grouping-second-floor-3.jpg">
-                    </figure>
-                    {# {% endif %} #}
-                </div>
-            </div>
-        </div>
+        {% set groupCount = groupCount + 1 %}
+        {% endfor %}
     </section>
 
     {# Floor two #}

@@ -177,7 +177,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     tabs.on('click', function() {
         var target = $(this).data('target');
-        var contnetTarget = $(this).data('targets');
+        var contnetTarget = $(this).data('target');
         var content = contnetTarget ? contnetTarget : "content-tab";
         if (target) {
             openTab(event, target, content);
@@ -187,7 +187,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // https://codepen.io/t7team/pen/ZowdRN
     function openTab(evt, tabName, contentTab) {
         var i, x, tablinks;
-        x = document.getElementsByClassName(contentTab);
+
+        x = document.getElementsByClassName("content-tab");
         for (i = 0; i < x.length; i++) {
             //x[i].style.display = "none";
             $(x).fadeOut();
@@ -198,6 +199,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         $("#" + tabName).fadeIn();
         evt.currentTarget.className += " is-active";
-
     }
 });
