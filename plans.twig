@@ -83,18 +83,13 @@
                                         <figure class="image">
                                             <img src="{{ asset(planimage, 'files') }}">
                                         </figure>
-                                {% endif %}
-                                </div>
-                            </div>
-                            {# <div class="columns is-vertical-center is-variable is-0">
-                                <div class="column">
-                                    <div class="margin-left-20">
-                                        <h2 class="is-large margin-bottom-20 is-size-3">{{ plan.name }}</h2>
+                                    {% endif %}
+                                    <div class="margin-top-20">
                                         {{ plan.description|raw }}
-                                        <a class="button margin-top-40" href="#popup-plan-{{ count }}">View Grouping Options</a>
+                                        {# <a class="button margin-top-40" href="#popup-plan-{{ count }}">View Grouping Options</a> #}
                                     </div>
                                 </div>
-                            </div> #}
+                            </div>
                         </div>
                         {% set count = count + 1 %}
                     {% endfor %}
@@ -144,17 +139,12 @@
                                     <img src="{{ asset(planimage2, 'files') }}">
                                     </figure>
                                {% endif %} 
-                            </div>
-                        </div>
-                        {# <div class="columns is-vertical-center is-variable is-0">
-                            <div class="column">
-                                <div class="margin-left-20">
-                                    <h2 class="is-large margin-bottom-20 is-size-3">{{ plan.name }}</h2>
+                               <div class="margin-top-20">
                                     {{ plan.description|raw }}
-                                    <a class="button margin-top-40" href="#popup-plan-{{ count }}">View Grouping Options</a>
+                                    {# <a class="button margin-top-40" href="#popup-plan-{{ count }}">View Grouping Options</a> #}
                                 </div>
                             </div>
-                        </div> #}
+                        </div>
                     </div>
                     {% set count = count + 1 %}
                 {% endfor %}
@@ -219,182 +209,52 @@
         {# Tabs Body #}
         {% set groupCount = 1 %}
         {% for key,group in plan.groupings %}
-        <div class="content-tab content-tab-{{key}}" id="main-options-{{groupCount}}"{% if groupCount > 1 %} style="display:none"{% endif %}>
-            <div class="columns margin-top-50">
-                <div class="column is-one-third padding-30 background-dark">
-                    <h1 class="is-size-3 has-text-right">{{groupCount}}-First Floor</h1>
+            <div class="content-tab content-tab-{{key}}" id="main-options-{{groupCount}}"{% if groupCount > 1 %} style="display:none"{% endif %}>
+                <div class="columns margin-top-50">
+                    <div class="column is-one-third padding-30 background-dark">
+                        <h1 class="is-size-3 has-text-right">{{groupCount}}-First Floor</h1>
+                    </div>
                 </div>
-            </div>
-            <div class="columns is-gapless">
-                <div class="column is-two-thirds-desktop padding-right-20">
-                    {% if group.imagefloor1 %}
-                        {% set imageFloor = group.imagefloor1.file|default(group.imagefloor1) %}
-                        <figure class="image padding-390">
-                            <img src="{{ asset(imageFloor, 'files') }}">
-                        </figure>
-                    {% endif %}
-                </div>
-                <div class="column is-vertical-center ">
-                    <div class="padding-left-60 padding-right-60 padding-bottom-20  padding-top-20">
-                        <div id="main-stats-{{groupCount}}">
-                        {{grooup.descriptionfloor1|raw}}
-                            {# <table class="table is-fullwidth">
-                                <thead>
-                                    <tr>
-                                        <th>LOCATION</th>
-                                        <th>AREA</th>
-                                        <th>PATIO</th>
-                                    </tr>
-                                </thead>
-                                <tfoot>
-                                    <tr>
-                                        <th><strong>TOTAL OFFICE AREA<strong></th>
-                                        <th><strong>25,475 SqFt.<strong></th>
-                                        <th></th>
-                                    </tr>
-                                    <tr>
-                                        <th><small>Vertical Circulation</small></th>
-                                        <th><small>1,264 SqFt.</small></th>
-                                        <th></th>
-                                    </tr>
-                                    <tr>
-                                        <th><small>Common</small></th>
-                                        <th><small>4,944 SqFt.</small></th>
-                                        <th></th>
-                                    </tr>
-                                </tfoor>
-                                <tbody>
-                                    <tr>
-                                        <td>Office 1&amp;2</td>
-                                        <td>2,361 <small>SqFt.</small></td>
-                                        <td>4,726 <small>SqFt.</small></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Office 3</td>
-                                        <td>1,807 <small>SqFt.</small></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Office 4</td>
-                                        <td>1,807 <small>SqFt.</small></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Office 5</td>
-                                        <td>1,807 <small>SqFt.</small></td>
-                                        <td></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Office 6</td>
-                                        <td>2,437 <small>SqFt.</small></td>
-                                        <td>910 <small>SqFt.</small></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Office 7-10</td>
-                                        <td>7,524 <small>SqFt.</small></td>
-                                        <td>2,050 <small>SqFt.</small></td>
-                                    </tr>
-                                    <tr>
-                                        <td>Office 11-15</td>
-                                        <td>7,694 <small>SqFt.</small></td>
-                                        <td>2,629 <small>SqFt.</small></td>
-                                    </tr>
-                                </tbody>
-                            </table> #}
+                <div class="columns is-gapless">
+                    <div class="column is-two-thirds-desktop padding-right-20">
+                        {% if group.imagefloor1 %}
+                            {% set imageFloor = group.imagefloor1.file|default(group.imagefloor1) %}
+                            <figure class="image padding-390">
+                                <img src="{{ asset(imageFloor, 'files') }}">
+                            </figure>
+                        {% endif %}
+                    </div>
+                    <div class="column is-vertical-center ">
+                        <div class="padding-left-60 padding-right-60 padding-bottom-20  padding-top-20">
+                            <div id="main-stats-{{groupCount}}">
+                            {{group.descriptionfloor1|raw}}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="container"><hr/></div>
-            <div class="columns margin-top-50">
-                <div class="column is-one-third padding-30 background-dark">
-                    <h1 class="is-size-3 has-text-right">{{groupCount}}-Second Floor</h1>
-                </div>
-            </div>
-            <div class="columns is-gapless">
-                <div class="column is-vertical-center ">
-                    <div class="padding-left-60 padding-right-60 padding-bottom-20  padding-top-20">
-                        <table class="table is-fullwidth">
-                            <thead>
-                                <tr>
-                                    <th>LOCATION</th>
-                                    <th>AREA</th>
-                                    <th>PATIO</th>
-                                </tr>
-                            </thead>
-                            <tfoot>
-                                <tr>
-                                    <th><strong>TOTAL OFFICE AREA<strong></th>
-                                    <th><strong>31,199 SqFt.<strong></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th><small>Vertical Circulation</small></th>
-                                    <th><small>1,151 SqFt.</small></th>
-                                    <th></th>
-                                </tr>
-                                <tr>
-                                    <th><small>Common</small></th>
-                                    <th><small>4,472 SqFt.</small></th>
-                                    <th></th>
-                                </tr>
-                            </tfoor>
-                            <tbody>
-                                <tr>
-                                    <td>Office 16-19</td>
-                                    <td>7,848 <small>SqFt.</small></td>
-                                    <td>578 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 20-24</td>
-                                    <td>8,288 <small>SqFt.</small></td>
-                                    <td>1,193 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 25-27</td>
-                                    <td>5,188 <small>SqFt.</small></td>
-                                    <td>340 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 28</td>
-                                    <td>1,534 <small>SqFt.</small></td>
-                                    <td>146 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 29</td>
-                                    <td>1,978 <small>SqFt.</small></td>
-                                    <td>146 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 30</td>
-                                    <td>1,968 <small>SqFt.</small></td>
-                                    <td>146 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 31</td>
-                                    <td>1,968 <small>SqFt.</small></td>
-                                    <td>146 <small>SqFt.</small></td>
-                                </tr>
-                                <tr>
-                                    <td>Office 32&amp;33</td>
-                                    <td>2,426 <small>SqFt.</small></td>
-                                    <td>670 <small>SqFt.</small></td>
-                                </tr>
-                            </tbody>
-                        </table>
+                <div class="container"><hr/></div>
+                <div class="columns margin-top-50">
+                    <div class="column is-one-third padding-30 background-dark">
+                        <h1 class="is-size-3 has-text-right">{{groupCount}}-Second Floor</h1>
                     </div>
                 </div>
-                <div class="column is-two-thirds-desktop padding-right-20">
-                    {% if group.imagefloor2 %}
-                        {% set imageFloor2 = group.imagefloor2.file|default(group.imagefloor2) %}
-                        <figure class="image padding-390">
-                            <img src="{{ asset(imageFloor2, 'files') }}">
-                        </figure>
-                    {% endif %}
+                <div class="columns is-gapless">
+                    <div class="column is-vertical-center ">
+                        <div class="padding-left-60 padding-right-60 padding-bottom-20  padding-top-20">
+                            {{group.descriptionfloor2|raw}}
+                        </div>
+                    </div>
+                    <div class="column is-two-thirds-desktop padding-right-20">
+                        {% if group.imagefloor2 %}
+                            {% set imageFloor2 = group.imagefloor2.file|default(group.imagefloor2) %}
+                            <figure class="image padding-390">
+                                <img src="{{ asset(imageFloor2, 'files') }}">
+                            </figure>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
-        </div>
-        {% set groupCount = groupCount + 1 %}
+            {% set groupCount = groupCount + 1 %}
         {% endfor %}
     </section>
 
