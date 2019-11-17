@@ -15,19 +15,6 @@
         </div>
     </section>
 
-    {# Content #}
-    {# {% if plan.content %}
-        <section class="section section-record content">
-            <div class="container">
-                <div class="columns is-centered">
-                    <div class="column is-two-thirds">
-                        {{ plan.content|raw }}
-                    </div>
-                </div>
-            </div>
-        </section>
-    {% endif %} #}
-
     {# Floor Plans Top #}
     <section class="section margin-top-70">
         <h2 class="title has-text-centered">Floorplans</h2>
@@ -70,7 +57,12 @@
                     {% set planimageDefault = plan.floorplan[0].image.file|default(plan.floorplan[0]) %}
                     <div id="defaultPlan">
                         <h2 class="is-large has-text-centered margin-bottom-20 is-size-3">{{ plan.floorplan[0].name }}</h2>
-                        <img src="{{ asset(planimageDefault, 'files') }}" id="" width="512px"/>
+                        <figure class="image">
+                            <img src="{{ asset(planimageDefault, 'files') }}">
+                        </figure>
+                        <div class="margin-top-20">
+                            {{ plan.floorplan[0].description|raw }}
+                        </div>
                     </div>
                     {% set count = 1 %}
                     {% for plan in plan.floorplan %}
@@ -125,7 +117,12 @@
                 <div id="defaultPlan2">
                     <h2 class="is-large has-text-centered margin-bottom-20 is-size-3">{{ plan.floorplan2[0].name }}</h2>
                     {% set planimage2Default = plan.floorplan2[0].image.file|default(plan.floorplan2[0]) %}
-                    <img src="{{ asset(planimage2Default, 'files') }}" width="512px"/>
+                    <figure class="image">
+                        <img src="{{ asset(planimage2Default, 'files') }}">
+                    </figure>
+                    <div class="margin-top-20">
+                        {{ plan.floorplan[0].description|raw }}
+                    </div>
                 </div>
                 {% set count = 16 %}
                 {% for plan in plan.floorplan2 %}
